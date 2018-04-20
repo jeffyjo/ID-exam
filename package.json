@@ -1,0 +1,23 @@
+{
+  "name": "id-exam",
+  "version": "1.0.0",
+  "description": "Exam project for Interaction Design",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffyjo/ID-exam.git"
+  },
+  "author": "Team Amazing",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeffyjo/ID-exam/issues"
+  },
+  "homepage": "https://github.com/jeffyjo/ID-exam#readme",
+  "devDependencies": {
+    "browsersync": "0.0.1-security",
+    "gulp": "^3.9.1"
+  }
+}
