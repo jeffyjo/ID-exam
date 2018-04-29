@@ -3,25 +3,33 @@ let gulp          = require('gulp')
     sourcemaps    = require('gulp-sourcemaps')
     autoprefixer  = require('gulp-autoprefixer')
     bs            = require('browser-sync').create()
+    browserify    = require('browserify')
+    babelify      = require('babelify')
+    source        = require('vinyl-source-stream')
+    buffer        = require('vinyl-buffer')
 
 let folder = {
-    src: 'src/',
-    build: 'build/'
+    src: './src/',
+    build: './build/',
+    watch: 'src/'
 }
 
 let path = {
     html: {
-        src: '**/*.html'
+        src: 'index.html',
+        watch: '**/*.html'
     },
     sass: {
-        src: 'sass/**/*.scss',
+        src: 'sass/main.scss',
         build: 'css',
-        dist: 'css'
+        dist: 'css',
+        watch: 'sass/**/*.scss'
     },
     js: {
-        src: 'js/**/*.js',
+        src: 'js/main.js',
         build: 'js',
-        dist: 'js'
+        dist: 'js',
+        watch: 'js/**/*.js'
     }
 }
 
@@ -38,18 +46,50 @@ gulp.task( 'sass', () => {
         .pipe(gulp.dest(folder.build + path.sass.build));
 })
 
+gulp.task( 'scripts', () => {
+    let bundler = browserify({
+            debug: true,
+            entries: [folder.src + path.js.src]
+        })
+        .transform(babelify.configure({
+            presets: [['env', {
+                'targets': {
+                    'browsers': ['last 2 versions', 'safari >= 7']
+                }
+            }]]
+        }))
+        .bundle()
+        .on('error', function (err) {
+            console.log(err)
+            this.emit('end')
+        })
+        .pipe(source('.'))
+        .pipe(buffer())
+        .pipe(sourcemaps.init({
+            loadMaps: true
+        }))
+        .pipe(sourcemaps.write('../index', {
+            sourceMappingURLPrefix: 'http://localhost:5000/build/js'
+        }))
+        .pipe(gulp.dest(folder.build + path.js.build + '/index.js'))
+})
+
 gulp.task( 'serve', () => {
     bs.init({
-        server: './src/',
+        server: {
+            baseDir: './'
+        },
         browser: 'google chrome',
         port: 5000
     })
 })
 
 gulp.task( 'watch', ['sass', 'serve'], () => {
-    gulp.watch(folder.src + path.html.src).on( 'change', bs.reload )
-    gulp.watch(folder.src + path.sass.src).on( 'change', bs.reload )
-    gulp.watch(folder.src + path.js.src).on( 'change', bs.reload )
+    gulp.watch(folder.watch + path.html.watch)
+    gulp.watch(folder.watch + path.sass.watch, ['sass'])
+    gulp.watch(folder.watch + path.js.watch, ['scripts'])
+
+    gulp.watch(folder.watch + '**/*').on( 'change', bs.reload )
 })
 
 gulp.task( 'default', ['watch'] )

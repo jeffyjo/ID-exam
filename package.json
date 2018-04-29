@@ -17,13 +17,19 @@
   },
   "homepage": "https://github.com/jeffyjo/ID-exam#readme",
   "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babelify": "^8.0.0",
     "browsersync": "0.0.1-security",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",
+    "gulp-browserify": "^0.5.1",
     "gulp-sass": "^4.0.1",
-    "gulp-sourcemaps": "^2.6.4"
+    "gulp-sourcemaps": "^2.6.4",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
+    "babel-core": "^6.26.0",
     "browser-sync": "^2.23.7"
   }
 }
