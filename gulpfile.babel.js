@@ -1,12 +1,12 @@
 let gulp          = require('gulp')
-    sass          = require('gulp-sass')
-    sourcemaps    = require('gulp-sourcemaps')
-    autoprefixer  = require('gulp-autoprefixer')
-    bs            = require('browser-sync').create()
-    browserify    = require('browserify')
-    babelify      = require('babelify')
-    source        = require('vinyl-source-stream')
-    buffer        = require('vinyl-buffer')
+let sass          = require('gulp-sass')
+let sourcemaps    = require('gulp-sourcemaps')
+let autoprefixer  = require('gulp-autoprefixer')
+let bs            = require('browser-sync').create()
+let browserify    = require('browserify')
+let babelify      = require('babelify')
+let source        = require('vinyl-source-stream')
+let buffer        = require('vinyl-buffer')
 
 let folder = {
     src: './src/',
