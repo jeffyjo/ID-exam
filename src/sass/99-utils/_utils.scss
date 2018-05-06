@@ -1,0 +1,30 @@
+/*************************************************
+
+  Utils are helper classes that defines a
+  specific behavior.
+  Utils can be used in atoms, molecules, organisms,
+  template & pages
+
+*************************************************/
+
+
+/*
+*   EXAMPLE  
+* 
+*  <div class="o-cta-block u-grid u-grid--center">
+*   <h1 class="a-main-header">Header</h1>
+*   <p class="a-paragraph-lead">Lead Text</p>
+*   <button class="m-button">
+*     <p class="a-paragraph-button">Button text</p>  
+*   </button>
+*  </div>
+*
+* .u-grid {
+*   display: flex;
+*   
+*   &--center {
+*     justify-content: center;
+*     align-items: center;
+*   }  
+* }
+*
