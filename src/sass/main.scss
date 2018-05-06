@@ -1,6 +1,7 @@
-@import "base/base";
-@import "atoms/atoms";
-@import "molecules/molecules";
-@import "organisms/organisms";
-@import "templates/templates";
-@import "pages/pages";
+@import "00-base/base";
+@import "01-atoms/atoms";
+@import "02-molecules/molecules";
+@import "03-organisms/organisms";
+@import "04-templates/templates";
+@import "05-pages/pages";
+@import "99-utils/utils";

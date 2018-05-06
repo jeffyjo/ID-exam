@@ -1,7 +1,83 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box; }
 
-/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWFpbi5jc3MiLCJzb3VyY2VzIjpbIm1haW4uc2NzcyIsImJhc2UvX2Jhc2Uuc2NzcyIsImJhc2UvX3ZhcnMuc2NzcyIsImJhc2UvX2Z1bmN0aW9ucy5zY3NzIiwiYmFzZS9fbWl4aW5zLnNjc3MiLCJiYXNlL19nZW5lcmFsLnNjc3MiLCJhdG9tcy9fYXRvbXMuc2NzcyIsIm1vbGVjdWxlcy9fbW9sZWN1bGVzLnNjc3MiLCJvcmdhbmlzbXMvX29yZ2FuaXNtcy5zY3NzIiwidGVtcGxhdGVzL190ZW1wbGF0ZXMuc2NzcyIsInBhZ2VzL19wYWdlcy5zY3NzIl0sInNvdXJjZXNDb250ZW50IjpbIkBpbXBvcnQgXCJiYXNlL2Jhc2VcIjtcbkBpbXBvcnQgXCJhdG9tcy9hdG9tc1wiO1xuQGltcG9ydCBcIm1vbGVjdWxlcy9tb2xlY3VsZXNcIjtcbkBpbXBvcnQgXCJvcmdhbmlzbXMvb3JnYW5pc21zXCI7XG5AaW1wb3J0IFwidGVtcGxhdGVzL3RlbXBsYXRlc1wiO1xuQGltcG9ydCBcInBhZ2VzL3BhZ2VzXCI7XG4iLCJAaW1wb3J0IFwidmFyc1wiO1xuQGltcG9ydCBcImZ1bmN0aW9uc1wiO1xuQGltcG9ydCBcIm1peGluc1wiO1xuQGltcG9ydCBcImdlbmVyYWxcIjtcbiIsIiIsIiIsIiIsIioge1xuICAgIG1hcmdpbjogMDtcbiAgICBwYWRkaW5nOiAwO1xuICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG59XG4iLCIiLCIiLCIiLCIiLCIiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFLQUEsQUFBQSxDQUFDLENBQUM7RUFDRSxNQUFNLEVBQUUsQ0FBQztFQUNULE9BQU8sRUFBRSxDQUFDO0VBQ1YsVUFBVSxFQUFFLFVBQVUsR0FDekIifQ== */
+/*************************************************
+
+  Elements.scss is used to define
+  standard behavior without classes.
+  
+  Eg. 
+
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+  }
+
+**************************************************/
+/****************************************
+
+  Atoms of our interfaces serve as 
+  the foundational building blocks that
+  comprise all our user interfaces.
+
+*****************************************/
+/*
+*   <a class="a-link">A link</a>
+*
+*   .a-link {
+*     text-decoration: none;
+*   }
+*/
+/*************************************************
+
+  Molecules are relatively simple groups of UI
+  elements functioning together as a unit.
+
+*************************************************/
+/*  EXAMPLE:
+*   
+*   <button class="m-button">
+*     <p class="a-paragraph-button">Button text</p>
+*   </button>
+*
+*   .m-button {  
+*     padding: 1em;     
+*   }
+*/
+/*************************************************
+
+  Organisms are relatively complex UI components 
+  composed of groups of molecules and/or 
+  atoms and/or other organisms.
+
+**************************************************/
+/*
+*   EXAMPLE
+*
+*   <div class="o-cta-block">
+*      <h1 class="a-main-header">Header</h1>
+*      <p class="a-paragraph-lead">Lead Text</p>
+*      <button class="m-button">
+*         <p class="a-paragraph-button">Button text</p>  
+*      </button>
+*   </div>
+*
+*   .o-cta-block {
+*     display: flex;
+*     justify-content: center;
+*     background: blue;
+*   }  
+*/
+/*************************************************
+
+  Templates are page-level objects that place 
+  components into a layout and articulate 
+  the design’s underlying content structure.
+
+*************************************************/
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWFpbi5jc3MiLCJzb3VyY2VzIjpbIm1haW4uc2NzcyIsIjAwLWJhc2UvX2Jhc2Uuc2NzcyIsIjAwLWJhc2UvX3ZhcnMuc2NzcyIsIjAwLWJhc2UvX2Z1bmN0aW9ucy5zY3NzIiwiMDAtYmFzZS9fbWl4aW5zLnNjc3MiLCIwMC1iYXNlL19nZW5lcmFsLnNjc3MiLCIwMC1iYXNlL19lbGVtZW50cy5zY3NzIiwiMDEtYXRvbXMvX2F0b21zLnNjc3MiLCIwMi1tb2xlY3VsZXMvX21vbGVjdWxlcy5zY3NzIiwiMDMtb3JnYW5pc21zL19vcmdhbmlzbXMuc2NzcyIsIjA0LXRlbXBsYXRlcy9fdGVtcGxhdGVzLnNjc3MiLCIwNS1wYWdlcy9fcGFnZXMuc2NzcyIsIjk5LXV0aWxzL191dGlscy5zY3NzIl0sInNvdXJjZXNDb250ZW50IjpbIkBpbXBvcnQgXCIwMC1iYXNlL2Jhc2VcIjtcbkBpbXBvcnQgXCIwMS1hdG9tcy9hdG9tc1wiO1xuQGltcG9ydCBcIjAyLW1vbGVjdWxlcy9tb2xlY3VsZXNcIjtcbkBpbXBvcnQgXCIwMy1vcmdhbmlzbXMvb3JnYW5pc21zXCI7XG5AaW1wb3J0IFwiMDQtdGVtcGxhdGVzL3RlbXBsYXRlc1wiO1xuQGltcG9ydCBcIjA1LXBhZ2VzL3BhZ2VzXCI7XG5AaW1wb3J0IFwiOTktdXRpbHMvdXRpbHNcIjtcbiIsIkBpbXBvcnQgXCJ2YXJzXCI7XG5AaW1wb3J0IFwiZnVuY3Rpb25zXCI7XG5AaW1wb3J0IFwibWl4aW5zXCI7XG5AaW1wb3J0IFwiZ2VuZXJhbFwiO1xuQGltcG9ydCBcImVsZW1lbnRzXCI7XG4iLCIiLCIiLCIiLCIqIHtcbiAgICBtYXJnaW46IDA7XG4gICAgcGFkZGluZzogMDtcbiAgICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xufVxuIiwiLyoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKipcblxuICBFbGVtZW50cy5zY3NzIGlzIHVzZWQgdG8gZGVmaW5lXG4gIHN0YW5kYXJkIGJlaGF2aW9yIHdpdGhvdXQgY2xhc3Nlcy5cbiAgXG4gIEVnLiBcblxuICBpbnB1dFt0eXBlPW51bWJlcl06Oi13ZWJraXQtaW5uZXItc3Bpbi1idXR0b24sIFxuICBpbnB1dFt0eXBlPW51bWJlcl06Oi13ZWJraXQtb3V0ZXItc3Bpbi1idXR0b24geyBcbiAgICAtd2Via2l0LWFwcGVhcmFuY2U6IG5vbmU7IFxuICB9XG5cbioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqLyIsIi8qKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqXG5cbiAgQXRvbXMgb2Ygb3VyIGludGVyZmFjZXMgc2VydmUgYXMgXG4gIHRoZSBmb3VuZGF0aW9uYWwgYnVpbGRpbmcgYmxvY2tzIHRoYXRcbiAgY29tcHJpc2UgYWxsIG91ciB1c2VyIGludGVyZmFjZXMuXG5cbioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqL1xuXG4vKlxuKiAgIDxhIGNsYXNzPVwiYS1saW5rXCI+QSBsaW5rPC9hPlxuKlxuKiAgIC5hLWxpbmsge1xuKiAgICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuKiAgIH1cbiovIiwiLyoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKipcblxuICBNb2xlY3VsZXMgYXJlIHJlbGF0aXZlbHkgc2ltcGxlIGdyb3VwcyBvZiBVSVxuICBlbGVtZW50cyBmdW5jdGlvbmluZyB0b2dldGhlciBhcyBhIHVuaXQuXG5cbioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiovXG5cblxuLyogIEVYQU1QTEU6XG4qICAgXG4qICAgPGJ1dHRvbiBjbGFzcz1cIm0tYnV0dG9uXCI+XG4qICAgICA8cCBjbGFzcz1cImEtcGFyYWdyYXBoLWJ1dHRvblwiPkJ1dHRvbiB0ZXh0PC9wPlxuKiAgIDwvYnV0dG9uPlxuKlxuKiAgIC5tLWJ1dHRvbiB7ICBcbiogICAgIHBhZGRpbmc6IDFlbTsgICAgIFxuKiAgIH1cbiovIiwiLyoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKipcblxuICBPcmdhbmlzbXMgYXJlIHJlbGF0aXZlbHkgY29tcGxleCBVSSBjb21wb25lbnRzIFxuICBjb21wb3NlZCBvZiBncm91cHMgb2YgbW9sZWN1bGVzIGFuZC9vciBcbiAgYXRvbXMgYW5kL29yIG90aGVyIG9yZ2FuaXNtcy5cblxuKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiovXG5cblxuLypcbiogICBFWEFNUExFXG4qXG4qICAgPGRpdiBjbGFzcz1cIm8tY3RhLWJsb2NrXCI+XG4qICAgICAgPGgxIGNsYXNzPVwiYS1tYWluLWhlYWRlclwiPkhlYWRlcjwvaDE+XG4qICAgICAgPHAgY2xhc3M9XCJhLXBhcmFncmFwaC1sZWFkXCI+TGVhZCBUZXh0PC9wPlxuKiAgICAgIDxidXR0b24gY2xhc3M9XCJtLWJ1dHRvblwiPlxuKiAgICAgICAgIDxwIGNsYXNzPVwiYS1wYXJhZ3JhcGgtYnV0dG9uXCI+QnV0dG9uIHRleHQ8L3A+ICBcbiogICAgICA8L2J1dHRvbj5cbiogICA8L2Rpdj5cbipcbiogICAuby1jdGEtYmxvY2sge1xuKiAgICAgZGlzcGxheTogZmxleDtcbiogICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuKiAgICAgYmFja2dyb3VuZDogYmx1ZTtcbiogICB9ICBcbiovIiwiLyoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKipcblxuICBUZW1wbGF0ZXMgYXJlIHBhZ2UtbGV2ZWwgb2JqZWN0cyB0aGF0IHBsYWNlIFxuICBjb21wb25lbnRzIGludG8gYSBsYXlvdXQgYW5kIGFydGljdWxhdGUgXG4gIHRoZSBkZXNpZ27igJlzIHVuZGVybHlpbmcgY29udGVudCBzdHJ1Y3R1cmUuXG5cbioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiovIiwiIiwiIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUtBQSxBQUFBLENBQUMsQ0FBQztFQUNFLE1BQU0sRUFBRSxDQUFDO0VBQ1QsT0FBTyxFQUFFLENBQUM7RUFDVixVQUFVLEVBQUUsVUFBVSxHQUN6Qjs7QUNKRDs7Ozs7Ozs7Ozs7O21EQVltRDtBQ1puRDs7Ozs7OzBDQU0wQztBQUUxQzs7Ozs7O0VBTUU7QUNkRjs7Ozs7a0RBS2tEO0FBR2xEOzs7Ozs7Ozs7RUFTRTtBQ2pCRjs7Ozs7O21EQU1tRDtBQUduRDs7Ozs7Ozs7Ozs7Ozs7OztFQWdCRTtBQ3pCRjs7Ozs7O2tEQU1rRCJ9 */
