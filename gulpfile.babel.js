@@ -7,6 +7,7 @@ let browserify    = require('browserify')
 let babelify      = require('babelify')
 let source        = require('vinyl-source-stream')
 let buffer        = require('vinyl-buffer')
+let standard      = require('gulp-standard')
 
 let folder = {
     src: './src/',
@@ -84,10 +85,20 @@ gulp.task( 'serve', () => {
     })
 })
 
-gulp.task( 'watch', ['sass', 'serve'], () => {
+gulp.task('lint', function () {
+  return gulp.src([folder.src + path.js.watch])
+    .pipe(standard())
+    .pipe(standard.reporter('default', {
+      breakOnError: false,
+      showFilePath: true,
+      quiet: false
+    }))
+})
+
+gulp.task( 'watch', ['sass', 'scripts', 'lint', 'serve'], () => {
     gulp.watch(folder.watch + path.html.watch)
     gulp.watch(folder.watch + path.sass.watch, ['sass'])
-    gulp.watch(folder.watch + path.js.watch, ['scripts'])
+    gulp.watch(folder.watch + path.js.watch, ['lint', 'scripts'])
 
     gulp.watch(folder.watch + '**/*').on( 'change', bs.reload )
 })
