@@ -1,0 +1,18 @@
+
+
+.a-button {
+  height: 5em;
+  width: 5em;
+  border: none;
+  border-radius: 1000px;
+  margin: auto;
+
+  // CORRECT COLOR
+  background: yellow;
+  
+  outline: none;
+  cursor: pointer;
+  
+  // Correct shadow color
+  box-shadow: 0.5px 0.5px 8px 1px lightgrey;
+}
