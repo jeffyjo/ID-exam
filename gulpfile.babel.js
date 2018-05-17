@@ -53,11 +53,10 @@ gulp.task( 'scripts', () => {
             entries: [folder.src + path.js.src]
         })
         .transform(babelify.configure({
-            presets: [['env', {
-                'targets': {
-                    'browsers': ['last 2 versions', 'safari >= 7']
-                }
-            }]]
+            presets: [
+              ['react'],
+              ['es2015']
+            ]
         }))
         .bundle()
         .on('error', function (err) {
@@ -101,7 +100,7 @@ gulp.task( 'watch', ['sass', 'scripts', 'lint', 'serve'], () => {
     gulp.watch(folder.watch + path.js.watch, ['lint', 'scripts'])
 
     gulp.watch(folder.watch + '**/*').on( 'change', bs.reload )
-    
+
     // Atomic design development is made in atomic.html
     gulp.watch( 'atomic.html' ).on( 'change', bs.reload )
 })
