@@ -181,3 +181,5 @@ const flights = [
     "price": "€9340,29"
   }
 ]
+
+export default flights
