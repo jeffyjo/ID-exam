@@ -13,6 +13,28 @@
 **************************************************/
 
 a {
+  font-size: $font-size--base;
   border: none;
   text-decoration: none;  
+}
+
+h1 {
+  @include heading-level-1();
+}
+
+h2 {
+  @include heading-level-2();
+}
+
+h3 {
+  @include heading-level-3();
+}
+
+button {
+  font-family: $font-button;
+  font-size: $font-size--md;
+}
+
+input {
+  font-family: $font-input;
 }

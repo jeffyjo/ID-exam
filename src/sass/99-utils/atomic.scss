@@ -4,8 +4,15 @@
   padding: 1em;
 }
 
-.util-block h1 {
+.util-header {
+  font-size: 3em;
+  line-height: 2em;
+  margin-top: 2em;
+}
+
+.util-block__header {
   padding: .5em 0;
+  font-size: 2em;
 }
 
 .util-background {

@@ -1,0 +1,25 @@
+
+
+
+
+
+/* Mixins for headings */
+
+@mixin heading-level-1 {
+  // margin: 
+  
+  font-family: $font-heading-1;
+  font-size: $font-size--huge;
+  line-height: $line-height--xl;
+  // font-weight: 
+}
+
+@mixin heading-level-2 {
+  font-family: $font-heading-2;
+  font-size: $font-size--xl;
+}
+
+@mixin heading-level-3 {
+  font-family: $font-heading-3;
+  font-size: $font-size--base;
+}

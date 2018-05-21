@@ -3,17 +3,22 @@
   color: $color-link-primary-text;
   padding: $size-padding--xs;
 
-  &--active {
-    border-bottom: 3px solid transparent;
-  }
-
   &--nav {
+    font-family: $font-link-nav;
     border-bottom-color: $color-link-border-nav;
     padding: $size-padding--sm;
   }
 
   &--content {
+    font-family: $font-link-content;
     border-bottom-color: $color-link-border-content;
+    opacity: .6;
+  }
+
+  &--active {
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+    opacity: 1;
   }
 
 }
