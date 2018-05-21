@@ -1,18 +1,53 @@
 
 
-.a-button {
-  height: 5em;
-  width: 5em;
-  border: none;
-  border-radius: 1000px;
-  margin: auto;
+/* Needs to have a modifier to work properly */
 
-  // CORRECT COLOR
-  background: yellow;
+.a-button {
+  border: none;
+  box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.2);
+  
+  margin: auto;
   
   outline: none;
-  cursor: pointer;
+  cursor: pointer;  
+
+  &--primary {
+    background: $color-btn-primary;
+  }
+
+  &--secondary {
+    background: $color-btn-secondary;
+  }
   
-  // Correct shadow color
-  box-shadow: 0.5px 0.5px 8px 1px lightgrey;
+  &--transparent {
+    background: $color-btn-transparent;
+  }
+
+  &--disabled {
+    opacity: .3;
+  }
+
+  &--circle-sm {
+    border-radius: $size-btn--circle;
+    width: $size-button--sm;
+    height: $size-button--sm;
+  }
+  
+  &--circle-md {
+    border-radius: $size-btn--circle;
+    width: $size-button--md;
+    height: $size-button--md;
+  }
+
+  &--circle-lg {
+    border-radius: $size-btn--circle;
+    width: $size-button--lg;
+    height: $size-button--lg;
+  }
+
+  &--elipse {
+    border-radius: $size-btn--pill;
+    padding: $size-padding--m $size-padding--lg;
+  }
+
 }

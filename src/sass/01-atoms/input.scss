@@ -3,7 +3,33 @@
   margin: 0;
   padding: 1em;
 
-  border-radius: 50px;
-  border: 1px solid black;
   outline: none;
+  border: transparent;
+
+  &--top-right {
+    border-top-right-radius: $size-input--border;
+  }
+
+  &--top-left {
+    border-top-left-radius: $size-input--border;
+  }
+
+  &--bottom-right {
+    border-bottom-right-radius: $size-input--border;
+  }
+
+  &--bottom-left {
+    border-bottom-left-radius: $size-input--border;
+  }
+
+  &--top {
+    @extend .a-input--top-left;
+    @extend .a-input--top-right;
+  }
+
+  &--bottom {
+    @extend .a-input--bottom-left;
+    @extend .a-input--bottom-right;
+  }
+
 }

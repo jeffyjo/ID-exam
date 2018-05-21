@@ -1,0 +1,19 @@
+
+.a-link {
+  color: $color-link-primary-text;
+  padding: $size-padding--xs;
+
+  &--active {
+    border-bottom: 3px solid transparent;
+  }
+
+  &--nav {
+    border-bottom-color: $color-link-border-nav;
+    padding: $size-padding--sm;
+  }
+
+  &--content {
+    border-bottom-color: $color-link-border-content;
+  }
+
+}
