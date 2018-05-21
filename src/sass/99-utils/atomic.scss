@@ -1,4 +1,32 @@
 
+.util-nav {
+
+  padding: 1em;
+  border-bottom: 1px solid white;
+
+  &__inner {
+
+    display: flex;
+    flex-direction: row;
+    
+    & > li {
+      list-style: none;
+      border-bottom: 2px solid transparent;
+
+      &:hover {
+        border-bottom-color: white;
+      }
+
+    }
+  }
+}
+
+.util-btn-top {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+}
+
 .util-block {
   border:1px solid black; 
   padding: 1em;
