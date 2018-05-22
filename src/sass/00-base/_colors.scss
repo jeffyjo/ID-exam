@@ -11,6 +11,7 @@ $secondary-text:          #1e1e1e;
 
 $util-light:              #ffffff;
 $util-dark:               #000000;
+$util-light-blue:         #5cb3e2;
 
 
 
@@ -26,3 +27,7 @@ $color-btn-transparent:     rgba( $util-dark, .25 );
 $color-link-primary-text:   $util-light;
 $color-link-border-nav:     $util-light;
 $color-link-border-content: $brand-yellow;
+$color-link-menu-text:      $secondary-text;
+$color-link-menu-bg:        $util-light-blue;
+
+$color-menu-bg:             $util-light;

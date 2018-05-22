@@ -1,0 +1,22 @@
+
+.m-search {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+}
+
+.m-search__item {
+  // display: inline;
+  margin-left: -3px;
+}
+
+.m-search__item:not(:first-child) {
+  border-left: 1px solid lightgrey; 
+}
+
+.m-search__button {
+  position: absolute;
+  top: -15px;
+  right: 0;
+}
+

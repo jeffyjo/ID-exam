@@ -1,0 +1,12 @@
+.m-content-block {
+  // TO DO: Create spacing-base fill to assimilate spacing - padding & margin
+  padding: 2em;
+}
+
+.m-content-block__item {
+  display: inline;
+}
+
+.m-content-block__item:not(:first-child) {
+  margin-left: 1em;
+}

@@ -1,0 +1,27 @@
+.m-menu {
+  background: $color-menu-bg;
+  padding: 1em;
+  border-radius: $size-menu--border;
+  width: 25em;
+
+  position: relative;
+
+  &::after {
+    content: '';
+    height: 1.5em;
+    width: 1.5em;
+    background: $color-menu-bg;
+    border: none;
+
+    position: absolute;
+    top: 3em;
+    right: -.8em;
+    transform: rotate(45deg);
+    z-index: -1;
+  }
+
+}
+
+.m-menu__item {
+  display: block;
+}

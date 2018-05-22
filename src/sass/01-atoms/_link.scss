@@ -21,4 +21,20 @@
     opacity: 1;
   }
 
+  &--menu {
+    padding: 1em;
+    font-family: $font-link-menu;
+
+    &-inactive {
+      color: $color-link-menu-text;
+    }
+
+    &-active {
+      font-family: $font-link-menu-primary;
+      color: $color-link-primary-text;
+      border-radius: $size-link--border;
+      background: $color-link-menu-bg;
+    }
+
+  }
 }

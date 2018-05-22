@@ -103,6 +103,7 @@ gulp.task( 'watch', ['sass', 'scripts', 'lint', 'serve'], () => {
 
     // Atomic design development is made in atomic.html
     gulp.watch( 'atomic.html' ).on( 'change', bs.reload )
+    gulp.watch( 'molecules.html' ).on( 'change', bs.reload )
 })
 
 gulp.task( 'default', ['watch'] )
