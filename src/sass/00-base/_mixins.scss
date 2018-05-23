@@ -21,5 +21,9 @@
 
 @mixin heading-level-3 {
   font-family: $font-heading-3;
-  font-size: $font-size--base;
+  font-size: $font-size--md;
+}
+
+@mixin heading-level-4 {
+  
 }

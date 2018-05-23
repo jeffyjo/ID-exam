@@ -14,14 +14,17 @@
   <nav class="util-nav" id="molecules-nav">
     <ul class="util-nav__inner">
       <li><a class="a-link a-link--nav" href="#molecules-navbar">Navbar</a></li>
-      <!-- <li><a class="a-link a-link--nav" href="#molecules-inputs">Inputs</a></li> -->
-      <!-- <li><a class="a-link a-link--nav" href="#molecules-links">Links</a></li> -->
-      <!-- <li><a class="a-link a-link--nav" href="#molecules-headers">Headers</a></li> -->
+      <li><a class="a-link a-link--nav" href="#molecules-header">Header</a></li>
+      <li><a class="a-link a-link--nav" href="#molecules-search">Search</a></li>
+      <li><a class="a-link a-link--nav" href="#molecules-block">Block</a></li>
+      <li><a class="a-link a-link--nav" href="#molecules-menu">Menu</a></li>
+      <li><a class="a-link a-link--nav" href="#molecules-form">Form</a></li>
+      <li><a class="a-link a-link--nav" href="#molecules-radio">Radio</a></li>
     </ul>
   </nav>
 
   <button class="a-button a-button--primary a-button--circle-md util-btn-top">
-    <a href="#moleclues-nav"> ↑ </a>
+    <a href="#molecules-nav"> ↑ </a>
     </button>
   
   <!-- BEGINS HERE -->
@@ -40,6 +43,9 @@
         </li>
         <li class="m-nav__item">
           <a href="#" class="a-link a-link--nav a-link">nav inactive</a>
+        </li>
+        <li class="m-nav__item">
+          <button class="a-button a-button--secondary a-button--circle-md"></button>
         </li>
       </ul>
     </nav>
@@ -62,7 +68,7 @@
     </nav>
   </section>
 
-  <h1 class="util-header">Header Molecules</h1>
+  <h1 class="util-header" id="molecules-header">Header Molecules</h1>
 
   <section class="util-block">
     <h2>Site header</h2>
@@ -72,21 +78,29 @@
     </div>
   </section>
 
-  <h1 class="util-header">Search</h1>
+  <section class="util-block">
+    <h2>Section header</h2>
+    <div class="m-section-header">
+      <h3 class="m-section__header">Header2</h3>
+      <p class="m-section-header__lead">Header3</p>
+    </div>
+  </section>
+
+  <h1 class="util-header" id="molecules-search">Search</h1>
 
   <section class="util-block">
     <h2>Search Molecule</h2>
     <div class="m-search">
-      <input type="text" class="a-input a-input--top-left a-input--bottom-left m-search__item">
-      <input type="text" class="a-input m-search__item">
-      <input type="text" class="a-input m-search__item">
-      <input type="text" class="a-input m-search__item">
-      <input type="text" class="a-input a-input--top-right a-input--bottom-right m-search__item">
+      <input type="text" class="a-input a-input--lg a-input--top-left a-input--bottom-left m-search__item">
+      <input type="text" class="a-input a-input--lg m-search__item">
+      <input type="text" class="a-input a-input--lg m-search__item">
+      <input type="text" class="a-input a-input--lg m-search__item">
+      <input type="text" class="a-input a-input--lg a-input--top-right a-input--bottom-right m-search__item">
       <button class="a-button a-button--primary a-button--circle-lg m-search__button">icon</button>
     </div>
   </section>
 
-  <h1 class="util-header">Blocks</h1>
+  <h1 class="util-header" id="molecules-block">Blocks</h1>
 
   <section class="util-block">
     <h2>Content block</h2>
@@ -98,7 +112,7 @@
     </div>
   </section>
 
-  <h1 class="util-header">Menu</h1>
+  <h1 class="util-header" id="molecules-menu">Menu</h1>
 
   <section class="util-block">
     <div class="m-menu">
@@ -106,6 +120,29 @@
       <a href="#" class="a-link a-link--menu a-link--menu-inactive m-menu__item">Link menu inactive</a>
       <a href="#" class="a-link a-link--menu a-link--menu-inactive m-menu__item">Link menu inactive</a>
       <a href="#" class="a-link a-link--menu a-link--menu-inactive m-menu__item">Link menu inactive</a>
+    </div>
+  </section>
+
+  <h1 class="util-header" id="molecules-form">Form Molecules</h1>
+
+  <section class="util-block">
+    <div class="m-form-group">
+      <label for="" class="a-label m-form-group__label">label</label>
+      <input type="text" placeholder="placeholder" class="a-input">
+    </div>
+  </section>
+
+  <h1 class="util-header" id="moleules-radio">Radio</h1>
+
+  <section class="util-block">
+    <h2>Radio btn</h2>
+    <div class="m-radio">
+      <input type="radio" name="radio" value="r1" id="r1" class="m-radio__input">
+      <label for="r1" class="m-radio__label">MALE</label>
+    </div>
+    <div class="m-radio">
+      <input type="radio" name="radio" value="r2" id="r2" class="m-radio__input">
+      <label for="r2" class="m-radio__label">FEMALE</label>
     </div>
   </section>
 

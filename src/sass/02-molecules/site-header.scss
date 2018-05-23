@@ -1,7 +1,11 @@
-.site-header {
-
+.m-site-header {
+  color: $color-site-header-text;
 }
 
-.site-header__header {
+.m-site-header__header {
   margin: 1.5em 0;
+}
+
+.m-site-header__lead {
+  
 }

@@ -18,8 +18,8 @@ a {
   text-decoration: none;  
 }
 
-input {
-  font-size: $font-size--base;
+label {
+  font-family: $font-label;
 }
 
 h1 {
@@ -34,11 +34,30 @@ h3 {
   @include heading-level-3();
 }
 
+p {
+  font-family: $font-text;
+  font-size: $font-size--sm;
+}
+
 button {
   font-family: $font-button;
   font-size: $font-size--md;
 }
 
 input {
+  font-size: $font-size--base;
   font-family: $font-input;
+}
+
+input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-family: $font-input;
+}
+input::-moz-placeholder { /* Firefox 19+ */
+ font-family: $font-input;
+}
+input:-ms-input-placeholder { /* IE 10+ */
+ font-family: $font-input;
+}
+input:-moz-placeholder { /* Firefox 18- */
+ font-family: $font-input;
 }
