@@ -1,0 +1,31 @@
+
+.a-select {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    height: 1em;
+    width: 1em;
+    top: 33%;
+    right: 1em;
+    transform: rotate(-45deg);
+
+    background: linear-gradient(45deg, $color-select-bg-icon 50%, $color-select-bg 50%);
+  }
+}
+
+.a-select__selector {
+  background: $color-select-bg;
+  color: $color-select-text;
+  width: 100%;
+  padding: 1em;
+  font-family: $font-select;
+  font-size: $font-size--base;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+}
