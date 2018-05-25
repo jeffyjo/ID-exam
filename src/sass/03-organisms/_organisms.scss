@@ -1,7 +1,7 @@
 /*************************************************
 
-  Organisms are relatively complex UI components 
-  composed of groups of molecules and/or 
+  Organisms are relatively complex UI components
+  composed of groups of molecules and/or
   atoms and/or other organisms.
 
 **************************************************/
@@ -14,7 +14,7 @@
 *      <h1 class="a-main-header">Header</h1>
 *      <p class="a-paragraph-lead">Lead Text</p>
 *      <button class="m-button">
-*         <p class="a-paragraph-button">Button text</p>  
+*         <p class="a-paragraph-button">Button text</p>
 *      </button>
 *   </div>
 *
@@ -22,5 +22,7 @@
 *     display: flex;
 *     justify-content: center;
 *     background: blue;
-*   }  
+*   }
 */
+
+@import "datepicker";
