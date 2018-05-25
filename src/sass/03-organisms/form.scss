@@ -1,6 +1,11 @@
 .o-form {
   background: $color-form-bg;
   overflow: hidden;
+
+  &--relative {
+    position: relative;
+  }
+
 }
 
 .o-form__row {
@@ -21,4 +26,4 @@
 }
 
 .o-form__content {
-}
+} 
