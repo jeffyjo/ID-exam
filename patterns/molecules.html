@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <link rel="stylesheet" href="../build/css/main.css" type="text/css">
+
+  <title>Document</title>
+</head>
+<body class="util-background">
+
+  <nav class="util-nav" id="molecules-nav">
+    <ul class="util-nav__inner">
+      <li><a class="a-link a-link--nav" href="#molecules-navbar">Navbar</a></li>
+      <li><a class="a-link a-link--nav" href="#molecules-header">Header</a></li>
+      <li><a class="a-link a-link--nav" href="#molecules-search">Search</a></li>
+      <li><a class="a-link a-link--nav" href="#molecules-block">Block</a></li>
+      <li><a class="a-link a-link--nav" href="#molecules-menu">Menu</a></li>
+      <li><a class="a-link a-link--nav" href="#molecules-sort-block">Sort block</a></li>
+      <li><a class="a-link a-link--nav" href="#molecules-sort-table">Table</a></li>
+      <li><a class="a-link a-link--nav" href="#molecules-form">Form</a></li>
+      <li><a class="a-link a-link--nav" href="#molecules-radio">Radio</a></li>
+      <li><a class="a-link a-link--nav" href="#molecules-progress">Progress bar</a></li>
+    </ul>
+  </nav>
+
+  <button class="a-button a-button--primary a-button--circle-md util-btn-top">
+    <a href="#molecules-nav"> ↑ </a>
+    </button>
+  
+  <!-- BEGINS HERE -->
+
+  <h1 class="util-header" id="molecules-navbar">Navbar</h1>
+
+  <section class="util-block">
+    <h2>Main Nav</h2>
+    <nav>
+      <ul class="m-nav">
+        <li class="m-nav__item">
+          <a href="#" class="a-link a-link--nav a-link--active">nav active</a>
+        </li>
+        <li class="m-nav__item">
+          <a href="#" class="a-link a-link--nav a-link">nav inactive</a>
+        </li>
+        <li class="m-nav__item">
+          <a href="#" class="a-link a-link--nav a-link">nav inactive</a>
+        </li>
+        <li class="m-nav__item">
+          <button class="a-button a-button--secondary a-button--circle-md"></button>
+        </li>
+      </ul>
+    </nav>
+  </section>
+
+  <section class="util-block">
+    <h2>Content Nav</h2>
+    <nav class="m-nav m-nav--space">
+      <ul class="m-nav__inner">
+        <li class="m-nav__item">
+          <a href="#" class="a-link a-link--content a-link--active">nav active</a>
+        </li>
+        <li class="m-nav__item">
+          <a href="#" class="a-link a-link--content a-link">nav inactive</a>
+        </li>
+        <li class="m-nav__item">
+          <a href="#" class="a-link a-link--content a-link">nav inactive</a>
+        </li>
+      </ul>
+    </nav>
+  </section>
+
+  <h1 class="util-header" id="molecules-header">Header Molecules</h1>
+
+  <section class="util-block">
+    <h2>Site header</h2>
+    <div class="m-site-header">
+      <h2 class="site-header__header">Header2</h2>
+      <h3 class="site-header__lead">Header3</h3>
+    </div>
+  </section>
+
+  <section class="util-block">
+    <h2>Section header</h2>
+    <div class="m-section-header">
+      <h3 class="m-section__header">Header2</h3>
+    </div>
+  </section>
+
+  <section class="util-block">
+    <h2>Section header with lead</h2>
+    <div class="m-section-header">
+      <h3 class="m-section__header">Header2</h3>
+      <p class="m-section-header__lead">Header3</p>
+    </div>
+  </section>
+
+  <section class="util-block">
+    <h2>Section header with 3 columns</h2>
+    <div class="m-section-header">
+      <h3 class="m-section-header__header">Header2</h3>
+      <div class="m-section-header__block u-grid u-grid--3-cols-icons">
+        <p class="m-section-header__lead">Lead</p>
+        <p class="m-section-header__lead">Lead</p>
+        <p class="m-section-header__lead">Lead</p>
+      </div>
+    </div>
+  </section>
+
+  <h1 class="util-header" id="molecules-search">Search</h1>
+
+  <section class="util-block">
+    <h2>Search Molecule</h2>
+    <div class="m-search">
+      <input type="text" class="a-input a-input--lg u-pill--left m-search__item">
+      <input type="text" class="a-input a-input--lg m-search__item">
+      <input type="text" class="a-input a-input--lg m-search__item">
+      <input type="text" class="a-input a-input--lg m-search__item">
+      <input type="text" class="a-input a-input--lg u-pill--right m-search__item">
+      <button class="a-button a-button--primary a-button--circle-lg m-search__button">icon</button>
+    </div>
+  </section>
+
+  <h1 class="util-header" id="molecules-block">Blocks</h1>
+
+  <section class="util-block">
+    <h2>Content block</h2>
+    <div class="m-content-block">
+      <button class="a-button a-button--transparent a-button--pill m-content-block__item">Button pill</button>
+      <button class="a-button a-button--transparent a-button--pill m-content-block__item">Button pill</button>
+      <button class="a-button a-button--transparent a-button--pill m-content-block__item">Button pill</button>
+      <button class="a-button a-button--transparent a-button--pill m-content-block__item">Button pill</button>
+    </div>
+  </section>
+
+  <h1 class="util-header" id="molecules-menu">Menu</h1>
+
+  <section class="util-block">
+    <div class="m-menu">
+      <a href="#" class="a-link a-link--menu a-link--menu-active m-menu__item">Link menu active</a>
+      <a href="#" class="a-link a-link--menu a-link--menu-inactive m-menu__item">Link menu inactive</a>
+      <a href="#" class="a-link a-link--menu a-link--menu-inactive m-menu__item">Link menu inactive</a>
+      <a href="#" class="a-link a-link--menu a-link--menu-inactive m-menu__item">Link menu inactive</a>
+    </div>
+  </section>
+
+  <h1 class="util-header" id="molecules-sort-menu">Sort Block</h1>
+
+  <section class="util-block">
+    <div class="m-sort-block u-pill--top u-pill--bottom">
+      <h3 class="m-sort-block__header">Header</h3>
+      
+      <div class="m-sort-block__item u-flex u-flex--space-between u-flex--center-v">
+          <label class="m-sort-block__item-title">Label</label>
+          <label class="a-checkbox">
+            <input type="checkbox" class="a-checkbox__input">
+            <span class="a-checkbox__marker"></span>
+          </label>
+      </div>
+      
+      <div class="m-sort-block__item u-flex u-flex--space-between u-flex--center-v">
+        <label class="m-sort-block__item-title">Label</label>
+        <label class="a-checkbox">
+          <input type="checkbox" class="a-checkbox__input">
+          <span class="a-checkbox__marker"></span>
+        </label>
+      </div>
+
+      <h3 class="m-sort-block__header">Header</h3>
+      
+      <div class="m-sort-block__item u-flex u-flex--space-between u-flex--center-v">
+          <label class="m-sort-block__item-title">Label</label>
+          <label class="a-checkbox">
+            <input type="checkbox" class="a-checkbox__input">
+            <span class="a-checkbox__marker"></span>
+          </label>
+      </div>
+      
+      <div class="m-sort-block__item u-flex u-flex--space-between u-flex--center-v">
+        <label class="m-sort-block__item-title">Label</label>
+        <label class="a-checkbox">
+          <input type="checkbox" class="a-checkbox__input">
+          <span class="a-checkbox__marker"></span>
+        </label>
+      </div>
+
+      <div class="m-sort-block__item u-flex u-flex--space-between u-flex--center-v">
+        <label class="m-sort-block__item-title">Label</label>
+        <label class="a-checkbox">
+          <input type="checkbox" class="a-checkbox__input">
+          <span class="a-checkbox__marker"></span>
+        </label>
+      </div>
+
+    </div>
+  </section>
+
+  <h1 class="util-header" id="molecules-table">Table</h1>
+
+  <section class="util-block">
+    <h2>Price block</h2>
+    <div class="m-price-block">
+      <div class="m-price-block__content u-grid u-grid--2-cols">
+        <h3 class="m-price-block__title">header 3</h3>
+        <h2 class="m-price-block__price">header 2</h2>
+      </div>
+      <button class="a-button a-button--secondary a-button--square u-flex u-flex--center-h">Square</button>
+    </div>
+  </section>
+
+  <section class="util-block">
+    <h2>Price block logged in</h2>
+    <div class="m-price-block">
+      <div class="m-price-block__content u-grid u-grid--2-cols">
+        <h3 class="m-price-block__title">header 3</h3>
+        <h2 class="m-price-block__price">header 2</h2>
+      </div>
+      <button class="a-button a-button--secondary a-button--square m-price-block__btn u-flex u-flex--center-h">Square</button>
+      <button class="a-button a-button--secondary a-button--square m-price-block__btn u-flex u-flex--center-h">Square</button>
+    </div>
+  </section>
+
+  <section class="util-block">
+    <h2>Table item</h2>
+    <div class="m-table-item">
+      <div class="m-table-item__inner">
+        <div class="m-table-item__row m-table-item__row--top">
+          <div class="m-table-item__header u-grid u-grid--3-cols">
+            <label class="m-table-item__header-item">Header</label>
+            <label class="m-table-item__header-item">
+              <span class="m-table-item__header-item--bg">Header</span>
+            </label>
+            <label class="m-table-item__header-item">Header</label>
+          </div>
+        </div>
+        <div class="m-table-item__row u-grid u-grid--3-cols">
+          <div class="m-table-item__row-content u-flex u-flex--column">
+            <label>title</label>
+            <label>title</label>
+          </div>
+          <div></div>
+          <div class="m-table-item__row-content u-flex u-flex--column">
+            <label>title</label>
+            <label>title</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="m-price-block">
+        <div class="m-price-block__content u-grid u-grid--2-cols">
+          <h3 class="m-price-block__title">header 3</h3>
+          <h2 class="m-price-block__price">XXX</h2>
+        </div>
+        <button class="a-button a-button--secondary a-button--square m-price-block__btn u-flex u-flex--center-h">Square</button>
+      </div>      
+
+    </div>
+  </section>
+
+  <section class="util-block">
+      <h2>Table item several flights</h2>
+      <div class="m-table-item u-pill--top u-pill--bottom u-pill--wrapper">
+        <div>
+          <div class="m-table-item__inner">
+            <div class="m-table-item__row m-table-item__row--top">
+              <div class="m-table-item__header u-grid u-grid--3-cols">
+                <label class="m-table-item__header-item">Header</label>
+                <label class="m-table-item__header-item">
+                  <span class="m-table-item__header-item--bg">Header</span>
+                </label>
+                <label class="m-table-item__header-item">Header</label>
+              </div>
+            </div>
+            <div class="m-table-item__row u-grid u-grid--3-cols">
+              <div class="m-table-item__row-content u-flex u-flex--column">
+                <label>title</label>
+                <label>title</label>
+              </div>
+              <div></div>
+              <div class="m-table-item__row-content u-flex u-flex--column">
+                <label>title</label>
+                <label>title</label>
+              </div>
+            </div>
+          </div>
+          <div class="m-table-item__inner">
+              <div class="m-table-item__row m-table-item__row--top">
+                <div class="m-table-item__header u-grid u-grid--3-cols">
+                  <label class="m-table-item__header-item">Header</label>
+                  <label class="m-table-item__header-item">
+                    <span class="m-table-item__header-item--bg">Header</span>
+                  </label>
+                  <label class="m-table-item__header-item">Header</label>
+                </div>
+              </div>
+              <div class="m-table-item__row u-grid u-grid--3-cols">
+                <div class="m-table-item__row-content u-flex u-flex--column">
+                  <label>title</label>
+                  <label>title</label>
+                </div>
+                <div></div>
+                <div class="m-table-item__row-content u-flex u-flex--column">
+                  <label>title</label>
+                  <label>title</label>
+                </div>
+              </div>
+            </div>
+        </div>
+  
+        <div class="m-price-block">
+          <div class="m-price-block__content u-grid u-grid--2-cols">
+            <h3 class="m-price-block__title">header 3</h3>
+            <h2 class="m-price-block__price">XXX</h2>
+          </div>
+          <button class="a-button a-button--secondary a-button--square m-price-block__btn u-flex u-flex--center-h">Square</button>
+        </div>      
+  
+      </div>
+    </section>
+
+  <section class="util-block">
+    <h2>Table</h2>
+    <div class="m-table u-pill--top u-pill--bottom">
+      <div class="m-table-item">
+          <div class="m-table-item__inner">
+            <div class="m-table-item__row m-table-item__row--top">
+              <div class="m-table-item__header u-grid u-grid--3-cols">
+                <label class="m-table-item__header-item">Header</label>
+                <label class="m-table-item__header-item">
+                  <span class="m-table-item__header-item--bg">Header</span>
+                </label>
+                <label class="m-table-item__header-item">Header</label>
+              </div>
+            </div>
+            <div class="m-table-item__row u-grid u-grid--3-cols">
+              <div class="m-table-item__row-content u-flex u-flex--column">
+                <label>title</label>
+                <label>title</label>
+              </div>
+              <div></div>
+              <div class="m-table-item__row-content u-flex u-flex--column">
+                <label>title</label>
+                <label>title</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="m-price-block">
+            <div class="m-price-block__content u-grid u-grid--2-cols">
+              <h3 class="m-price-block__title">header 3</h3>
+              <h2 class="m-price-block__price">XXX</h2>
+            </div>
+            <button class="a-button a-button--secondary a-button--square m-price-block__btn u-flex u-flex--center-h">Square</button>
+          </div>      
+
+        </div>
+        <div class="m-table-item">
+          <div class="m-table-item__inner">
+            <div class="m-table-item__row m-table-item__row--top">
+              <div class="m-table-item__header u-grid u-grid--3-cols">
+                <label class="m-table-item__header-item">Header</label>
+                <label class="m-table-item__header-item">
+                  <span class="m-table-item__header-item--bg">Header</span>
+                </label>
+                <label class="m-table-item__header-item">Header</label>
+              </div>
+            </div>
+            <div class="m-table-item__row u-grid u-grid--3-cols">
+              <div class="m-table-item__row-content u-flex u-flex--column">
+                <label>title</label>
+                <label>title</label>
+              </div>
+              <div></div>
+              <div class="m-table-item__row-content u-flex u-flex--column">
+                <label>title</label>
+                <label>title</label>
+              </div>
+            </div>
+          </div>
+      
+          <div class="m-price-block">
+            <div class="m-price-block__content u-grid u-grid--2-cols">
+              <h3 class="m-price-block__title">header 3</h3>
+              <h2 class="m-price-block__price">XXX</h2>
+            </div>
+            <button class="a-button a-button--secondary a-button--square m-price-block__btn u-flex u-flex--center-h">Square</button>
+          </div>  
+            
+        </div>
+        <div class="m-table-item">
+            <div class="m-table-item__inner">
+              <div class="m-table-item__row m-table-item__row--top">
+                <div class="m-table-item__header u-grid u-grid--3-cols">
+                  <label class="m-table-item__header-item">Header</label>
+                  <label class="m-table-item__header-item">
+                    <span class="m-table-item__header-item--bg">Header</span>
+                  </label>
+                  <label class="m-table-item__header-item">Header</label>
+                </div>
+              </div>
+              <div class="m-table-item__row u-grid u-grid--3-cols">
+                <div class="m-table-item__row-content u-flex u-flex--column">
+                  <label>title</label>
+                  <label>title</label>
+                </div>
+                <div></div>
+                <div class="m-table-item__row-content u-flex u-flex--column">
+                  <label>title</label>
+                  <label>title</label>
+                </div>
+              </div>
+            </div>
+        
+            <div class="m-price-block">
+              <div class="m-price-block__content u-grid u-grid--2-cols">
+                <h3 class="m-price-block__title">header 3</h3>
+                <h2 class="m-price-block__price">XXX</h2>
+              </div>
+              <button class="a-button a-button--secondary a-button--square m-price-block__btn u-flex u-flex--center-h">Square</button>
+            </div>  
+        </div>
+    </div>
+  </section>
+
+  <h1 class="util-header" id="molecules-form">Form Molecules</h1>
+
+  <section class="util-block">
+    <h2>STD form-group</h2>
+    <div class="m-form-group">
+      <label for="" class="a-label m-form-group__label">label</label>
+      <input type="text" placeholder="placeholder" class="a-input">
+    </div>
+  </section>
+
+  <section class="util-block">
+    <h2>Form-group with icons</h2>
+    <div class="m-form-group u-grid u-grid--3-cols-icons u-grid--center">
+      <input type="text" placeholder="placeholder" class="a-input">
+      <i>i</i>
+      <i>i</i>
+    </div>
+  </section>
+
+  <h1 class="util-header" id="moleules-radio">Radio</h1>
+
+  <section class="util-block">
+    <h2>Radio btn</h2>
+    <div class="m-radio">
+      <input type="radio" name="radio" value="r1" id="r1" class="m-radio__input">
+      <label for="r1" class="m-radio__label">MALE</label>
+    </div>
+    <div class="m-radio">
+      <input type="radio" name="radio" value="r2" id="r2" class="m-radio__input">
+      <label for="r2" class="m-radio__label">FEMALE</label>
+    </div>
+  </section>
+
+  <h1 class="util-header" id="molecules-progress">Progress bar</h1>
+
+  <section class="util-block">
+    <div class="m-progress">
+      <span class="m-progress__dot m-progress__dot--active"></span>
+      <span class="m-progress__dot m-progress__dot--2 m-progress__dot--active"></span>
+      <span class="m-progress__dot m-progress__dot--3"></span>
+      <span class="m-progress__dot m-progress__dot--4"></span>
+      <!-- <span class="m-progress__bar" style="width: 50%"></span> -->
+      </div>
+  </section>
+
+</body>
+</html>

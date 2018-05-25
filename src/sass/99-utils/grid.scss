@@ -1,0 +1,39 @@
+.u-grid {
+  display: grid;
+
+  // Colums
+  &--2-cols {
+    grid-template-columns: 50% 50%; 
+  }
+
+  &--3-cols {
+    grid-template-columns: 33% 33% 33%;
+
+    &-inv {
+      grid-template-columns: 25% 25% 50%;
+    }
+  }
+
+  &--4-cols {
+    grid-template-columns: 25% 25% 25% 25%;
+  }
+
+  &--3-cols-icons {
+    grid-template-columns: 70% 15% 15%;
+  }
+
+  // alignment 
+  &--center {
+    justify-content: center;
+    align-items: center;
+  }
+
+}
+
+.u-grid__item {
+
+  &--right {
+    justify-content: flex-end;
+  }
+}
+

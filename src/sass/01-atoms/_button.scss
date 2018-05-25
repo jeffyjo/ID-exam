@@ -47,7 +47,14 @@
 
   &--pill {
     border-radius: $size-btn--pill;
-    padding: $size-padding--m $size-padding--lg;
+    padding: $size-padding--sm $size-base;
+  }
+
+  &--square {
+    background: $color-btn-square;
+    color: $color-btn-secondary;
+    border-radius: $size-btn--square;
+    padding: $size-padding--xs $size-padding--sm;
   }
 
 }

@@ -1,10 +1,24 @@
 
+$size-base:                 2em;
+
+$size-margin--xs:           $size-base / 4;
+$size-margin--sm:           $size-base / 2;
+
+$size-margin--md:           $size-base * .75;
+$size-margin--lg:           $size-base * 2;
+$size-margin--xl:           $size-base * 4;
 
 
-$size-padding--xs:          5px;
-$size-padding--sm:          10px;
-$size-padding--m:           15px;
-$size-padding--lg:          20px;
+$size-padding--xxs:          $size-base / 8;
+$size-padding--xs:          $size-base / 4;
+$size-padding--sm:          $size-base / 2;
+$size-padding--md:          $size-base * .75;
+$size-padding--lg:          $size-base * 1.25;
+$size-padding--xl:          $size-base * 2;
+$size-padding--xxl:         $size-base * 4;
+
+$size-border-width:         1px;
+$size-border-width-lg:      2px;
 
 // Button sizes
 $size-button--sm:           30px;
@@ -12,10 +26,11 @@ $size-button--md:           40px;
 $size-button--lg:           79px;
 
 $size-btn--circle:          1000px;
-$size-btn--pill:            23.5px;
+$size-btn--pill:            35px;
+$size-btn--square:          6px;
 
 // input sizes
-$size-input--border:        50px;
+$size-input--border:        2em;
 
 // Link sizes
 $size-link--border:         5px;
@@ -23,3 +38,9 @@ $size-link--border:         5px;
 // menu sizes
 $size-menu--border:         14px;
 
+// Switch
+$size-switch--outer:        50px;
+$size-switch--inner:        1000px;
+
+// Table
+$size-table-header-border:  5px;
