@@ -1,0 +1,26 @@
+
+.m-price-block {
+  background: $color-table-bg-secondary;
+  padding: $size-padding--lg;
+}
+
+.m-price-block__content {
+
+}
+
+.m-price-block__title {
+  font-size: $font-size--sm;
+}
+
+.m-price-block__price {
+  font-size: $font-size--xl;
+
+  &::after {
+    display: inline;
+    content: " KR."
+  }
+}
+
+.m-price-block__btn {
+  margin-top: $size-margin--sm;
+}

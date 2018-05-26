@@ -1,0 +1,29 @@
+.o-form {
+  background: $color-form-bg;
+  overflow: hidden;
+
+  &--relative {
+    position: relative;
+  }
+
+}
+
+.o-form__row {
+
+  &:not(:first-child) {
+    border-top: $size-border-width solid $color-form-border;
+  }
+
+  &--space {
+    padding: $size-padding--md $size-base;
+  }
+
+}
+
+.o-form__header {
+  background: $color-form-head-bg;
+  padding: $size-padding--md $size-base;
+}
+
+.o-form__content {
+} 

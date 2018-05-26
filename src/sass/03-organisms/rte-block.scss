@@ -1,0 +1,20 @@
+.o-rte-block {
+
+  &--middle-align {
+    text-align: center;
+  }
+
+}
+
+.o-rte-block__item {
+
+  &--text {
+    font-size: $font-size--sm;
+    color: $color-rte-text;
+  }
+
+  &--space {
+    margin: $size-margin--lg 0;
+  }
+
+}

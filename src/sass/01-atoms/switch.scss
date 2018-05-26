@@ -1,0 +1,53 @@
+.a-switch {
+  position: relative;
+  display: inline-block;
+  width: 49px;
+  height: 23px;
+
+  &--transparent {
+    opacity: .3;
+  }
+
+}
+
+.a-switch__checkbox {
+  display: none;
+}
+
+.a-switch__slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: $size-switch--outer;
+  // Change color
+  background-color: $color-switch--inactive;
+  transition: .2s;
+}
+
+.a-switch__slider::before {
+  position: absolute;
+  content: "";
+  height: 19px;
+  width: 19px;
+  left: 2px;
+  bottom: 2px;
+  border-radius: $size-switch--inner;
+  background-color: $color-switch--btn-inactive;
+  transition: .2s;
+}
+
+.a-switch__checkbox:checked + .a-switch__slider {
+  background-color: $color-switch--active;
+}
+
+.a-switch__checkbox:focus + .a-switch__slider {
+  box-shadow: 0 0 1px $color-switch--active;
+}
+
+.a-switch__checkbox:checked + .a-switch__slider:before {
+  background-color: $color-switch--btn-active;
+  transform: translateX(26px);
+}

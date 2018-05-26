@@ -1,0 +1,42 @@
+.u-pill {
+  &--top-right {
+    border-top-right-radius: $size-input--border;
+  }
+
+  &--top-left {
+    border-top-left-radius: $size-input--border;
+  }
+
+  &--bottom-right {
+    border-bottom-right-radius: $size-input--border;
+  }
+
+  &--bottom-left {
+    border-bottom-left-radius: $size-input--border;
+  }
+
+  &--top {
+    @extend .u-pill--top-left;
+    @extend .u-pill--top-right;
+  }
+
+  &--bottom {
+    @extend .u-pill--bottom-left;
+    @extend .u-pill--bottom-right;
+  }
+
+  &--left {
+    @extend .u-pill--top-left;
+    @extend .u-pill--bottom-left;
+  }
+
+  &--right {
+    @extend .u-pill--top-right;
+    @extend .u-pill--bottom-right;
+  }
+
+  &--wrapper {
+    overflow: hidden;
+  }
+
+}

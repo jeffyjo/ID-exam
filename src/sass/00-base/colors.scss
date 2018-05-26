@@ -1,0 +1,80 @@
+
+
+// Color declaration
+$brand-yellow:            #ffb400;
+$brand-blue:              rgba(0, 121, 186, 0.62);
+
+
+$primary-text:            #ffffff;
+$secondary-text:          #1e1e1e;
+
+
+$util-light:              #ffffff;
+$util-md-light:           #eeeeee;
+$util-grey:               #f7f7f7;
+$util-dark-grey:          #a2a2a2;
+$util-md-dark:            #b2b2b2;
+$util-dark:               #000000;
+$util-light-blue:         #5cb3e2;
+
+
+
+
+// color implementation
+$color-background:          $brand-blue;
+
+
+$color-btn-primary:         $brand-yellow;
+$color-btn-secondary:       $util-light;
+$color-btn-secondary-text:  $brand-blue;
+$color-btn-square:          $brand-blue;
+$color-btn-transparent:     rgba( $util-dark, .25 );
+
+$color-select-bg:           $util-light;
+$color-select-bg-icon:      $util-grey;
+$color-select-text:         $secondary-text;
+
+$color-link-primary-text:   $util-light;
+$color-link-border-nav:     $util-light;
+$color-link-border-content: $brand-yellow;
+$color-link-menu-text:      $secondary-text;
+$color-link-menu-bg:        $util-light-blue;
+
+$color-menu-bg:             $util-light;
+
+$color-form-bg:             $util-light;
+
+$color-site-header-text:    $primary-text;
+
+$color-section-header-text: $secondary-text;  
+$color-section-header-text-inv: $primary-text;  
+
+$color-radio-bg:            $brand-blue;
+$color-radio-text:          $secondary-text;
+$color-radio-text-checked:  $primary-text;
+
+$color-switch--active:      $brand-blue;
+$color-switch--inactive:    $util-md-light;
+$color-switch--btn-active:  $util-md-light;
+$color-switch--btn-inactive:$util-md-dark;
+
+$color-form-head-bg:        $util-grey;
+$color-form-bg:             $util-light;
+$color-form-border:         $util-md-light;
+
+$color-checkbox-border:     $util-md-light;
+$color-checkbox-active:     $util-light-blue;
+
+$color-sort-block-bg:       $util-light;
+
+$color-table-bg-primary:    $util-light;
+$color-table-bg-secondary:  $util-md-light;
+$color-table-header:        $util-dark-grey;
+$color-table-header-bg:     $util-md-light;
+$color-table-border:        rgba( $util-dark, .1 );
+
+// $color-progress-background: rgba( $util-dark, .3 );
+$color-progress-background: #525252;
+$color-progress-bar:        $brand-yellow;
+
+$color-rte-text:            $primary-text;

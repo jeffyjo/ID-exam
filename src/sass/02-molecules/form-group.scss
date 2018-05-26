@@ -1,7 +1,16 @@
 
 .m-form-group {
   background: $color-form-bg;
-  padding: 1em;
+  padding: $size-padding--sm $size-base;
+
+  &--border-left {
+    border-left: $size-border-width solid $color-form-border;
+  }
+
+  &--text-right {
+    text-align: right;
+  }
+
 }
 
 .m-form-group__label {

@@ -1,5 +1,4 @@
 .m-radio {
-  display: inline;
   font-size: $font-size--base;
 }
 
@@ -11,6 +10,12 @@
   padding: 10px;
   border-radius: 4px;
   color: $color-radio-text;
+  cursor: pointer;
+
+  display: block;
+  width: 100%;
+  text-align: center;
+
 }
 
 .m-radio__input:checked ~ .m-radio__label {

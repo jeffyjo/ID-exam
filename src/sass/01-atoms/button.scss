@@ -5,6 +5,7 @@
 .a-button {
   border: none;
   box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.2);
+  max-width: 20em;
   
   margin: auto;
   
@@ -17,6 +18,10 @@
 
   &--secondary {
     background: $color-btn-secondary;
+
+    &-text {
+      color: $color-btn-secondary-text;
+    }
   }
   
   &--transparent {
@@ -47,7 +52,14 @@
 
   &--pill {
     border-radius: $size-btn--pill;
-    padding: $size-padding--m $size-padding--lg;
+    padding: $size-padding--sm $size-base;
+  }
+
+  &--square {
+    background: $color-btn-square;
+    color: $color-btn-secondary;
+    border-radius: $size-btn--square;
+    padding: $size-padding--xs $size-padding--sm;
   }
 
 }

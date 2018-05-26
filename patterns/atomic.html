@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
-  <link rel="stylesheet" href="build/css/main.css" type="text/css">
+  <link rel="stylesheet" href="../build/css/main.css" type="text/css">
 
   <title>Document</title>
 </head>
@@ -15,6 +15,7 @@
     <ul class="util-nav__inner">
       <li><a class="a-link a-link--nav" href="#atomic-buttons">Buttons</a></li>
       <li><a class="a-link a-link--nav" href="#atomic-inputs">Inputs</a></li>
+      <li><a class="a-link a-link--nav" href="#atomic-form-elements">Form elements</a></li>
       <li><a class="a-link a-link--nav" href="#atomic-links">Links</a></li>
       <li><a class="a-link a-link--nav" href="#atomic-headers">Headers</a></li>
       <li><a class="a-link a-link--nav" href="#atomic-labels">Labels</a></li>
@@ -54,6 +55,11 @@
     <button class="a-button a-button--primary a-button--pill a-button--disabled">Disabled</button>
   </section>
 
+  <section class="util-block">
+    <h2 class="util-block__header">Button Square</h2>
+    <button class="a-button a-button--secondary a-button--square">Square</button>
+  </section>
+
   <h1 class="util-header" id="atomic-inputs">Inputs</h1>
 
   <section class="util-block">
@@ -63,32 +69,69 @@
 
   <section class="util-block">
     <h2 class="util-block__header">Top left pill</h2>
-    <input type="text" class="a-input a-input--top-left">
+    <input type="text" class="a-input u-border--top-left">
   </section>
 
   <section class="util-block">
     <h2 class="util-block__header">Bottom right pill</h2>
-    <input type="text" class="a-input a-input--bottom-right">
+    <input type="text" class="a-input u-pill--bottom-right">
   </section>
 
   <section class="util-block">
     <h2 class="util-block__header">Left pill</h2>
-    <input type="text" class="a-input a-input--top-left a-input--bottom-left">
+    <input type="text" class="a-input u-pill--top-left u-pill--bottom-left">
   </section>
 
   <section class="util-block">
     <h2 class="util-block__header">Right pill</h2>
-    <input type="text" class="a-input a-input--top-right a-input--bottom-right">
+    <input type="text" class="a-input u-pill--top-right u-pill--bottom-right">
   </section>
 
   <section class="util-block">
     <h2 class="util-block__header">Top pill</h2>
-    <input type="text" class="a-input a-input--top">
+    <input type="text" class="a-input u-pill--top">
   </section>
 
   <section class="util-block">
     <h2 class="util-block__header">Bottom pill</h2>
     <input type="text" class="a-input a-input--bottom">
+  </section>
+
+  <h1 class="util-header" id="atomic-form-elements">Form elements</h1>
+
+  <section class="util-block">
+    <h2>Toggle switch</h2>
+    <label class="a-switch">
+      <input type="checkbox" class="a-switch__checkbox">
+      <span class="a-switch__slider"></span>
+    </label>
+  </section>
+
+  <section class="util-block">
+    <h2>Toggle switch transparent</h2>
+    <label class="a-switch a-switch--transparent">
+      <input type="checkbox" class="a-switch__checkbox">
+      <span class="a-switch__slider"></span>
+    </label>
+  </section>
+
+  <section class="util-block">
+    <h2>Checkbox</h2>
+    <label class="a-checkbox">
+      <input type="checkbox" class="a-checkbox__input">
+      <span class="a-checkbox__marker"></span>
+    </label>
+  </section>
+
+  <section class="util-block">
+    <h2 class="util-block__header">Selectbox</h2>
+    <div class="a-select">
+      <select name="" id="" class="a-select__selector">
+        <option value="">Option 1</option>
+        <option value="">Option 2</option>
+        <option value="">Option 3</option>
+      </select>
+    </div>
   </section>
 
   <h1 class="util-header" id="atomic-links">Links</h1>
@@ -136,6 +179,8 @@
   <section class="util-block">
     <label for="" class="a-label">label</label>
   </section>
+
+  
 
 </body>
 </html>

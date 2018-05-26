@@ -1,0 +1,21 @@
+
+.o-cta-block {
+
+  &--middle-align {
+    text-align: center;
+  }
+
+}
+
+.o-cta-block__item {
+  margin: $size-margin--sm 0;
+
+  &--actions { 
+
+    *:not(:first-child) {
+      margin-left: $size-margin--sm;
+    }
+
+  }
+
+}

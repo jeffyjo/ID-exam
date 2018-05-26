@@ -1,6 +1,13 @@
 
 .m-nav {
 
+  &--space { 
+    margin: $size-margin--lg 0;
+  }
+}
+
+.m-nav__inner {
+
 }
 
 .m-nav__item {

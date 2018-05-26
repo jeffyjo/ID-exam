@@ -1,0 +1,62 @@
+.m-progress {
+  height: 20px;
+	position: relative;
+	background: $color-progress-background;
+	border-radius: 25px;
+  padding: 10px;
+}
+
+.m-progress__dot {
+  position: absolute;
+  height: 4em;
+  width: 4em;
+  background: $color-progress-background;
+  border-radius: 1000px;
+  top: -1em;
+  left: 0;
+  
+  &--2 {
+    left: 30%;
+  }
+  
+  &--3 {
+    left: 65%
+  }
+  
+  &--4 {
+    left: 97%;
+  }
+  
+  &::after {
+    position: absolute;
+    content: "";
+    top: 13%;
+    left: 12.5%;
+    height: 3em;
+    width: 3em;
+    border-radius: 1000px;
+    background: $color-progress-background;
+    z-index: 2;
+  }
+
+  &--active {
+    &::after {
+        background: $color-progress-bar; 
+    }
+  }
+}
+
+.m-progress__bar {
+  display: block;
+  height: 70%;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: $color-progress-bar;
+  box-shadow: 
+    inset 0 2px 9px  rgba(255,255,255,0.3),
+    inset 0 -2px 6px rgba(0,0,0,0.4);
+  position: absolute;
+  top: .25em;
+}

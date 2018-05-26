@@ -1,7 +1,14 @@
 .m-section-header {
   color: $color-section-header-text;
+
+  &--inverse {
+    color: $color-section-header-text-inv;
+  }
+
 }
 
 .m-section-header__header {}
+
+.m-section-header__block {}
 
 .m-section-header__lead {}

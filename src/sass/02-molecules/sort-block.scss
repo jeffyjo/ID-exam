@@ -1,0 +1,22 @@
+.m-sort-block {
+  background: $color-sort-block-bg;
+  padding: $size-base;
+  width: 25em;
+}
+
+.m-sort-block__header {
+  margin-bottom: $size-margin--md;
+  opacity: .4;
+
+  &:not(:first-child) {
+    margin-top: $size-margin--md;
+  }
+}
+
+.m-sort-block__item {
+  margin: $size-margin--sm 0;
+}
+
+.m-sort-block__item-title {
+  font-size: $font-size--md;
+}
