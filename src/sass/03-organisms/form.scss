@@ -6,6 +6,29 @@
     position: relative;
   }
 
+  &--absolute {
+    position: absolute;
+  }
+
+  &--sm {
+    max-width: 35em;
+  }
+
+  &--top-arrow {
+
+    &::after{
+      content: "";
+      position: absolute;
+      width: 2em;
+      height: 2em;
+      top: -1em;
+      right: 10%;
+      transform: rotate(45deg);
+
+      background: #ffffff;
+    }
+  }
+
 }
 
 .o-form__row {

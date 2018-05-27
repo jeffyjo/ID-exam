@@ -37,12 +37,20 @@
 
 .u-grid__item {
 
+  &--left {
+    justify-self: flex-start;
+  }
+
   &--right {
     justify-self: flex-end;
   }
 
-  &--center-v {
+  &--center-h {
     justify-self: center;
+  }
+
+  &--center-v {
+    align-self: center;
   }
 
 }

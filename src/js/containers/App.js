@@ -5,8 +5,11 @@ import React, { Component } from 'react'
 import Home from './Home'
 import Search from './Search'
 import FindFlight from './FindFlight'
+import Navbar from './Navbar'
 
 import flights from './../flights.js'
+import user from './../user.js'
+import CreateProfile from './CreateProfile';
 
 class App extends Component {
   render () {
@@ -19,12 +22,16 @@ class App extends Component {
       case 'search':
         Container = FindFlight
         break
+      case 'create':
+        Container = CreateProfile
+        break
       default:
         Container = Home
     }
 
     return (
       <div>
+        <Navbar user={user} />
         <Container flights={flights} />
       </div>
     )
