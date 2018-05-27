@@ -2,9 +2,6 @@
 
 import React, { Component } from 'react'
 
-import DatePicker from 'react-datepicker'
-import moment from 'moment'
-
 import PropTypes from 'prop-types'
 
 import {
@@ -18,14 +15,19 @@ class SelectLocation extends Component {
     super(props)
 
     this.state = {
-      'type': null,
-      'suggestedLocations': []
+      'value': '',
+      'submitValue': '',
+      'suggestedLocations': [],
+      'focus': false
     }
 
     this.onFocus = this.onFocus.bind(this)
     this.onBlur = this.onBlur.bind(this)
     this.onInput = this.onInput.bind(this)
     this.filterByInputValue = this.filterByInputValue.bind(this)
+    this.selectLocation = this.selectLocation.bind(this)
+
+    this.element = React.createRef()
   }
 
   onInput (e) {
@@ -45,24 +47,44 @@ class SelectLocation extends Component {
     })
 
     this.setState({
+      value: value,
+      submitValue: '',
       suggestedLocations: suggestedLocations
     })
   }
 
-  selectLocation (location) {
-    console.log(location)
+  selectLocation (e) {
+    e.preventDefault()
+
+    let clicked = e.currentTarget
+    let location = clicked.getAttribute('data-value')
+    let submitValue = clicked.getAttribute('data-submit-value')
+
+    this.setState({
+      value: location,
+      submitValue: submitValue,
+      focus: false
+    })
   }
 
   onFocus () {
+    document.addEventListener('click', this.onBlur)
     this.setState({
       focus: true
     })
   }
 
-  onBlur () {
-    this.setState({
-      focus: false
-    })
+  onBlur (e) {
+    let triggerElement = e.target
+    let currentElement = this.element.current
+
+    if (!currentElement.contains(triggerElement)) {
+      document.removeEventListener('click', this.onBlur)
+
+      this.setState({
+        focus: false
+      })
+    }
   }
 
   componentDidMount () {
@@ -71,18 +93,28 @@ class SelectLocation extends Component {
 
   render () {
     return (
-      <div>
+      <div ref={this.element}>
+        <input id={`input_${this.props.type}`} type='hidden' value={this.state.submitValue}></input>
         <input
+          className='a-input'
           onInput={this.onInput}
           onFocus={this.onFocus}
-          onBlur={this.onBlur}
-        ></input>
+          value={this.state.value || ''}
+          placeholder={this.props.type}
+        />
         {this.state.focus ?
-          this.state.suggestedLocations.map((location, i) => {
-            return (
-              <div key={i} onClick={this.selectLocation.bind(this, location)}>{location.name}</div>
-            )
-          })
+          <div className='o-search-form__suggestions'>
+            <div className='o-search-form__suggestions-wrapper'>
+              {this.state.suggestedLocations.map((location, i) => {
+                return (
+                  <div key={i} data-submit-value={location['IATA']} data-value={`${location['city']} (${location['IATA']})`} onClick={this.selectLocation}>
+                    <p>{`${location['city']} (${location['IATA']})`}</p>
+                    <span>{location['country']}</span>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
         : ''}
       </div>
     )

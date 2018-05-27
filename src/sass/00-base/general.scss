@@ -9,5 +9,7 @@ body {
 
     font-family: $font-text;
 
-    background-color: $brand-blue;
+    background-image: url('/public/images/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }

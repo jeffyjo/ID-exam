@@ -2,18 +2,20 @@
 
 import React, { Component } from 'react'
 
-import DatePicker from 'react-datepicker'
-import moment from 'moment'
-
 import PropTypes from 'prop-types'
 
-import SelectLocation from './SelectLocation'
+import SelectLocation from './../components/SelectLocation'
+import SelectDate from './../components/SelectDate'
+import ToggleFlightMode from './../components/ToggleFlightMode'
+
+import DatePicker from 'react-datepicker'
+import moment from 'moment'
 
 import {
   removeDuplicateObjectsByKey
 } from './../utils'
 
-class Search extends Component {
+class FindFlight extends Component {
   constructor (props) {
     super(props)
 
@@ -43,18 +45,83 @@ class Search extends Component {
         arrival_date: null,
         passengerCount: null
       },
-      types: [
-        'oneWay',
-        'twoWay',
+      modes: [
+        'return',
+        'one-way',
         'multi'
-      ]
+      ],
+      currentMode: 'return'
     }
 
     this.onFormSubmit = this.onFormSubmit.bind(this)
+    this.filterFlightsAvailable = this.filterFlightsAvailable.bind(this)
+    this.setFlightParams = this.setFlightParams.bind(this)
+    this.filterByParam = this.filterByParam.bind(this)
+    this.onModeToggle = this.onModeToggle.bind(this)
+
+    this.form = React.createRef()
   }
 
   onFormSubmit (e) {
     e.preventDefault()
+
+    this.setFlightParams()
+  }
+
+  setFlightParams () {
+    let form = this.form.current
+
+    if (!form) return void 0
+
+    let flightParams = Object.keys(this.state.flightParams).reduce((flightParams, param) => {
+      let input = form.querySelector(`#input_${param}`)
+      if (input) {
+        let value = input.value
+        flightParams[param] = value
+      }
+
+      return flightParams
+    }, {})
+
+    console.log(flightParams)
+
+    this.setState({
+      flightParams: flightParams
+    })
+  }
+
+  onModeToggle (mode) {
+    this.setState({
+      currentMode: mode
+    })
+  }
+
+  filterByParam (param) {
+    if (param === 'departure_date' || param === 'arrival_date') {
+      return (flight) => {
+        return flight[param] === this.state.flightParams[param]
+      }
+    } else if (param === 'origin' || param === 'destination') {
+      return (flight) => {
+        return flight[param]['IATA'] === this.state.flightParams[param]
+      }
+    } else {
+      return (flight) => flight
+    }
+  }
+
+  filterFlightsAvailable (flights) {
+    let params = this.state.flightParams
+
+    let flightsFiltered = flights
+
+    for (let key of Object.keys(params)) {
+      if (params[key]) {
+        flightsFiltered = flightsFiltered.filter(this.filterByParam(key))
+      }
+    }
+
+    return flightsFiltered
   }
 
   componentDidMount () {
@@ -81,22 +148,36 @@ class Search extends Component {
   }
 
   render () {
-    // let flights = this.filterFlightsAvailable(this.props.flights)
+    let flights = this.filterFlightsAvailable(this.props.flights)
+    console.log(flights)
     return (
-      <div>
-        <form onSubmit={this.onFormSubmit}>
-          <div>
-            <SelectLocation type='origin' locations={this.state.options.origin}/>
-            <SelectLocation type='destination' locations={this.state.options.origin}/>
-            
+      <div id='search'>
+        <ToggleFlightMode onToggle={this.onModeToggle} options={this.state.modes} currentOption={this.state.currentMode} />
+        <form className='o-search-form' method='GET' ref={this.form} onSubmit={this.onFormSubmit}>
+          <div className='o-search-form__row u-grid u-grid--4-cols'>
+
+            <div className='o-search-form__column u-flex u-flex--column u-flex--center-h'>
+              <SelectLocation type='origin' locations={this.state.options.origin}/>
+            </div>
+            <div className='o-search-form__column u-flex u-flex--column u-flex--center-h'>
+              <SelectLocation type='destination' locations={this.state.options.origin}/>
+            </div>
+            <div className='o-search-form__column u-flex u-flex--column u-flex--center-h'>
+              <SelectDate type='departure_date' dates={[]}/>
+            </div>
+            <div className='o-search-form__column u-flex u-flex--column u-flex--center-h'>
+              <SelectDate type='arrival_date' dates={[]}/>
+            </div>
+
           </div>
+          <button className='o-search-form__submit a-button a-button--primary a-button--circle-lg' type='submit' />
         </form>
       </div>
     )
   }
 }
 
-Search.propTypes = {
+FindFlight.propTypes = {
   flights: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
@@ -128,8 +209,8 @@ Search.propTypes = {
   )
 }
 
-Search.defaultProps = {
+FindFlight.defaultProps = {
   flights: []
 }
 
-export default Search
+export default FindFlight
