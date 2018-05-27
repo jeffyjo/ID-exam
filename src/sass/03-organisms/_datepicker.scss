@@ -1,20 +1,19 @@
-$datepicker__background-color: #f0f0f0 !default;
-$datepicker__border-color: #aeaeae !default;
-$datepicker__highlighted-color: #3dcc4a !default;
-$datepicker__muted-color: #ccc !default;
-$datepicker__selected-color: #216ba5 !default;
-$datepicker__text-color: #000 !default;
-$datepicker__header-color: #000 !default;
-$datepicker__navigation-disabled-color: lighten($datepicker__muted-color, 10%)
-  !default;
+$datepicker__background-color: $color-form-bg !default;
+$datepicker__border-color: $color-form-bg !default;
+$datepicker__highlighted-color: $color-btn-primary !default;
+$datepicker__muted-color: $util-md-dark !default;
+$datepicker__selected-color: $color-btn-primary !default;
+$datepicker__text-color: $secondary-text !default;
+$datepicker__header-color: $secondary-text !default;
+$datepicker__navigation-disabled-color: lighten($datepicker__muted-color, 10%) !default;
 
-$datepicker__border-radius: 0.3rem !default;
+$datepicker__border-radius: 1em !default;
+$datepicker__border-radius-small: 0.5em !default;
 $datepicker__day-margin: 0.166rem !default;
 $datepicker__font-size: 0.8rem !default;
-$datepicker__font-family: "Helvetica Neue", Helvetica, Arial,
-  sans-serif !default;
-$datepicker__item-size: 1.7rem !default;
-$datepicker__margin: 0.4rem !default;
+$datepicker__font-family: "#{$font-text}", sans-serif !default;
+$datepicker__item-size: 3em !default;
+$datepicker__margin: 0 1em 1em !default;
 $datepicker__navigation-size: 0.45rem !default;
 $datepicker__triangle-size: 8px !default;
 
@@ -356,10 +355,14 @@ $datepicker__triangle-size: 8px !default;
   white-space: nowrap;
 }
 
+.react-datepicker__day-name {
+  color: $util-md-dark;
+  text-transform: uppercase;
+}
+
 .react-datepicker__day-name,
 .react-datepicker__day,
 .react-datepicker__time-name {
-  color: $datepicker__text-color;
   display: inline-block;
   width: $datepicker__item-size;
   line-height: $datepicker__item-size;
@@ -371,7 +374,7 @@ $datepicker__triangle-size: 8px !default;
   cursor: pointer;
 
   &:hover {
-    border-radius: $datepicker__border-radius;
+    border-radius: $datepicker__border-radius-small;
     background-color: $datepicker__background-color;
   }
 
@@ -380,7 +383,7 @@ $datepicker__triangle-size: 8px !default;
   }
 
   &--highlighted {
-    border-radius: $datepicker__border-radius;
+    border-radius: $datepicker__border-radius-small;
     background-color: $datepicker__highlighted-color;
     color: #fff;
 
@@ -400,7 +403,7 @@ $datepicker__triangle-size: 8px !default;
   &--selected,
   &--in-selecting-range,
   &--in-range {
-    border-radius: $datepicker__border-radius;
+    border-radius: $datepicker__border-radius-small;
     background-color: $datepicker__selected-color;
     color: #fff;
 
@@ -410,7 +413,7 @@ $datepicker__triangle-size: 8px !default;
   }
 
   &--keyboard-selected {
-    border-radius: $datepicker__border-radius;
+    border-radius: $datepicker__border-radius-small;
     background-color: lighten($datepicker__selected-color, 10%);
     color: #fff;
 
@@ -448,7 +451,7 @@ $datepicker__triangle-size: 8px !default;
 .react-datepicker__month-read-view,
 .react-datepicker__month-year-read-view {
   border: 1px solid transparent;
-  border-radius: $datepicker__border-radius;
+  border-radius: $datepicker__border-radius-small;
 
   &:hover {
     cursor: pointer;
@@ -480,7 +483,7 @@ $datepicker__triangle-size: 8px !default;
   top: 30px;
   z-index: 1;
   text-align: center;
-  border-radius: $datepicker__border-radius;
+  border-radius: $datepicker__border-radius-small;
   border: 1px solid $datepicker__border-color;
 
   &:hover {

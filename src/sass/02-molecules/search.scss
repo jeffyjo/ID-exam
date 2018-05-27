@@ -1,21 +1,117 @@
 
 .m-search {
   position: relative;
+
+  padding: 0 1em;
+
+  background-color: $color-form-bg;
+
+  box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.2);
+}
+
+.m-search__row {
   display: grid;
   grid-template-columns: repeat(5, 20%);
 }
 
+%icon {
+  &:before {
+    content: '';
+    position: absolute;
+    display: block;
+
+    left: 1em;
+    top: 50%;
+
+    width: $size-base;
+    height: $size-base;
+
+    transform: translateY(-50%);
+
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    pointer-events: none;
+  }
+}
+
 .m-search__item {
-  margin-left: -3px;
+  position: relative;
+
+  padding: .5em 1em;
+
+  &--origin {
+    @extend %icon;
+    &:before {
+      background-image: url('/public/images/icon_plane-from_grey.svg');
+    }
+  }
+  &--destination {
+    @extend %icon;
+    &:before {
+      background-image: url('/public/images/icon_plane-dest_grey.svg');
+    }
+  }
+  &--departure_date {
+    @extend %icon;
+    &:before {
+      background-image: url('/public/images/icon_date_grey.svg');
+    }
+  }
+  &--arrival_date {
+    @extend %icon;
+    &:before {
+      background-image: url('/public/images/icon_date_grey.svg');
+    }
+  }
 }
 
 .m-search__item:not(:first-child) {
-  border-left: 1px solid lightgrey; 
+  border-left: 1px solid lightgrey;
 }
 
 .m-search__button {
   position: absolute;
-  top: -15px;
-  right: 0;
+  bottom: -15px;
+  right: -15px;
+
+  background-image: url('/public/images/icon_search_white.svg');
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
+.m-search__suggestion {
+  padding: $size-margin--sm $size-padding--md;
+
+  &:hover {
+    background-color: $color-checkbox-active;
+    color: $color-form-bg;
+
+    cursor: pointer;
+  }
+}
+.m-search__suggestions {
+  position: absolute;
+
+  width: 100%;
+
+  max-height: 300px;
+
+  overflow: scroll;
+
+  background-color: $color-form-bg;
+
+  border-bottom-left-radius: $size-padding--sm;
+  border-bottom-right-radius: $size-padding--sm;
+
+  bottom: 0;
+
+  transform: translateY(100%);
+
+  span {
+    font-size: $font-size--sm;
+  }
+}
+.m-search__suggestions-wrapper {
+  overflow: hidden;
+}

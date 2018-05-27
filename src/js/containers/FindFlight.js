@@ -7,6 +7,7 @@ import PropTypes from 'prop-types'
 import SelectLocation from './../components/SelectLocation'
 import SelectDate from './../components/SelectDate'
 import ToggleFlightMode from './../components/ToggleFlightMode'
+import Flight from './../components/Flight'
 
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
@@ -50,7 +51,7 @@ class FindFlight extends Component {
         'one-way',
         'multi'
       ],
-      currentMode: 'return'
+      currentMode: 'one-way'
     }
 
     this.onFormSubmit = this.onFormSubmit.bind(this)
@@ -149,29 +150,43 @@ class FindFlight extends Component {
 
   render () {
     let flights = this.filterFlightsAvailable(this.props.flights)
-    console.log(flights)
+    let numberFlights = flights.length
     return (
-      <div id='search'>
+      <div className='o-search'>
         <ToggleFlightMode onToggle={this.onModeToggle} options={this.state.modes} currentOption={this.state.currentMode} />
-        <form className='o-search-form' method='GET' ref={this.form} onSubmit={this.onFormSubmit}>
-          <div className='o-search-form__row u-grid u-grid--4-cols'>
-
-            <div className='o-search-form__column u-flex u-flex--column u-flex--center-h'>
-              <SelectLocation type='origin' locations={this.state.options.origin}/>
-            </div>
-            <div className='o-search-form__column u-flex u-flex--column u-flex--center-h'>
-              <SelectLocation type='destination' locations={this.state.options.origin}/>
-            </div>
-            <div className='o-search-form__column u-flex u-flex--column u-flex--center-h'>
-              <SelectDate type='departure_date' dates={[]}/>
-            </div>
-            <div className='o-search-form__column u-flex u-flex--column u-flex--center-h'>
-              <SelectDate type='arrival_date' dates={[]}/>
-            </div>
+        <form className='m-search u-pill u-pill--left u-pill--right' method='GET' ref={this.form} onSubmit={this.onFormSubmit}>
+          <div className='m-search__row'>
+            <SelectLocation type='origin' locations={this.state.options.origin}/>
+            <SelectLocation type='destination' locations={this.state.options.origin}/>
+            <SelectDate type='departure_date' dates={[]}/>
+            <SelectDate type='arrival_date' dates={[]}/>
+          </div>
+          <button className='a-button a-button--primary a-button--circle-lg m-search__button' type='submit' />
+        </form>
+        <div className='o-results'>
+          <div className='o-results__header'>
+            <h2>{
+              numberFlights > 0 ?
+              `${numberFlights} flight${numberFlights > 1 ? 's' : ''} found` :
+              'No flights found'
+            }</h2>
+          </div>
+        </div>
+        <div className='u-flex'>
+          <div className='o-results__filter'>
 
           </div>
-          <button className='o-search-form__submit a-button a-button--primary a-button--circle-lg' type='submit' />
-        </form>
+          <div className='o-results__list u-pill--top u-pill--bottom u-pill--wrapper'>
+            {
+              numberFlights > 0 ?
+              flights.map((flight, i) => {
+                return (
+                  <Flight key={i} flights={[flight]} />
+                )
+              }) : ''
+            }
+          </div>
+        </div>
       </div>
     )
   }

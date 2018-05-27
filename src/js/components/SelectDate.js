@@ -39,10 +39,10 @@ class SelectDate extends Component {
 
   render () {
     return (
-      <div ref={this.element}>
+      <div className={`m-search__item m-search__item--${this.props.type}`} ref={this.element}>
         <input id={`input_${this.props.type}`} type='hidden' value={this.state.submitValue}></input>
         <DatePicker
-          className='a-input a-input--date'
+          className='a-input a-input--with-icon'
           selected={this.state.value || moment().add(6, 'days')}
           onChange={this.onChange}
           locale='en-gb'
@@ -54,12 +54,14 @@ class SelectDate extends Component {
 }
 
 SelectDate.propTypes = {
+  type: PropTypes.string,
   dates: PropTypes.arrayOf(
     PropTypes.string
   )
 }
 
 SelectDate.defaultProps = {
+  type: '',
   dates: []
 }
 

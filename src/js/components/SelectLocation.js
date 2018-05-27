@@ -60,6 +60,8 @@ class SelectLocation extends Component {
     let location = clicked.getAttribute('data-value')
     let submitValue = clicked.getAttribute('data-submit-value')
 
+    console.log('HELLO!!!!', location, submitValue)
+
     this.setState({
       value: location,
       submitValue: submitValue,
@@ -78,6 +80,8 @@ class SelectLocation extends Component {
     let triggerElement = e.target
     let currentElement = this.element.current
 
+    console.log(currentElement, 'contains', triggerElement)
+
     if (!currentElement.contains(triggerElement)) {
       document.removeEventListener('click', this.onBlur)
 
@@ -93,18 +97,18 @@ class SelectLocation extends Component {
 
   render () {
     return (
-      <div ref={this.element}>
+      <div className={`m-search__item m-search__item--${this.props.type}`} ref={this.element}>
         <input id={`input_${this.props.type}`} type='hidden' value={this.state.submitValue}></input>
         <input
-          className='a-input'
+          className='a-input a-input--with-icon'
           onInput={this.onInput}
           onFocus={this.onFocus}
           value={this.state.value || ''}
           placeholder={this.props.type}
         />
         {this.state.focus ?
-          <div className='o-search-form__suggestions'>
-            <div className='o-search-form__suggestions-wrapper'>
+          <div className='m-search__suggestions'>
+            <div className='m-search__suggestions-wrapper'>
               {this.state.suggestedLocations.map((location, i) => {
                 return (
                   <div key={i} data-submit-value={location['IATA']} data-value={`${location['city']} (${location['IATA']})`} onClick={this.selectLocation}>
@@ -122,6 +126,7 @@ class SelectLocation extends Component {
 }
 
 SelectLocation.propTypes = {
+  type: PropTypes.string,
   locations: PropTypes.arrayOf(
     PropTypes.shape({
       city: PropTypes.string,
@@ -135,6 +140,7 @@ SelectLocation.propTypes = {
 }
 
 SelectLocation.defaultProps = {
+  type: '',
   locations: []
 }
 

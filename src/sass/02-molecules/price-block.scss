@@ -15,10 +15,10 @@
 .m-price-block__price {
   font-size: $font-size--xl;
 
-  &::after {
-    display: inline;
-    content: " KR."
-  }
+  // &::after {
+  //   display: inline;
+  //   content: " KR."
+  // }
 }
 
 .m-price-block__btn {
