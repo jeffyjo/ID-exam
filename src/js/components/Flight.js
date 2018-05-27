@@ -54,7 +54,7 @@ class Flight extends Component {
                   </div>
                   <div></div>
                   <div className="m-table-item__row-content u-flex u-flex--column">
-                    <label>{flight.origin.city}</label>
+                    <label>{flight.destination.city}</label>
                     <label>{flight.arrival_time}</label>
                   </div>
                 </div>
