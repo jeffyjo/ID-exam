@@ -9,7 +9,8 @@ import PropTypes from 'prop-types'
 
 import {
   filterUnique,
-  filterStringMatch
+  filterStringMatch,
+  removeDuplicateObjectsByKey
 } from './../utils'
 
 class Search extends Component {
@@ -17,11 +18,32 @@ class Search extends Component {
     super(props)
 
     this.state = {
-      options: {
-        departureDate: moment(),
-        returnDate: moment().add(10, 'days')
+      defaults: {
+        origin: null,
+        destination: null,
+        departure_date: moment(),
+        arrival_date: moment().add(1, 'days'),
+        passengerCount: null
       },
-      filterParams: {
+      options: {
+        origin: [],
+        destination: [],
+        departure_date: [],
+        arrival_date: [],
+        passengerCount: []
+      },
+      optionsFiltered: {
+        origin: [],
+        destination: []
+      },
+      flightParams: {
+        origin: null,
+        destination: null,
+        departure_date: null,
+        arrival_date: null,
+        passengerCount: null
+      },
+      selected: {
         origin: null,
         destination: null
       },
@@ -33,91 +55,171 @@ class Search extends Component {
     }
 
     this.onInput = this.onInput.bind(this)
-    this.searchForOption = this.searchForOption.bind(this)
     this.onDatePick = this.onDatePick.bind(this)
+    this.filterFlightsAvailable = this.filterFlightsAvailable.bind(this)
+    this.filterByParam = this.filterByParam.bind(this)
+    this.onLocationPick = this.onLocationPick.bind(this)
   }
 
   componentDidMount () {
-    const options = this.props.flights.reduce((a, c) => {
-      a.airlineCompany.push(c['airline_company'])
-      a.origin.push(c['origin'])
-      a.destination.push(c['destination'])
+    let options = this.props.flights
+      .reduce((options, flight) => {
+        for (let key of Object.keys(options)) {
+          if (flight.hasOwnProperty(key)) {
+            options[key].push(flight[key])
+          }
+        }
+        return options
+      }, {
+        origin: [],
+        destination: []
+      })
 
-      return a
-    }, {
-      airlineCompany: [],
-      origin: [],
-      destination: []
+    options.origin = removeDuplicateObjectsByKey(options.origin, 'IATA')
+    options.destination = removeDuplicateObjectsByKey(options.destination, 'IATA')
+
+    this.setState({
+      options: Object.assign({}, this.state.options, options),
+      optionsFiltered: Object.assign({}, this.state.optionsFiltered, options)
     })
-
-    this.state.options = options
   }
 
-  searchForOption (option, value) {
-    let filteredValue = this.state.options[option]
-      .filter(filterStringMatch(value))
-      .filter(filterUnique)
+  filterFlightsAvailable(flights) {
+    let params = this.state.flightParams
 
-    return {
-      option: option,
-      value: filteredValue
+    let flightsFiltered = flights
+
+    for (let key of Object.keys(params)) {
+      if (params[key]) {
+        flightsFiltered = flightsFiltered.filter(this.filterByParam(key))
+      }
+    }
+
+    return flightsFiltered
+  }
+
+  filterByParam (param) {
+    if (param === 'departure_date' || param === 'arrival_date') {
+      return (flight) => {
+        return flight[param] === this.state.flightParams[param].format('DD/MM/YY')
+      }
+    } else if (param === 'origin' || param === 'destination') {
+      return (flight) => {
+        return flight[param]['IATA'] === this.state.flightParams[param]['IATA']
+      }
+    } else {
+      return (flight) => flight
     }
   }
 
   onInput (e) {
     let input = e.currentTarget
-    let option = input.name
-    let value = input.value
+    let key = input.name
+    let value = input.value || ''
 
-    let matches = this.searchForOption(option, value)
+    let filteredOption = this.state.options[key].filter(option => {
+      let matchIATA = filterStringMatch(value)(option['IATA'])
+      let matchCity = filterStringMatch(value)(option['city'])
+      let matchCountry = filterStringMatch(value)(option['country'])
 
-    console.log(matches)
+      return matchIATA || matchCity || matchCountry
+    })
+
+    this.setState({
+      optionsFiltered: Object.assign({}, this.state.optionsFiltered, {
+        [key]: filteredOption
+      })
+    })
+  }
+
+  onLocationPick (e) {
+    console.log(e)
+    let selected = e.currentTarget
+    let selectedVal = selected.getAttribute('data-select-val')
+    let selectedType = selected.getAttribute('data-select-type')
+    console.log(selected, selectedVal, selectedType)
+    this.setState({
+      selected: Object.assign({}, this.state.selected, {
+        [selectedType]: selectedVal
+      })
+    })
   }
 
   onDatePick (flightType, date) {
-    // if ('')
-    // this.setState({
-    //
-    // })
+    this.setState({
+      flightParams: Object.assign({}, this.state.flightParams, {
+        [flightType]: date
+      })
+    })
   }
 
   render () {
+    let flights = this.filterFlightsAvailable(this.props.flights)
     return (
       <div id='search'>
-        <form className='search-form'>
-          <div className='search-form__column'>
-            <input name='origin' onInput={this.onInput} placeholder='Origin' />
-            <div className='search-form__suggestions'>
-
+        <form className='o-search-form u-grid u-grid--4-cols'>
+          <div className='o-search-form__column u-flex u-flex--column u-flex--center-h'><div>
+            <input className='a-input' name='origin' onInput={this.onInput} autoComplete='off' placeholder='Origin'  value={this.state.selected.origin || ''} />
+            <div className='o-search-form__suggestions'>
+              <div className='o-search-form__suggestions-wrapper'>
+                {
+                  this.state.optionsFiltered.origin.map((option, index) => {
+                    return (
+                      <div key={index} className='o-search-form__suggestion' data-select-type={'origin'} data-select-val={`${option['city']} (${option['IATA']})`} onClick={this.onLocationPick}>
+                        <p>{`${option['city']} (${option['IATA']})`}</p>
+                        <span>{option['country']}</span>
+                      </div>
+                    )
+                  })
+                }
+              </div>
             </div>
-          </div>
-          <div className='search-form__column'>
-            <input name='destination' onInput={this.onInput} placeholder='Destination' />
-            <div className='search-form__suggestions'>
-
+          </div></div>
+          <div className='o-search-form__column u-flex u-flex--column u-flex--center-h'><div>
+            <input className='a-input' name='destination' onInput={this.onInput} autoComplete='off' placeholder='Destination' value={this.state.selected.destination || ''} />
+            <div className='o-search-form__suggestions'>
+              <div className='o-search-form__suggestions-wrapper'>
+              {
+                this.state.optionsFiltered.destination.map((option, index) => {
+                  return (
+                    <div key={index} className='o-search-form__suggestion' data-select-type={'destination'} data-select-val={`${option['city']} (${option['IATA']})`} onClick={this.onLocationPick}>
+                      <p>{`${option['city']} (${option['IATA']})`}</p>
+                      <span>{option['country']}</span>
+                    </div>
+                  )
+                })
+              }
+              </div>
             </div>
-          </div>
-          <div className='search-form__column'>
+          </div></div>
+          <div className='o-search-form__column u-flex u-flex--column u-flex--center-h'><div>
             <DatePicker
-              className='date date--departure'
-              selected={this.state.options.departureDate}
-              onChange={(date) => this.onDatePick('departure', date)}
+              className='a-input a-input--date'
+              selected={this.state.flightParams.departure_date || moment()}
+              onChange={(date) => this.onDatePick('departure_date', date)}
               locale='en-gb'
-              dateFormat='L'
+              dateFormat='D. MMMM'
             />
-          </div>
-          <div className='search-form__column'>
+          </div></div>
+          <div className='o-search-form__column u-flex u-flex--column u-flex--center-h'><div>
             <DatePicker
-              className='date date--return'
-              selected={this.state.options.returnDate}
-              onChange={(date) => this.onDatePick('return', date)}
+              className='a-input a-input--date'
+              selected={this.state.flightParams.arrival_date || moment().add(6, 'days')}
+              onChange={(date) => this.onDatePick('arrival_date', date)}
               locale='en-gb'
-              dateFormat='L'
+              dateFormat='D. MMMM'
             />
-          </div>
+          </div></div>
+          {/* <div className='o-search-form__column'>
+            <button className='a-button'></button>
+          </div> */}
         </form>
         {
-          this.props.flights.map((f, i) => <p key={i}>{f.name}</p>)
+          flights.map((f, i) => {
+            return (
+              <p key={i}>{f.plane_id}</p>
+            )
+          })
         }
       </div>
     )
@@ -128,16 +230,30 @@ Search.propTypes = {
   flights: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
-      airline_company: PropTypes.string,
+      airline: PropTypes.string,
+      airline_code: PropTypes.string,
       plane_id: PropTypes.string,
-      origin: PropTypes.string,
-      destination: PropTypes.string,
       departure_date: PropTypes.string,
       departure_time: PropTypes.string,
       duration: PropTypes.string,
       arrival_date: PropTypes.string,
       arrival_time: PropTypes.string,
-      price: PropTypes.string
+      price: PropTypes.string,
+      origin: PropTypes.shape({
+        city: PropTypes.string,
+        location: PropTypes.string,
+        country: PropTypes.string,
+        country_code: PropTypes.string,
+        IATA: PropTypes.string,
+        ICAO: PropTypes.string
+      }),
+      destination: PropTypes.shape({
+        city: PropTypes.string,
+        location: PropTypes.string,
+        country_code: PropTypes.string,
+        IATA: PropTypes.string,
+        ICAO: PropTypes.string
+      })
     })
   )
 }

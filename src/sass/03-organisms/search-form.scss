@@ -1,0 +1,58 @@
+$height--search-form: 6em;
+
+.o-search-form {
+  padding: 0 ($height--search-form / 2);
+
+  background: $color-form-bg;
+
+  border-radius: ($height--search-form / 2);
+
+  min-height: $height--search-form;
+
+  &__column {
+    position: relative;
+
+    &:not(:last-child) {
+      border-right: $size-border-width solid $color-form-border;
+    }
+  }
+  &__suggestion {
+    padding: $size-margin--sm $size-padding--md;
+
+    &:hover {
+      background-color: $color-checkbox-active;
+      color: $color-form-bg;
+
+      cursor: pointer;
+    }
+  }
+  &__suggestions {
+    position: absolute;
+
+    width: 100%;
+
+    max-height: 0;
+
+    overflow: scroll;
+
+    background-color: $color-form-bg;
+
+    border-bottom-left-radius: $size-padding--sm;
+    border-bottom-right-radius: $size-padding--sm;
+
+    bottom: 0;
+
+    transform: translateY(100%);
+
+    @at-root input:focus ~ & {
+      max-height: 300px;
+    }
+
+    span {
+      font-size: $font-size--sm;
+    }
+  }
+  &__suggestions-wrapper {
+    overflow: hidden;
+  }
+}
