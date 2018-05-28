@@ -1,8 +1,7 @@
 
 .m-nav {
-
   &--space { 
-    margin: $size-margin--lg 0;
+    margin: $size-margin--lg 0 $size-margin--lg;
   }
 }
 
@@ -12,4 +11,8 @@
 
 .m-nav__item {
   display: inline;
+  font-size: 2em;
+  &:not(:last-of-type){
+    margin-right: $size-margin--md;
+  }
 }

@@ -1,7 +1,9 @@
 
 .a-link {
   color: $color-link-primary-text;
-  padding: $size-padding--xs;
+  padding-top: $size-padding--xs;
+  padding-bottom: $size-padding--xs;
+  cursor: pointer;
 
   &--nav {
     font-family: $font-link-nav;
