@@ -5,9 +5,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  filterUnique,
-  filterStringMatch,
-  removeDuplicateObjectsByKey
+  filterStringMatch
 } from './../utils'
 
 class SelectLocation extends Component {
@@ -93,35 +91,40 @@ class SelectLocation extends Component {
 
   render () {
     return (
-      <div ref={this.element}>
-        <input id={`input_${this.props.type}`} type='hidden' value={this.state.submitValue}></input>
+      <div className={`m-search__item m-search__item--${this.props.type}`} ref={this.element}>
+        <input id={`input_${this.props.type}_${this.props.flightCount}`} type='hidden' value={this.state.submitValue} />
         <input
-          className='a-input'
+          className='a-input a-input--with-icon'
           onInput={this.onInput}
           onFocus={this.onFocus}
           value={this.state.value || ''}
           placeholder={this.props.type}
         />
-        {this.state.focus ?
-          <div className='o-search-form__suggestions'>
-            <div className='o-search-form__suggestions-wrapper'>
+        {this.state.focus
+          ? <div className='m-search__suggestions'>
+            <div className='m-search__suggestions-wrapper'>
               {this.state.suggestedLocations.map((location, i) => {
                 return (
-                  <div key={i} data-submit-value={location['IATA']} data-value={`${location['city']} (${location['IATA']})`} onClick={this.selectLocation}>
-                    <p>{`${location['city']} (${location['IATA']})`}</p>
-                    <span>{location['country']}</span>
+                  <div className='m-search__suggestion' key={i} data-submit-value={location['IATA']} data-value={`${location['city']} (${location['IATA']})`} onClick={this.selectLocation}>
+                    <div>
+                      <p>{location['city']}</p>
+                      <p>{location['country']}</p>
+                    </div>
+                    <div><p>{location['IATA']}</p></div>
                   </div>
                 )
               })}
             </div>
           </div>
-        : ''}
+          : ''}
       </div>
     )
   }
 }
 
 SelectLocation.propTypes = {
+  type: PropTypes.string,
+  flightCount: PropTypes.number,
   locations: PropTypes.arrayOf(
     PropTypes.shape({
       city: PropTypes.string,
@@ -135,6 +138,8 @@ SelectLocation.propTypes = {
 }
 
 SelectLocation.defaultProps = {
+  type: '',
+  flightCount: 0,
   locations: []
 }
 

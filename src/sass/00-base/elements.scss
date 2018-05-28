@@ -2,12 +2,12 @@
 
   Elements.scss is used to define
   standard behavior without classes.
-  
-  Eg. 
 
-  input[type=number]::-webkit-inner-spin-button, 
-  input[type=number]::-webkit-outer-spin-button { 
-    -webkit-appearance: none; 
+  Eg.
+
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
   }
 
 **************************************************/
@@ -15,7 +15,7 @@
 a {
   font-size: $font-size--base;
   border: none;
-  text-decoration: none;  
+  text-decoration: none;
 }
 
 label {
@@ -51,13 +51,17 @@ input {
 
 input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   font-family: $font-input;
+  color: $color-input-text;
 }
 input::-moz-placeholder { /* Firefox 19+ */
  font-family: $font-input;
+ color: $color-input-text;
 }
 input:-ms-input-placeholder { /* IE 10+ */
  font-family: $font-input;
+ color: $color-input-text;
 }
 input:-moz-placeholder { /* Firefox 18- */
  font-family: $font-input;
+ color: $color-input-text;
 }
