@@ -83,7 +83,8 @@ class FindFlight extends Component {
         }
       ],
       currentFilter: 1,
-      initial: true
+      initial: true,
+      isLoggedIn: this.props.isLoggedIn
     }
 
     this.onFormSubmit = this.onFormSubmit.bind(this)
@@ -97,6 +98,7 @@ class FindFlight extends Component {
     this.sortCheapest = this.sortCheapest.bind(this)
 
     this.form = React.createRef()
+
   }
 
   onFormSubmit (e) {
@@ -358,6 +360,30 @@ class FindFlight extends Component {
             </div>
           : ''
         }
+        {
+          this.state.isLoggedIn === true 
+            ? <div className="u-grid u-grid--2-cols">
+                <div className="o-cta-block o-cta-block--light-text">
+                  <div className="m-section-header m-section-header--inverse">
+                    <h3 className="m-section__header u-text u-text--capital">Your last booked flights</h3>
+                  </div>
+                  <div className="m-content-block">
+                    <button className="a-button a-button--transparent a-button--pill m-content-block__item">CPH - RIX</button>
+                    <button className="a-button a-button--transparent a-button--pill m-content-block__item">CPH - NYC</button>
+                  </div>
+                </div>
+                <div className="o-cta-block o-cta-block--light-text">
+                  <div className="m-section-header m-section-header--inverse">
+                    <h3 className="m-section__header u-text u-text--capital">Your saved flights</h3>
+                  </div>
+                  <div className="m-content-block">
+                    <button className="a-button a-button--transparent a-button--pill m-content-block__item">CPH - RIX</button>
+                  </div>
+                </div>
+              </div>
+            : ''
+        }
+
       </div>
     )
   }
