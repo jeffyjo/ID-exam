@@ -51,10 +51,10 @@ class FindFlight extends Component {
       modes: [
         'Return',
         'One-way',
-        'Multi'
+        'multi'
       ],
       currentMode: 'One-way',
-      numberRows: 3,
+      numberRows: 1,
       sorts: [
         {
           id: 1,
@@ -244,7 +244,7 @@ class FindFlight extends Component {
 
     console.log(this.state.currentMode)
 
-    if (this.state.currentMode === 'one-way') {
+    if (this.state.currentMode === 'One-way') {
       flights = flights.map(flight => [flight])
     }
 
@@ -282,7 +282,7 @@ class FindFlight extends Component {
         }
 
         {
-          this.state.currentMode === 'Multi'
+          this.state.currentMode === 'multi'
           ? <form className='m-search u-pill u-pill--left u-pill--right' method='GET' ref={this.form} onSubmit={this.onFormSubmit}>
             {
               Array.from({length: this.state.numberRows}).map((n, i) => {

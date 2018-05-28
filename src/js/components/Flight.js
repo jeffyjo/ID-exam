@@ -98,6 +98,7 @@ Flight.propTypes = {
       destination: PropTypes.shape({
         city: PropTypes.string,
         location: PropTypes.string,
+        country: PropTypes.string,
         country_code: PropTypes.string,
         IATA: PropTypes.string,
         ICAO: PropTypes.string
