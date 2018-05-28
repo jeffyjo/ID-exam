@@ -23,6 +23,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.26.0",
     "babelify": "^8.0.0",
     "browsersync": "0.0.1-security",
     "gulp": "^3.9.1",

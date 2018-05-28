@@ -29,6 +29,7 @@ $color-background:          $brand-blue;
 
 $color-btn-primary:         $brand-yellow;
 $color-btn-secondary:       $util-light;
+$color-btn-text:            $primary-text;
 $color-btn-secondary-text:  $brand-blue;
 $color-btn-square:          $brand-blue;
 $color-btn-transparent:     rgba( $util-dark, .25 );
@@ -79,7 +80,12 @@ $color-table-header-bg:     $util-md-light;
 $color-table-border:        rgba( $util-dark, .1 );
 
 // $color-progress-background: rgba( $util-dark, .3 );
-$color-progress-background: #525252;
+$color-progress-background: rgb(67, 116, 147);
 $color-progress-bar:        $brand-yellow;
 
 $color-rte-text:            $primary-text;
+
+$color-logo-text:           $primary-text;
+
+$color-main-nav-border:     rgba( $util-light, .3 );
+$color-overlay:             rgba( $util-dark, .6);

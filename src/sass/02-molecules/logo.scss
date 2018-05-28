@@ -1,0 +1,24 @@
+
+.m-logo {
+
+}
+
+.m-logo__header {
+  margin: 0;
+  padding: 0;
+  line-height: $font-size--xs;
+  font-size: $font-size--xs;
+  color: $color-logo-text;
+  
+
+  &--transparent {
+    font-family: $font-logo-transparent;
+    font-weight: normal;
+  }
+  
+  &--bold {
+    font-family: $font-logo-bold;
+    font-weight: bold;
+  }
+
+}

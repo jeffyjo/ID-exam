@@ -5,6 +5,10 @@
     text-align: center;
   }
 
+  &--space-top {
+    margin: $size-margin--xl 0;
+  }
+
 }
 
 .o-cta-block__item {
@@ -15,7 +19,6 @@
     *:not(:first-child) {
       margin-left: $size-margin--sm;
     }
-
   }
 
 }
