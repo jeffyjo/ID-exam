@@ -1,0 +1,12 @@
+.o-add-flight {
+  margin-bottom: 4em;
+
+  button {
+    text-transform: uppercase;
+    color: $primary-text;
+
+    &:not(:last-child) {
+      margin-right: 2em;
+    }
+  }
+}
