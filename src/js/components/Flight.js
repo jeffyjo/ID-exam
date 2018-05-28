@@ -18,10 +18,6 @@ class Flight extends Component {
     }
   }
 
-  componentDidMount () {
-
-  }
-
   render () {
     let price = priceSum(this.props.flights)
 
@@ -30,7 +26,8 @@ class Flight extends Component {
     }, '')
 
     let bookingUrl = 'book.html?' + objectToUrlString({
-      ids: flightIds
+      ids: flightIds,
+      passengers: this.props.passengerCount
     })
 
     return (
@@ -70,7 +67,7 @@ class Flight extends Component {
         <div className='m-price-block'>
           <div className='m-price-block__content'>
             <label className='m-price-block__title'>Price</label>
-            <h2 className='m-price-block__price'>{'€' + price}</h2>
+            <h2 className='m-price-block__price'>{'€' + (price * this.props.passengerCount).toFixed(2)}</h2>
           </div>
           <a href={bookingUrl} className='a-button a-button--secondary a-button--square m-price-block__btn u-flex u-flex--center-h'>Book</a>
         </div>
@@ -80,6 +77,7 @@ class Flight extends Component {
 }
 
 Flight.propTypes = {
+  passengerCount: PropTypes.number,
   flights: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
@@ -113,6 +111,7 @@ Flight.propTypes = {
 }
 
 Flight.defaultProps = {
+  passengerCount: 1,
   flights: []
 }
 

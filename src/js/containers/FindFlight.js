@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 
 import SelectLocation from './../components/SelectLocation'
 import SelectDate from './../components/SelectDate'
+import SelectPassengerCount from './../components/SelectPassengerCount'
 import ToggleFlightMode from './../components/ToggleFlightMode'
 import Flight from './../components/Flight'
 import SortFlights from './../components/SortFlights'
@@ -14,7 +15,9 @@ import moment from 'moment'
 
 import {
   removeDuplicateObjectsByKey,
-  allPossibleCases
+  allPossibleCases,
+  priceSum,
+  durationTotal
 } from './../utils'
 
 class FindFlight extends Component {
@@ -82,6 +85,7 @@ class FindFlight extends Component {
       ],
       currentFilter: 1,
       initial: true,
+      passengerCount: 1,
       isLoggedIn: this.props.isLoggedIn
     }
 
@@ -94,6 +98,7 @@ class FindFlight extends Component {
     this.onSort = this.onSort.bind(this)
     this.sortFastest = this.sortFastest.bind(this)
     this.sortCheapest = this.sortCheapest.bind(this)
+    this.setPassengerCount = this.setPassengerCount.bind(this)
 
     this.form = React.createRef()
 
@@ -188,11 +193,21 @@ class FindFlight extends Component {
   }
 
   sortFastest (flights) {
-
+    return flights.sort((a, b) => {
+      return durationTotal(a) - durationTotal(b)
+    })
   }
 
   sortCheapest (flights) {
+    return flights.sort((a, b) => {
+      return priceSum(a) - priceSum(b)
+    })
+  }
 
+  setPassengerCount (count) {
+    this.setState({
+      passengerCount: count
+    })
   }
 
   onSort (type, e) {
@@ -242,6 +257,12 @@ class FindFlight extends Component {
       flights = flights.map(flight => [flight])
     }
 
+    if (this.state.currentSort === 1) {
+      flights = this.sortCheapest(flights)
+    } else if (this.state.currentSort === 2) {
+      flights = this.sortFastest(flights)
+    }
+
     let numberFlights = flights.length
 
     return (
@@ -263,6 +284,7 @@ class FindFlight extends Component {
                 <SelectLocation type='destination' locations={this.state.options.origin} flightCount={0} />
                 <SelectDate type='departure_date' dates={[]} flightCount={0} />
                 <SelectDate type='return_date' dates={[]} flightCount={0} />
+                <SelectPassengerCount type='passenger_count' changeFunc={(count) => { this.setPassengerCount(count) }} />
               </div>
               <button className='a-button a-button--primary a-button--circle-lg m-search__button' type='submit' />
             </form>
@@ -276,6 +298,7 @@ class FindFlight extends Component {
                 <SelectLocation type='origin' locations={this.state.options.origin} flightCount={0} />
                 <SelectLocation type='destination' locations={this.state.options.origin} flightCount={0} />
                 <SelectDate type='departure_date' dates={[]} flightCount={0} />
+                <SelectPassengerCount type='passenger_count' changeFunc={(count) => { this.setPassengerCount(count) }} />
               </div>
               <button className='a-button a-button--primary a-button--circle-lg m-search__button' type='submit' />
             </form>
@@ -292,6 +315,11 @@ class FindFlight extends Component {
                     <SelectLocation type='origin' locations={this.state.options.origin} flightCount={i} />
                     <SelectLocation type='destination' locations={this.state.options.origin} flightCount={i} />
                     <SelectDate type='departure_date' dates={[]} flightCount={i} />
+                    {
+                      i === 0
+                        ? <SelectPassengerCount type='passenger_count' changeFunc={(count) => { this.setPassengerCount(count) }} />
+                        : ''
+                    }
                   </div>
                 )
               })
@@ -321,14 +349,14 @@ class FindFlight extends Component {
                       type={'sort'}
                       heading={'Sort flights'}
                       selected={this.state.currentSort}
-                      options={this.state.filters}
+                      options={this.state.sorts}
                       onSelect={(e) => { this.onSort('sort', e) }}
                     />
                     <SortFlights
                       type={'filter'}
                       heading={'Filter'}
                       selected={this.state.currentFilter}
-                      options={this.state.sorts}
+                      options={this.state.filters}
                       onSelect={(e) => { this.onSort('filter', e) }}
                     />
                   </div>
@@ -338,7 +366,7 @@ class FindFlight extends Component {
                     numberFlights > 0
                     ? flights.map((flight, i) => {
                       return (
-                        <Flight key={i} flights={flight} />
+                        <Flight key={i} flights={flight} passengerCount={this.state.passengerCount}/>
                       )
                     })
                     : ''
@@ -349,7 +377,7 @@ class FindFlight extends Component {
           : ''
         }
         {
-          this.state.isLoggedIn === true 
+          this.state.isLoggedIn === true
             ? <div className="u-grid u-grid--2-cols">
                 <div className="o-cta-block o-cta-block--light-text">
                   <div className="m-section-header m-section-header--inverse">

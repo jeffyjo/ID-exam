@@ -63,3 +63,11 @@ export const priceSum = (flights, currency = '€', decimal = ',') => {
     return price
   }, 0)
 }
+
+export const durationTotal = (flights, divider = ':') => {
+  return flights.reduce((duration, flight) => {
+    duration += parseInt(flight.duration.replace(divider, '.'), 10).toFixed(1)
+
+    return duration
+  }, 0)
+}
