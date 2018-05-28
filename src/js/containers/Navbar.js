@@ -50,9 +50,11 @@ class Navbar extends Component {
       window.localStorage.setItem('isLoggedIn', true)
 
       this.setState({
-        isLoggedIn: window.localStorage.getItem('isLoggedIn'),
+        isLoggedIn: true,
         loginParams: loginParams
       })
+
+      this.toggleLoggingIn()
     }
   }
 
@@ -60,7 +62,7 @@ class Navbar extends Component {
     window.localStorage.setItem('isLoggedIn', false)
 
     this.setState({
-      isLoggedIn: window.localStorage.getItem('isLoggedIn')
+      isLoggedIn: false
     })
   }
 
