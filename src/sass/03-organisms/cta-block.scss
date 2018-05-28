@@ -9,10 +9,15 @@
     margin: $size-margin--xl 0;
   }
 
+  &--light-text {
+    color: $color-cta-text;
+  }
+
 }
 
 .o-cta-block__item {
   margin: $size-margin--sm 0;
+  color: inherit;
 
   &--actions { 
 
