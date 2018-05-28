@@ -7,8 +7,8 @@ import PropTypes from 'prop-types'
 class SortFlights extends Component {
   render () {
     return (
-      <div>
-        <h3 className='m-sort-block__header'>{this.props.heading}</h3>
+      <div className='m-sort-block__single'>
+        <label className='m-sort-block__header'>{this.props.heading}</label>
         {this.props.options.map((option, i) => {
           return (
             <div key={i} className='m-sort-block__item u-flex u-flex--space-between u-flex--center-v'>

@@ -1,7 +1,10 @@
 
 .m-price-block {
-  background: $color-table-bg-secondary;
-  padding: $size-padding--lg;
+  background: $util-grey;
+  padding: $size-padding--lg $size-padding--md $size-padding--md;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .m-price-block__content {
@@ -9,7 +12,11 @@
 }
 
 .m-price-block__title {
+  font-family: $font-table-header;
   font-size: $font-size--sm;
+  color: $color-table-header;
+  text-transform: uppercase;
+  font-family: $font-label;
 }
 
 .m-price-block__price {
@@ -22,7 +29,5 @@
 }
 
 .m-price-block__btn {
-  margin-top: $size-margin--sm;
-
   width: 100%;
 }

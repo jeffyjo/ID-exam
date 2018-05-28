@@ -49,12 +49,12 @@ class FindFlight extends Component {
       },
       flightParamsArr: [],
       modes: [
-        'return',
-        'one-way',
-        'multi'
+        'Return',
+        'One-way',
+        'Multi'
       ],
-      currentMode: 'one-way',
-      numberRows: 1,
+      currentMode: 'One-way',
+      numberRows: 3,
       sorts: [
         {
           id: 1,
@@ -255,7 +255,7 @@ class FindFlight extends Component {
         <ToggleFlightMode onToggle={this.onModeToggle} options={this.state.modes} currentOption={this.state.currentMode} />
 
         {
-          this.state.currentMode === 'return'
+          this.state.currentMode === 'Return'
           ? <form className='m-search u-pill u-pill--left u-pill--right' method='GET' ref={this.form} onSubmit={this.onFormSubmit}>
               <div className='m-search__row'>
                 <SelectLocation type='origin' locations={this.state.options.origin} flightCount={0} />
@@ -269,7 +269,7 @@ class FindFlight extends Component {
         }
 
         {
-          this.state.currentMode === 'one-way'
+          this.state.currentMode === 'One-way'
           ? <form className='m-search u-pill u-pill--left u-pill--right' method='GET' ref={this.form} onSubmit={this.onFormSubmit}>
               <div className='m-search__row'>
                 <SelectLocation type='origin' locations={this.state.options.origin} flightCount={0} />
@@ -282,7 +282,7 @@ class FindFlight extends Component {
         }
 
         {
-          this.state.currentMode === 'multi'
+          this.state.currentMode === 'Multi'
           ? <form className='m-search u-pill u-pill--left u-pill--right' method='GET' ref={this.form} onSubmit={this.onFormSubmit}>
             {
               Array.from({length: this.state.numberRows}).map((n, i) => {
