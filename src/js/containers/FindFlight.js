@@ -91,6 +91,8 @@ class FindFlight extends Component {
     this.filterByParams = this.filterByParams.bind(this)
     this.onModeToggle = this.onModeToggle.bind(this)
     this.onSort = this.onSort.bind(this)
+    this.sortFastest = this.sortFastest.bind(this)
+    this.sortCheapest = this.sortCheapest.bind(this)
 
     this.form = React.createRef()
   }
@@ -181,6 +183,14 @@ class FindFlight extends Component {
     flightsFiltered = allPossibleCases(flightsFiltered)
 
     return flightsFiltered
+  }
+
+  sortFastest (flights) {
+
+  }
+
+  sortCheapest (flights) {
+
   }
 
   onSort (type, e) {

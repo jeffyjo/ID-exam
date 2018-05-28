@@ -5,7 +5,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  objectToUrlString
+  objectToUrlString,
+  priceSum
 } from './../utils'
 
 class Flight extends Component {
@@ -22,13 +23,7 @@ class Flight extends Component {
   }
 
   render () {
-    let price = this.props.flights.reduce((price, flight) => {
-      let withoutSymbol = flight.price.replace('€', '')
-      let withDot = withoutSymbol.replace(',', '.')
-      let asFloat = parseFloat(withDot)
-      price += asFloat
-      return price
-    }, 0)
+    let price = priceSum(this.props.flights)
 
     let flightIds = this.props.flights.reduce((str, flight) => {
       return (!!str ? str += '-' : '') + flight.id
