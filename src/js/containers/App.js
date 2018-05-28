@@ -11,6 +11,8 @@ import FlightBooked from './FlightBooked'
 import flights from './../flights.js'
 import user, {isLoggedIn} from './../user.js'
 import CreateProfile from './CreateProfile';
+import Book from './Book';
+import MyAccount from './MyAccount';
 
 class App extends Component {
   render () {
@@ -28,6 +30,12 @@ class App extends Component {
         break
       case 'flight-booked':
         Container = FlightBooked
+        break
+      case 'book':
+        Container = Book
+        break
+      case 'my-account':
+        Container = MyAccount
         break
       default:
         Container = Home
