@@ -32,3 +32,24 @@ export const urlStringToObject = urlStr => {
     return p
   }, {})
 }
+
+export const allPossibleCases = (arr) => {
+  if (!arr.length) return arr
+
+  if (arr.length == 1) {
+    return arr[0]
+  } else {
+    var result = []
+    var allCasesOfRest = allPossibleCases(arr.slice(1))
+    for (var i = 0; i < allCasesOfRest.length; i++) {
+      for (var j = 0; j < arr[0].length; j++) {
+				if (Array.isArray(allCasesOfRest[i])) {
+	        result.push([arr[0][j], ...allCasesOfRest[i]])
+				} else {
+					result.push([arr[0][j], allCasesOfRest[i]])
+				}
+      }
+    }
+    return result
+  }
+}

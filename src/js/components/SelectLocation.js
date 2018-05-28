@@ -100,20 +100,22 @@ class SelectLocation extends Component {
           value={this.state.value || ''}
           placeholder={this.props.type}
         />
-        {this.state.focus
-          ? <div className='m-search__suggestions'>
-            <div className='m-search__suggestions-wrapper'>
-              {this.state.suggestedLocations.map((location, i) => {
-                return (
-                  <div className='m-search__suggestion' key={i} data-submit-value={location['IATA']} data-value={`${location['city']} (${location['IATA']})`} onClick={this.selectLocation}>
-                    <div>
-                      <p>{location['city']}</p>
-                      <p>{location['country']}</p>
+        {this.state.focus && this.state.suggestedLocations.length > 0
+          ? <div className='m-search__suggestions-outer'>
+            <div className='m-search__suggestions'>
+              <div className='m-search__suggestions-wrapper'>
+                {this.state.suggestedLocations.map((location, i) => {
+                  return (
+                    <div className='m-search__suggestion' key={i} data-submit-value={location['IATA']} data-value={`${location['city']} (${location['IATA']})`} onClick={this.selectLocation}>
+                      <div>
+                        <p>{location['city']}</p>
+                        <span>{location['country']}</span>
+                      </div>
+                      <div><p>{location['IATA']}</p></div>
                     </div>
-                    <div><p>{location['IATA']}</p></div>
-                  </div>
-                )
-              })}
+                  )
+                })}
+              </div>
             </div>
           </div>
           : ''}

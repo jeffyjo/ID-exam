@@ -13,7 +13,8 @@ import SortFlights from './../components/SortFlights'
 import moment from 'moment'
 
 import {
-  removeDuplicateObjectsByKey
+  removeDuplicateObjectsByKey,
+  allPossibleCases
 } from './../utils'
 
 class FindFlight extends Component {
@@ -53,7 +54,7 @@ class FindFlight extends Component {
         'Multi'
       ],
       currentMode: 'One-way',
-      numberRows: 3,
+      numberRows: 1,
       sorts: [
         {
           id: 1,
@@ -79,7 +80,8 @@ class FindFlight extends Component {
           text: 'Joining'
         }
       ],
-      currentFilter: 1
+      currentFilter: 1,
+      initial: true
     }
 
     this.onFormSubmit = this.onFormSubmit.bind(this)
@@ -103,20 +105,6 @@ class FindFlight extends Component {
     let form = this.form.current
 
     if (!form) return void 0
-    //
-    // let flightParams = Object.keys(this.state.flightParams).reduce((flightParams, param) => {
-    //   let input = form.querySelector(`#input_${param}`)
-    //   if (input) {
-    //     let value = input.value
-    //     flightParams[param] = value
-    //   }
-    //
-    //   return flightParams
-    // }, {})
-    //
-    // this.setState({
-    //   flightParams: flightParams
-    // })
 
     let flightParams = []
 
@@ -144,24 +132,27 @@ class FindFlight extends Component {
     }
 
     this.setState({
-      flightParamsArr: flightParams
+      flightParamsArr: flightParams,
+      initial: false
     })
   }
 
   onModeToggle (mode) {
+    let numberRows = mode === 'Multi' ? 2 : 1
     this.setState({
-      currentMode: mode
+      currentMode: mode,
+      numberRows: numberRows
     })
   }
 
-  filterByParam (param) {
+  filterByParam (param, val) {
     if (param === 'departure_date' || param === 'return_date') {
       return (flight) => {
-        return flight[param] === this.state.flightParams[param]
+        return flight[param] === val
       }
     } else if (param === 'origin' || param === 'destination') {
       return (flight) => {
-        return flight[param]['IATA'] === this.state.flightParams[param]
+        return flight[param]['IATA'] === val
       }
     } else {
       return (flight) => flight
@@ -173,7 +164,7 @@ class FindFlight extends Component {
 
     for (let key of Object.keys(params)) {
       if (params[key]) {
-        flightsFiltered = flightsFiltered.filter(this.filterByParam(key))
+        flightsFiltered = flightsFiltered.filter(this.filterByParam(key, params[key]))
       }
     }
 
@@ -186,6 +177,8 @@ class FindFlight extends Component {
     for (let params of this.state.flightParamsArr) {
       flightsFiltered.push(this.filterByParams(flights, params))
     }
+
+    flightsFiltered = allPossibleCases(flightsFiltered)
 
     return flightsFiltered
   }
@@ -231,14 +224,12 @@ class FindFlight extends Component {
   }
 
   render () {
-    // let flights = this.filterFlightsAvailable(this.props.flights)
-    console.log(this.filterFlightsAvailable(this.props.flights))
-    let flights = this.props.flights
-    // if (this.state.currentSort === 1) {
-    //   flights = flight.sort()
-    // } else if (this.state.currentSort === 2) {
-    //
-    // }
+    let flights = this.filterFlightsAvailable(this.props.flights)
+
+    if (flights[0] && !Array.isArray(flights[0])) {
+      flights = flights.map(flight => [flight])
+    }
+
     let numberFlights = flights.length
 
     return (
@@ -290,48 +281,54 @@ class FindFlight extends Component {
             </form>
           : ''
         }
-        <div className='o-results'>
-          <div className='o-results__header'>
-            <h2>
-              {
-                numberFlights > 0
-                  ? `${numberFlights} flight${numberFlights > 1 ? 's' : ''} found`
-                  : 'No flights found'
-              }
-            </h2>
-          </div>
-        </div>
-        <div className='u-flex'>
-          <div className='o-results__filter'>
-            <div className='m-sort-block u-pill--top u-pill--bottom'>
-              <SortFlights
-                type={'sort'}
-                heading={'Sort flights'}
-                selected={this.state.currentSort}
-                options={this.state.filters}
-                onSelect={(e) => { this.onSort('sort', e) }}
-              />
-              <SortFlights
-                type={'filter'}
-                heading={'Filter'}
-                selected={this.state.currentFilter}
-                options={this.state.sorts}
-                onSelect={(e) => { this.onSort('filter', e) }}
-              />
+        {
+          !this.state.initial
+          ? <div>
+              <div className='o-results'>
+              <div className='o-results__header'>
+                <h2>
+                  {
+                    numberFlights > 0
+                    ? `${numberFlights} flight${numberFlights > 1 ? 's' : ''} found`
+                    : 'No flights found'
+                  }
+                </h2>
+              </div>
+              </div>
+              <div className='u-flex'>
+                <div className='o-results__filter'>
+                  <div className='m-sort-block u-pill--top u-pill--bottom'>
+                    <SortFlights
+                      type={'sort'}
+                      heading={'Sort flights'}
+                      selected={this.state.currentSort}
+                      options={this.state.filters}
+                      onSelect={(e) => { this.onSort('sort', e) }}
+                    />
+                    <SortFlights
+                      type={'filter'}
+                      heading={'Filter'}
+                      selected={this.state.currentFilter}
+                      options={this.state.sorts}
+                      onSelect={(e) => { this.onSort('filter', e) }}
+                    />
+                  </div>
+                </div>
+                <div className='o-results__list u-pill--top u-pill--bottom u-pill--wrapper'>
+                  {
+                    numberFlights > 0
+                    ? flights.map((flight, i) => {
+                      return (
+                        <Flight key={i} flights={flight} />
+                      )
+                    })
+                    : ''
+                  }
+                </div>
+              </div>
             </div>
-          </div>
-          <div className='o-results__list u-pill--top u-pill--bottom u-pill--wrapper'>
-            {
-              numberFlights > 0
-                ? flights.map((flight, i) => {
-                  return (
-                    <Flight key={i} flights={[flight]} />
-                  )
-                })
-                : ''
-            }
-          </div>
-        </div>
+          : ''
+        }
       </div>
     )
   }

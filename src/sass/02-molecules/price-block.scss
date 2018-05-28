@@ -1,7 +1,7 @@
 
 .m-price-block {
   background: $util-grey;
-  padding: $size-padding--md;
+  padding: $size-padding--lg $size-padding--md $size-padding--md;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -22,9 +22,7 @@ class Flight extends Component {
       let withoutSymbol = flight.price.replace('€', '')
       let withDot = withoutSymbol.replace(',', '.')
       let asFloat = parseFloat(withDot)
-
       price += asFloat
-
       return price
     }, 0)
 
@@ -40,11 +38,11 @@ class Flight extends Component {
               <div key={i} className='m-table-item__inner'>
                 <div className='m-table-item__row m-table-item__row--top'>
                   <div className='m-table-item__header u-grid u-grid--3-cols'>
-                    <label className='m-table-item__header-item'>{flight.origin['IATA']}</label>
+                    <label className='m-table-item__header-item'><span className='m-table-item__header-item--bg-white'>{flight.origin['IATA']}</span></label>
                     <label className='m-table-item__header-item'>
-                      <span className='m-table-item__header-item--bg'>{duration}</span>
+                      <span className='m-table-item__header-item--bg-grey'>{duration}</span>
                     </label>
-                    <label className='m-table-item__header-item'>{flight.destination['IATA']}</label>
+                    <label className='m-table-item__header-item'><span className='m-table-item__header-item--bg-white'>{flight.destination['IATA']}</span></label>
                   </div>
                 </div>
                 <div className='m-table-item__row u-grid u-grid--3-cols'>
@@ -67,7 +65,7 @@ class Flight extends Component {
             <label className='m-price-block__title'>Price</label>
             <h2 className='m-price-block__price'>{'€' + price}</h2>
           </div>
-          <button className='a-button a-button--secondary a-button--square m-price-block__btn u-flex u-flex--center-h'>Square</button>
+          <button className='a-button a-button--secondary a-button--square m-price-block__btn u-flex u-flex--center-h'>Book</button>
         </div>
       </div>
     )
@@ -98,6 +96,7 @@ Flight.propTypes = {
       destination: PropTypes.shape({
         city: PropTypes.string,
         location: PropTypes.string,
+        country: PropTypes.string,
         country_code: PropTypes.string,
         IATA: PropTypes.string,
         ICAO: PropTypes.string
