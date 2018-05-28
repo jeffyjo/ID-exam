@@ -14,7 +14,9 @@ import moment from 'moment'
 
 import {
   removeDuplicateObjectsByKey,
-  allPossibleCases
+  allPossibleCases,
+  priceSum,
+  durationTotal
 } from './../utils'
 
 class FindFlight extends Component {
@@ -186,11 +188,15 @@ class FindFlight extends Component {
   }
 
   sortFastest (flights) {
-
+    return flights.sort((a, b) => {
+      return durationTotal(a) - durationTotal(b)
+    })
   }
 
   sortCheapest (flights) {
-
+    return flights.sort((a, b) => {
+      return priceSum(a) - priceSum(b)
+    })
   }
 
   onSort (type, e) {
@@ -238,6 +244,12 @@ class FindFlight extends Component {
 
     if (flights[0] && !Array.isArray(flights[0])) {
       flights = flights.map(flight => [flight])
+    }
+
+    if (this.state.currentSort === 1) {
+      flights = this.sortCheapest(flights)
+    } else if (this.state.currentSort === 2) {
+      flights = this.sortFastest(flights)
     }
 
     let numberFlights = flights.length
@@ -319,14 +331,14 @@ class FindFlight extends Component {
                       type={'sort'}
                       heading={'Sort flights'}
                       selected={this.state.currentSort}
-                      options={this.state.filters}
+                      options={this.state.sorts}
                       onSelect={(e) => { this.onSort('sort', e) }}
                     />
                     <SortFlights
                       type={'filter'}
                       heading={'Filter'}
                       selected={this.state.currentFilter}
-                      options={this.state.sorts}
+                      options={this.state.filters}
                       onSelect={(e) => { this.onSort('filter', e) }}
                     />
                   </div>
