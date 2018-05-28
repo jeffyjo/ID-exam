@@ -8,6 +8,7 @@ import SelectLocation from './../components/SelectLocation'
 import SelectDate from './../components/SelectDate'
 import ToggleFlightMode from './../components/ToggleFlightMode'
 import Flight from './../components/Flight'
+import SortFlights from './../components/SortFlights'
 
 import moment from 'moment'
 
@@ -24,14 +25,14 @@ class FindFlight extends Component {
         origin: null,
         destination: null,
         departure_date: moment(),
-        arrival_date: moment().add(1, 'days'),
+        return_date: moment().add(1, 'days'),
         passengerCount: null
       },
       options: {
         origin: [],
         destination: [],
         departure_date: [],
-        arrival_date: [],
+        return_date: [],
         passengerCount: []
       },
       optionsFiltered: {
@@ -42,26 +43,43 @@ class FindFlight extends Component {
         origin: null,
         destination: null,
         departure_date: null,
-        arrival_date: null,
+        return_date: null,
         passengerCount: null
       },
+      flightParamsArr: [],
       modes: [
         'return',
         'one-way',
         'multi'
       ],
       currentMode: 'one-way',
+      numberRows: 3,
       sorts: [
-        'cheapest',
-        'fastest'
+        {
+          id: 1,
+          text: 'Cheapest First'
+        },
+        {
+          id: 2,
+          text: 'Fastest First'
+        }
       ],
-      currentSort: 'cheapest',
+      currentSort: 1,
       filters: [
-        'all',
-        'direct',
-        'joining'
+        {
+          id: 1,
+          text: 'All'
+        },
+        {
+          id: 2,
+          text: 'Only Direct'
+        },
+        {
+          id: 3,
+          text: 'Joining'
+        }
       ],
-      currentFilter: 'all'
+      currentFilter: 1
     }
 
     this.onFormSubmit = this.onFormSubmit.bind(this)
@@ -70,6 +88,7 @@ class FindFlight extends Component {
     this.filterByParam = this.filterByParam.bind(this)
     this.filterByParams = this.filterByParams.bind(this)
     this.onModeToggle = this.onModeToggle.bind(this)
+    this.onSort = this.onSort.bind(this)
 
     this.form = React.createRef()
   }
@@ -84,21 +103,48 @@ class FindFlight extends Component {
     let form = this.form.current
 
     if (!form) return void 0
+    //
+    // let flightParams = Object.keys(this.state.flightParams).reduce((flightParams, param) => {
+    //   let input = form.querySelector(`#input_${param}`)
+    //   if (input) {
+    //     let value = input.value
+    //     flightParams[param] = value
+    //   }
+    //
+    //   return flightParams
+    // }, {})
+    //
+    // this.setState({
+    //   flightParams: flightParams
+    // })
 
-    let flightParams = Object.keys(this.state.flightParams).reduce((flightParams, param) => {
-      let input = form.querySelector(`#input_${param}`)
-      if (input) {
-        let value = input.value
-        flightParams[param] = value
-      }
+    let flightParams = []
 
-      return flightParams
-    }, {})
+    for (let i = 0, l = this.state.numberRows; i < l; i++) {
+      flightParams[i] = Object.keys(this.state.flightParams).reduce((flightParams, param) => {
+        let input = form.querySelector(`#input_${param}_${i}`)
 
-    console.log(flightParams)
+        if (input) {
+          let value = input.value
+          flightParams[param] = value
+        }
+
+        return flightParams
+      }, {})
+    }
+
+    if (flightParams[0].return_date) {
+      flightParams.push({
+        origin: flightParams[0].destination,
+        destination: flightParams[0].origin,
+        departure_date: flightParams[0].return_date
+      })
+
+      delete flightParams[0].return_date
+    }
 
     this.setState({
-      flightParams: flightParams
+      flightParamsArr: flightParams
     })
   }
 
@@ -109,7 +155,7 @@ class FindFlight extends Component {
   }
 
   filterByParam (param) {
-    if (param === 'departure_date' || param === 'arrival_date') {
+    if (param === 'departure_date' || param === 'return_date') {
       return (flight) => {
         return flight[param] === this.state.flightParams[param]
       }
@@ -135,9 +181,30 @@ class FindFlight extends Component {
   }
 
   filterFlightsAvailable (flights) {
-    let flightsFiltered = this.filterByParams(flights, this.state.flightParams)
+    let flightsFiltered = []
+
+    for (let params of this.state.flightParamsArr) {
+      flightsFiltered.push(this.filterByParams(flights, params))
+    }
 
     return flightsFiltered
+  }
+
+  onSort (type, e) {
+    let checkbox = e.currentTarget
+    let value = checkbox.value
+
+    if (type === 'sort') {
+      this.setState({
+        currentSort: parseInt(value, 10)
+      })
+    }
+
+    if (type === 'filter') {
+      this.setState({
+        currentFilter: parseInt(value, 10)
+      })
+    }
   }
 
   componentDidMount () {
@@ -164,20 +231,65 @@ class FindFlight extends Component {
   }
 
   render () {
-    let flights = this.filterFlightsAvailable(this.props.flights)
+    // let flights = this.filterFlightsAvailable(this.props.flights)
+    console.log(this.filterFlightsAvailable(this.props.flights))
+    let flights = this.props.flights
+    // if (this.state.currentSort === 1) {
+    //   flights = flight.sort()
+    // } else if (this.state.currentSort === 2) {
+    //
+    // }
     let numberFlights = flights.length
+
     return (
       <div className='o-search'>
         <ToggleFlightMode onToggle={this.onModeToggle} options={this.state.modes} currentOption={this.state.currentMode} />
-        <form className='m-search u-pill u-pill--left u-pill--right' method='GET' ref={this.form} onSubmit={this.onFormSubmit}>
-          <div className='m-search__row'>
-            <SelectLocation type='origin' locations={this.state.options.origin} />
-            <SelectLocation type='destination' locations={this.state.options.origin} />
-            <SelectDate type='departure_date' dates={[]} />
-            <SelectDate type='arrival_date' dates={[]} />
-          </div>
-          <button className='a-button a-button--primary a-button--circle-lg m-search__button' type='submit' />
-        </form>
+
+        {
+          this.state.currentMode === 'return'
+          ? <form className='m-search u-pill u-pill--left u-pill--right' method='GET' ref={this.form} onSubmit={this.onFormSubmit}>
+              <div className='m-search__row'>
+                <SelectLocation type='origin' locations={this.state.options.origin} flightCount={0} />
+                <SelectLocation type='destination' locations={this.state.options.origin} flightCount={0} />
+                <SelectDate type='departure_date' dates={[]} flightCount={0} />
+                <SelectDate type='return_date' dates={[]} flightCount={0} />
+              </div>
+              <button className='a-button a-button--primary a-button--circle-lg m-search__button' type='submit' />
+            </form>
+          : ''
+        }
+
+        {
+          this.state.currentMode === 'one-way'
+          ? <form className='m-search u-pill u-pill--left u-pill--right' method='GET' ref={this.form} onSubmit={this.onFormSubmit}>
+              <div className='m-search__row'>
+                <SelectLocation type='origin' locations={this.state.options.origin} flightCount={0} />
+                <SelectLocation type='destination' locations={this.state.options.origin} flightCount={0} />
+                <SelectDate type='departure_date' dates={[]} flightCount={0} />
+              </div>
+              <button className='a-button a-button--primary a-button--circle-lg m-search__button' type='submit' />
+            </form>
+          : ''
+        }
+
+        {
+          this.state.currentMode === 'multi'
+          ? <form className='m-search u-pill u-pill--left u-pill--right' method='GET' ref={this.form} onSubmit={this.onFormSubmit}>
+            {
+              Array.from({length: this.state.numberRows}).map((n, i) => {
+                return(
+                  <div key={i} className='m-search__row'>
+                    <SelectLocation type='origin' locations={this.state.options.origin} flightCount={i} />
+                    <SelectLocation type='destination' locations={this.state.options.origin} flightCount={i} />
+                    <SelectDate type='departure_date' dates={[]} flightCount={i} />
+                  </div>
+                )
+              })
+            }
+              <button className='a-button a-button--primary a-button--circle-lg m-search__button' type='submit' />
+            </form>
+          : ''
+        }
         <div className='o-results'>
           <div className='o-results__header'>
             <h2>
@@ -192,50 +304,20 @@ class FindFlight extends Component {
         <div className='u-flex'>
           <div className='o-results__filter'>
             <div className='m-sort-block u-pill--top u-pill--bottom'>
-              <h3 className='m-sort-block__header'>Sort flights</h3>
-
-              <div className='m-sort-block__item u-flex u-flex--space-between u-flex--center-v'>
-                <label className='m-sort-block__item-title'>Cheapest First</label>
-                <label className='a-checkbox'>
-                  <input type='checkbox' className='a-checkbox__input' />
-                  <span className='a-checkbox__marker' />
-                </label>
-              </div>
-
-              <div className='m-sort-block__item u-flex u-flex--space-between u-flex--center-v'>
-                <label className='m-sort-block__item-title'>Fastest First</label>
-                <label className='a-checkbox'>
-                  <input type='checkbox' className='a-checkbox__input' />
-                  <span className='a-checkbox__marker' />
-                </label>
-              </div>
-
-              <h3 className='m-sort-block__header'>Filter</h3>
-
-              <div className='m-sort-block__item u-flex u-flex--space-between u-flex--center-v'>
-                <label className='m-sort-block__item-title'>All</label>
-                <label className='a-checkbox'>
-                  <input type='checkbox' className='a-checkbox__input' />
-                  <span className='a-checkbox__marker' />
-                </label>
-              </div>
-
-              <div className='m-sort-block__item u-flex u-flex--space-between u-flex--center-v'>
-                <label className='m-sort-block__item-title'>Only Direct</label>
-                <label className='a-checkbox'>
-                  <input type='checkbox' className='a-checkbox__input' />
-                  <span className='a-checkbox__marker' />
-                </label>
-              </div>
-
-              <div className='m-sort-block__item u-flex u-flex--space-between u-flex--center-v'>
-                <label className='m-sort-block__item-title'>Joining</label>
-                <label className='a-checkbox'>
-                  <input type='checkbox' className='a-checkbox__input' />
-                  <span className='a-checkbox__marker' />
-                </label>
-              </div>
-
+              <SortFlights
+                type={'sort'}
+                heading={'Sort flights'}
+                selected={this.state.currentSort}
+                options={this.state.filters}
+                onSelect={(e) => { this.onSort('sort', e) }}
+              />
+              <SortFlights
+                type={'filter'}
+                heading={'Filter'}
+                selected={this.state.currentFilter}
+                options={this.state.sorts}
+                onSelect={(e) => { this.onSort('filter', e) }}
+              />
             </div>
           </div>
           <div className='o-results__list u-pill--top u-pill--bottom u-pill--wrapper'>
@@ -279,6 +361,7 @@ FindFlight.propTypes = {
       destination: PropTypes.shape({
         city: PropTypes.string,
         location: PropTypes.string,
+        country: PropTypes.string,
         country_code: PropTypes.string,
         IATA: PropTypes.string,
         ICAO: PropTypes.string

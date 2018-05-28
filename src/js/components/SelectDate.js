@@ -20,7 +20,6 @@ class SelectDate extends Component {
   }
 
   onChange (date) {
-    console.log(date)
     this.setState({
       value: date,
       submitValue: date.format('DD/MM/YY')
@@ -34,7 +33,7 @@ class SelectDate extends Component {
   render () {
     return (
       <div className={`m-search__item m-search__item--${this.props.type}`} ref={this.element}>
-        <input id={`input_${this.props.type}`} type='hidden' value={this.state.submitValue} />
+        <input id={`input_${this.props.type}_${this.props.flightCount}`} type='hidden' value={this.state.submitValue} />
         <DatePicker
           className='a-input a-input--with-icon'
           selected={this.state.value || moment().add(6, 'days')}
@@ -49,6 +48,7 @@ class SelectDate extends Component {
 
 SelectDate.propTypes = {
   type: PropTypes.string,
+  flightCount: PropTypes.number,
   dates: PropTypes.arrayOf(
     PropTypes.string
   )
@@ -56,6 +56,7 @@ SelectDate.propTypes = {
 
 SelectDate.defaultProps = {
   type: '',
+  flightCount: 0,
   dates: []
 }
 

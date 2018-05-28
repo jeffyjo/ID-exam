@@ -5,13 +5,23 @@
   padding: 0 1em;
 
   background-color: $color-form-bg;
-
-  box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.2);
 }
 
 .m-search__row {
   display: grid;
   grid-template-columns: repeat(5, 20%);
+
+  &:not(:first-child):before {
+    content: '';
+    display: block;
+    position: absolute;
+
+    border-top: 1px solid lightgrey;
+
+    width: calc(100% + 2em);
+
+    left: -1em;
+  }
 }
 
 %icon {
@@ -30,6 +40,8 @@
 
     background-size: contain;
     background-repeat: no-repeat;
+
+    z-index: 1;
 
     pointer-events: none;
   }
@@ -83,9 +95,12 @@
 .m-search__suggestion {
   padding: $size-margin--sm $size-padding--md;
 
+  padding: 0.5em;
+
+  border-radius: 0.5em;
+
   &:hover {
-    background-color: $color-checkbox-active;
-    color: $color-form-bg;
+    background-color: $util-grey;
 
     cursor: pointer;
   }
@@ -93,7 +108,11 @@
 .m-search__suggestions {
   position: absolute;
 
+  box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.2);
+
   width: 100%;
+
+  padding: 0.5em;
 
   max-height: 300px;
 
@@ -101,12 +120,14 @@
 
   background-color: $color-form-bg;
 
-  border-bottom-left-radius: $size-padding--sm;
-  border-bottom-right-radius: $size-padding--sm;
+  border-radius: 1em;
 
-  bottom: 0;
+  bottom: -5px;
+  left: 0;
 
   transform: translateY(100%);
+
+  z-index: 1;
 
   span {
     font-size: $font-size--sm;
