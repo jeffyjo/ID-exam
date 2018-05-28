@@ -21,3 +21,10 @@
     flex-wrap: nowrap;
   }
 }
+
+.u-flex__item {
+
+  &--right {
+    align-self: flex-end;
+  }
+}

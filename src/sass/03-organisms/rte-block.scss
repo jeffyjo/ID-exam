@@ -13,16 +13,12 @@
     color: $color-rte-text;
   }
 
-  &--lg {
-    font-size: 2em
-  }
-
-  &--xl {
-    font-size: 5em;
-  }
-
   &--space {
     margin: $size-margin--lg 0;
+  }
+
+  &--sm {
+    max-width: 50%;
   }
 
 }

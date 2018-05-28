@@ -1,11 +1,36 @@
 .o-form {
-  background: $color-form-bg;
-  overflow: hidden;
 
   &--relative {
     position: relative;
   }
 
+  &--absolute {
+    position: absolute;
+  }
+
+  &--sm {
+    width: 35em;
+  }
+
+  &--top-arrow {
+
+    &::after{
+      content: "";
+      position: absolute;
+      width: 2em;
+      height: 2em;
+      top: -1em;
+      right: 15%;
+      transform: rotate(45deg);
+
+      background: #ffffff;
+    }
+  }
+
+}
+
+.o-form__content {
+  background: $color-form-bg;  
 }
 
 .o-form__row {
@@ -25,5 +50,16 @@
   padding: $size-padding--md $size-base;
 }
 
-.o-form__content {
+.o-form__btn {
+
+  &--overflow {
+    position: absolute;
+    left: 35%;
+    bottom: -1em;
+  }
+
+  &--space {
+    margin: 2em 0;
+  }
+
 } 
