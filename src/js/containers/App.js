@@ -8,7 +8,7 @@ import FindFlight from './FindFlight'
 import Navbar from './Navbar'
 
 import flights from './../flights.js'
-import user from './../user.js'
+import user, {isLoggedIn} from './../user.js'
 import CreateProfile from './CreateProfile';
 
 class App extends Component {
@@ -31,7 +31,7 @@ class App extends Component {
 
     return (
       <div>
-        <Navbar user={user} />
+        <Navbar user={user} isLoggedIn={isLoggedIn} />
         <Container flights={flights} />
       </div>
     )

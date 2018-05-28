@@ -13,7 +13,8 @@ class CreateProfile extends Component {
 				middleName: null,
 				lastName: null,
 				birthDate: null,
-				sex: null,
+				male: null,
+				female: null,
 				mail: null,
 				phoneNumber: null,
 				companyName: null,
@@ -26,7 +27,8 @@ class CreateProfile extends Component {
 				middleName: null,
 				lastName: null,
 				birthDate: null,
-				sex: null,
+				male: null,
+				female: null,
 				mail: null,
 				phoneNumber: null,
 				companyName: null,
@@ -51,28 +53,24 @@ class CreateProfile extends Component {
 	setProfileParams(){
 		let form = this.form.current
 
-		let validForm = true
-
-    let profileParams = Object.keys(this.state.profileParams).reduce((profileParams, param) => {
+		let profileParams = Object.keys(this.state.profileParams).reduce((profileParams, param) => {
 			let input = form.querySelector(`#input_${param}`)
+			
       if (input) {
         let value = input.value
-        profileParams[param] = value
-      } else {
-				validForm = false
+				profileParams[param] = value
 			}
 
-      return profileParams
-    })
-		
-		console.log('validForm', validForm)
-		console.log(profileParams)
+			return profileParams
+		}, {});
 
-		if(validForm){
-			this.setState({
-				profileParams: profileParams
-			})
-		}
+		// GLOBAL component needed
+		window.localStorage.setItem('user', JSON.stringify(profileParams))
+		window.localStorage.setItem('isLoggedIn', true)
+
+		this.setState({
+			profileParams: profileParams
+		})
 	}
 
   render () {
@@ -85,71 +83,72 @@ class CreateProfile extends Component {
           <p className="o-rte-block__item o-rte-block__item--text o-rte-block__item--space o-rte-block__item--sm">Get access to quick booking, save favourite flights, manage your employee flights and much more</p>
         </div>
 
-        <form className="o-form u-pill--top u-pill--bottom u-grid" method='GET' ref={this.form} onSubmit={this.onFormSubmit}>
-			
-          <div className="o-form__row u-flex u-flex--space-between">
-            <div className="m-form-group">
-              <label htmlFor="firstName" className="a-label m-form-group__label">First name</label>
-              <input className="a-input" name="firstName" autoComplete="off" placeholder="Max" type="text" />
-            </div>
-            <div className="m-form-group m-form-group--border-left">
-              <label htmlFor="middleName" className="a-label m-form-group__label">Middle name</label>
-              <input className="a-input" name="middleName" type="text" autoComplete="off" placeholder="George" />
-            </div>
-            <div className="m-form-group m-form-group--border-left">
-              <label htmlFor="lastName" className="a-label m-form-group__label">Last name</label>
-              <input className="a-input" type="text" name="lastName" autoComplete="off" placeholder="Vertsappen"/>
-            </div>
-          </div>
-
-          <div className="o-form__row u-grid u-grid--2-cols">
-            <div className="m-form-group">
-              <label htmlFor="birthDate" className="a-label m-form-group__label">Date of birth</label>
-              <input className="a-input" type="text" autoComplete="off" placeholder="eg. 28/11-1990" />
-            </div>
-            <div className="m-form-group m-form-group--border-left u-grid u-grid--2-cols u-grid--center">
-              <div className="m-radio">
-                <input type="radio" name="sex" autoComplete="off" id="createProfileSex1" className="m-radio__input" />
-                <label htmlFor="createProfileSex1" className="m-radio__label">MALE</label>
-              </div>
-              <div className="m-radio">
-                <input type="radio" name="sex" autoComplete="off" id="createProfileSex2" className="m-radio__input" />
-                <label htmlFor="createProfileSex2" className="m-radio__label">FEMALE</label>
-              </div>
-            </div>
-          </div>
-
-          <div className="o-form__row u-grid u-grid--2-cols">
-            <div className="m-form-group">
-              <label htmlFor="mail" className="a-label m-form-group__label">E-mail</label>
-              <input className="a-input" type="text" autoComplete="off" placeholder="Max@verstappen.com"  />
-            </div>
-            <div className="m-form-group m-form-group--border-left">
-              <label htmlFor="phoneNumber" className="a-label m-form-group__label">Phone number (optional)</label>
-              <input className="a-input" type="text" autoComplete="off" placeholder="12345678" />
-            </div>
-          </div>
-
-					<div className="o-form__row u-grid u-grid--2-cols">
-            <div className="m-form-group">
-              <label htmlFor="companyName" className="a-label m-form-group__label">Company name</label>
-              <input className="a-input" type="text" autoComplete="off" placeholder="Vestas" />
-            </div>
-            <div className="m-form-group m-form-group--border-left">
-              <label htmlFor="taxNumber" className="a-label m-form-group__label">Tax number</label>
-              <input className="a-input" type="text" autoComplete="off" placeholder="12345678" />
-            </div>
-          </div>
-
-					<div className="o-form__row u-grid u-grid--2-cols">
-						<div className="m-form-group">
-							<input className="a-input" type="text" autoComplete="off" placeholder="Password" />
+        <form className="o-form u-flex u-flex--column" method='GET' ref={this.form} onSubmit={this.onFormSubmit}>
+					<div className="o-form__content u-pill--top u-pill--bottom">
+						<div className="o-form__row u-flex u-flex--space-between">
+							<div className="m-form-group">
+								<label htmlFor="firstName" className="a-label m-form-group__label">First name</label>
+								<input className="a-input" name="firstName" id="input_firstName" autoComplete="off" placeholder="Max" type="text" />
+							</div>
+							<div className="m-form-group m-form-group--border-left">
+								<label htmlFor="middleName" className="a-label m-form-group__label">Middle name</label>
+								<input className="a-input" name="middleName" id="input_middleName" type="text" autoComplete="off" placeholder="George" />
+							</div>
+							<div className="m-form-group m-form-group--border-left">
+								<label htmlFor="lastName" className="a-label m-form-group__label">Last name</label>
+								<input className="a-input" type="text" name="lastName" id="input_lastName" autoComplete="off" placeholder="Vertsappen"/>
+							</div>
 						</div>
-						<div className="m-form-group m-form-group--border-left">
-							<input className="a-input" type="text" autoComplete="off" placeholder="Repeat password" />
+
+						<div className="o-form__row u-grid u-grid--2-cols">
+							<div className="m-form-group">
+								<label htmlFor="birthDate" className="a-label m-form-group__label">Date of birth</label>
+								<input className="a-input" type="text" name="birthdate" id="input_birthDate" autoComplete="off" placeholder="eg. 28/11-1990" />
+							</div>
+							<div className="m-form-group m-form-group--border-left u-grid u-grid--2-cols u-grid--center">
+								<div className="m-radio">
+									<input type="radio" name="sex" autoComplete="off" id="input_male" className="m-radio__input" />
+									<label htmlFor="input_male" className="m-radio__label">MALE</label>
+								</div>
+								<div className="m-radio">
+									<input type="radio" name="sex" autoComplete="off" id="input_female" className="m-radio__input" />
+									<label htmlFor="input_female" className="m-radio__label">FEMALE</label>
+								</div>
+							</div>
+						</div>
+
+						<div className="o-form__row u-grid u-grid--2-cols">
+							<div className="m-form-group">
+								<label htmlFor="mail" className="a-label m-form-group__label">E-mail</label>
+								<input className="a-input" name="mail" id="input_mail" type="text" autoComplete="off" placeholder="Max@verstappen.com"  />
+							</div>
+							<div className="m-form-group m-form-group--border-left">
+								<label htmlFor="phoneNumber" className="a-label m-form-group__label">Phone number (optional)</label>
+								<input className="a-input" type="text" name="phoneNumber" id="input_phoneNumber" autoComplete="off" placeholder="12345678" />
+							</div>
+						</div>
+
+						<div className="o-form__row u-grid u-grid--2-cols">
+							<div className="m-form-group">
+								<label htmlFor="companyName" className="a-label m-form-group__label">Company name</label>
+								<input className="a-input" type="text" name="companyName" id="input_companyName" autoComplete="off" placeholder="Vestas" />
+							</div>
+							<div className="m-form-group m-form-group--border-left">
+								<label htmlFor="taxNumber" className="a-label m-form-group__label">Tax number</label>
+								<input className="a-input" type="text" name="taxNumber" id="input_taxNumber" autoComplete="off" placeholder="12345678" />
+							</div>
+						</div>
+
+						<div className="o-form__row u-grid u-grid--2-cols">
+							<div className="m-form-group">
+								<input className="a-input" type="password" name="input_password" id="input_password" autoComplete="off" placeholder="Password" />
+							</div>
+							<div className="m-form-group m-form-group--border-left">
+								<input className="a-input" type="password" name="input_repeatPassword" id="input_repeatPassword" autoComplete="off" placeholder="Repeat password" />
+							</div>
 						</div>
 					</div>
-					<button type="submit" className="a-button a-button--primary a-button--pill u-grid__item--right">Register</button>
+					<button type="submit" className="a-button a-button--primary a-button--pill u-flex__item--right">Register</button>
         </form>
 
       </div>
