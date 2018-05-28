@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 
 import Home from './Home'
 import FindFlight from './FindFlight'
+import FlightBooked from './FlightBooked'
 
 import flights from './../flights.js'
 
@@ -17,6 +18,9 @@ class App extends Component {
         break
       case 'search':
         Container = FindFlight
+        break
+      case 'flight-booked':
+        Container = FlightBooked
         break
       default:
         Container = Home
