@@ -53,3 +53,13 @@ export const allPossibleCases = (arr) => {
     return result
   }
 }
+
+export const priceSum = (flights, currency = '€', decimal = ',') => {
+  return flights.reduce((price, flight) => {
+    let withoutSymbol = flight.price.replace(currency, '')
+    let withDot = withoutSymbol.replace(decimal, '.')
+    let asFloat = parseFloat(withDot)
+    price += asFloat
+    return price
+  }, 0)
+}
