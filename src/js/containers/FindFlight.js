@@ -51,7 +51,7 @@ class FindFlight extends Component {
       modes: [
         'Return',
         'One-way',
-        'multi'
+        'Multi'
       ],
       currentMode: 'One-way',
       numberRows: 1,
@@ -105,20 +105,6 @@ class FindFlight extends Component {
     let form = this.form.current
 
     if (!form) return void 0
-    //
-    // let flightParams = Object.keys(this.state.flightParams).reduce((flightParams, param) => {
-    //   let input = form.querySelector(`#input_${param}`)
-    //   if (input) {
-    //     let value = input.value
-    //     flightParams[param] = value
-    //   }
-    //
-    //   return flightParams
-    // }, {})
-    //
-    // this.setState({
-    //   flightParams: flightParams
-    // })
 
     let flightParams = []
 
@@ -152,7 +138,7 @@ class FindFlight extends Component {
   }
 
   onModeToggle (mode) {
-    let numberRows = mode === 'multi' ? 2 : 1
+    let numberRows = mode === 'Multi' ? 2 : 1
     this.setState({
       currentMode: mode,
       numberRows: numberRows
@@ -162,12 +148,10 @@ class FindFlight extends Component {
   filterByParam (param, val) {
     if (param === 'departure_date' || param === 'return_date') {
       return (flight) => {
-        // return flight[param] === this.state.flightParams[param]
         return flight[param] === val
       }
     } else if (param === 'origin' || param === 'destination') {
       return (flight) => {
-        // return flight[param]['IATA'] === this.state.flightParams[param]
         return flight[param]['IATA'] === val
       }
     } else {
@@ -242,9 +226,7 @@ class FindFlight extends Component {
   render () {
     let flights = this.filterFlightsAvailable(this.props.flights)
 
-    console.log(this.state.currentMode)
-
-    if (this.state.currentMode === 'One-way') {
+    if (flights[0] && !Array.isArray(flights[0])) {
       flights = flights.map(flight => [flight])
     }
 
@@ -282,7 +264,7 @@ class FindFlight extends Component {
         }
 
         {
-          this.state.currentMode === 'multi'
+          this.state.currentMode === 'Multi'
           ? <form className='m-search u-pill u-pill--left u-pill--right' method='GET' ref={this.form} onSubmit={this.onFormSubmit}>
             {
               Array.from({length: this.state.numberRows}).map((n, i) => {

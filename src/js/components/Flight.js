@@ -22,9 +22,7 @@ class Flight extends Component {
       let withoutSymbol = flight.price.replace('€', '')
       let withDot = withoutSymbol.replace(',', '.')
       let asFloat = parseFloat(withDot)
-
       price += asFloat
-
       return price
     }, 0)
 
