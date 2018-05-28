@@ -77,6 +77,12 @@
       background-image: url('/public/images/icon_date_grey.svg');
     }
   }
+  &--passenger_count {
+    @extend %icon;
+    &:before {
+      background-image: url('/public/images/icon_passenger_grey.svg');
+    }
+  }
 }
 
 .m-search__item:not(:first-child) {

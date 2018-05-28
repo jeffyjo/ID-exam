@@ -29,4 +29,9 @@
 
   appearance: none;
   -webkit-appearance: none;
+
+  &--passenger {
+    padding: 0.5em 0 0.5em 28px;
+    font-family: $font-input;
+  }
 }
