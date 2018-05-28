@@ -4,6 +4,10 @@ import React, { Component } from 'react'
 
 import PropTypes from 'prop-types'
 
+import {
+  objectToUrlString
+} from './../utils'
+
 class Flight extends Component {
   constructor (props) {
     super(props)
@@ -25,6 +29,14 @@ class Flight extends Component {
       price += asFloat
       return price
     }, 0)
+
+    let flightIds = this.props.flights.reduce((str, flight) => {
+      return (!!str ? str += '-' : '') + flight.id
+    }, '')
+
+    let bookingUrl = 'book.html?' + objectToUrlString({
+      ids: flightIds
+    })
 
     return (
       <div className='m-table-item'>
@@ -65,7 +77,7 @@ class Flight extends Component {
             <label className='m-price-block__title'>Price</label>
             <h2 className='m-price-block__price'>{'€' + price}</h2>
           </div>
-          <button className='a-button a-button--secondary a-button--square m-price-block__btn u-flex u-flex--center-h'>Book</button>
+          <a href={bookingUrl} className='a-button a-button--secondary a-button--square m-price-block__btn u-flex u-flex--center-h'>Book</a>
         </div>
       </div>
     )

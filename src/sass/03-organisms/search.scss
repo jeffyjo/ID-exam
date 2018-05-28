@@ -1,0 +1,12 @@
+.o-search {
+  &__heading {
+    padding: 6em 0 4em;
+    max-width: 800px;
+    text-align: center;
+    margin: 0 auto;
+    h1 {
+      line-height: 1;
+      color: $primary-text;
+    }
+  }
+}

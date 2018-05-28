@@ -234,6 +234,13 @@ class FindFlight extends Component {
 
     return (
       <div className='o-search'>
+        {
+          this.state.initial
+          ? <div className='o-search__heading'>
+              <h1>Your next business trip worry free!</h1>
+            </div>
+          : ''
+        }
         <ToggleFlightMode onToggle={this.onModeToggle} options={this.state.modes} currentOption={this.state.currentMode} />
 
         {
