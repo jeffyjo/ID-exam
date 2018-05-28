@@ -40,11 +40,11 @@ class Flight extends Component {
               <div key={i} className='m-table-item__inner'>
                 <div className='m-table-item__row m-table-item__row--top'>
                   <div className='m-table-item__header u-grid u-grid--3-cols'>
-                    <label className='m-table-item__header-item'>{flight.origin['IATA']}</label>
+                    <label className='m-table-item__header-item'><span className='m-table-item__header-item--bg-white'>{flight.origin['IATA']}</span></label>
                     <label className='m-table-item__header-item'>
-                      <span className='m-table-item__header-item--bg'>{duration}</span>
+                      <span className='m-table-item__header-item--bg-grey'>{duration}</span>
                     </label>
-                    <label className='m-table-item__header-item'>{flight.destination['IATA']}</label>
+                    <label className='m-table-item__header-item'><span className='m-table-item__header-item--bg-white'>{flight.destination['IATA']}</span></label>
                   </div>
                 </div>
                 <div className='m-table-item__row u-grid u-grid--3-cols'>

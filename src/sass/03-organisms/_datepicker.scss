@@ -117,10 +117,10 @@ $datepicker__triangle-size: 8px !default;
 }
 
 .react-datepicker-popper {
-  z-index: 1;
+  z-index: 999;
 
   &[data-placement^="bottom"] {
-    margin-top: $datepicker__triangle-size + 2px;
+    margin-top: $datepicker__triangle-size + 12px;
 
     .react-datepicker__triangle {
       @extend %triangle-arrow-up;

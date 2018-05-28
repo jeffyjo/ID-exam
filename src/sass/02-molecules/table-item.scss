@@ -18,7 +18,7 @@
   padding: 0 $size-padding--lg $size-padding--lg;
 
   &--top {
-    padding: $size-padding--lg;
+    padding: $size-padding--lg $size-padding--lg $size-padding--sm;
   }
 
 }
@@ -34,11 +34,21 @@
 }
 
 .m-table-item__header-item {
-
-  &--bg {
+  &--bg-white{
+    background-color: white;
+    padding-right: 4px;
+    padding-left: 4px;
+    margin-left: -4px;
+  }
+  &--bg-grey {
     background: $color-table-header-bg;
-    padding: $size-padding--xxs;
+    padding: 3px 8px 1px;
     border-radius: $size-table-header-border;
+  }
+  &:not(:last-of-type){
+    background-image: url(/public/images/graphic_dash.svg);
+    background-repeat: repeat-x;
+    background-position: center;
   }
 
 }
