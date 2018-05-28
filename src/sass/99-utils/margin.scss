@@ -1,0 +1,42 @@
+
+
+.u-margin {
+
+  &--sm {
+    
+    margin: $size-margin--sm;
+
+    &-h {
+      margin: 0 $size-margin--sm;
+    }
+
+    &-v {
+      margin: $size-margin--sm 0;
+    }
+  }
+
+  &--md {
+    margin: $size-margin--md;
+
+    &-h {
+      margin: 0 $size-margin--md;
+    }
+
+    &-v {
+      margin: $size-margin--md 0;
+    }
+  }
+
+  &--lg {
+    margin: $size-margin--lg;
+
+    &-h {
+      margin: 0 $size-margin--lg;
+    }
+
+    &-v {
+      margin: $size-margin--lg 0;
+    }
+  }
+
+}

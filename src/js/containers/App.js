@@ -5,6 +5,7 @@ import React, { Component } from 'react'
 import Home from './Home'
 import FindFlight from './FindFlight'
 import Navbar from './Navbar'
+import FlightBooked from './FlightBooked'
 
 import flights from './../flights.js'
 import user, {isLoggedIn} from './../user.js'
@@ -23,6 +24,8 @@ class App extends Component {
         break
       case 'create':
         Container = CreateProfile
+      case 'flight-booked':
+        Container = FlightBooked
         break
       default:
         Container = Home
