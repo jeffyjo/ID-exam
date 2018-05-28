@@ -3,14 +3,10 @@
 import React, { Component } from 'react'
 
 class ToggleFlightMode extends Component {
-  constructor (props) {
-    super(props)
-  }
-
   render () {
     return (
       <nav className='m-nav m-nav--space'>
-        <ul className="m-nav__inner">
+        <ul className='m-nav__inner'>
           {this.props.options.map((option, i) => {
             return (
               <li

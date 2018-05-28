@@ -37,23 +37,23 @@ class Flight extends Component {
             duration = parseInt(duration, 10).toFixed(1) + 'h'
 
             return (
-              <div key={i} className="m-table-item__inner">
-                <div className="m-table-item__row m-table-item__row--top">
-                  <div className="m-table-item__header u-grid u-grid--3-cols">
-                    <label className="m-table-item__header-item">{flight.origin['IATA']}</label>
-                    <label className="m-table-item__header-item">
-                      <span className="m-table-item__header-item--bg">{duration}</span>
+              <div key={i} className='m-table-item__inner'>
+                <div className='m-table-item__row m-table-item__row--top'>
+                  <div className='m-table-item__header u-grid u-grid--3-cols'>
+                    <label className='m-table-item__header-item'>{flight.origin['IATA']}</label>
+                    <label className='m-table-item__header-item'>
+                      <span className='m-table-item__header-item--bg'>{duration}</span>
                     </label>
-                    <label className="m-table-item__header-item">{flight.destination['IATA']}</label>
+                    <label className='m-table-item__header-item'>{flight.destination['IATA']}</label>
                   </div>
                 </div>
-                <div className="m-table-item__row u-grid u-grid--3-cols">
-                  <div className="m-table-item__row-content u-flex u-flex--column">
+                <div className='m-table-item__row u-grid u-grid--3-cols'>
+                  <div className='m-table-item__row-content u-flex u-flex--column'>
                     <label>{flight.origin.city}</label>
                     <label>{flight.departure_time}</label>
                   </div>
-                  <div></div>
-                  <div className="m-table-item__row-content u-flex u-flex--column">
+                  <div />
+                  <div className='m-table-item__row-content u-flex u-flex--column'>
                     <label>{flight.destination.city}</label>
                     <label>{flight.arrival_time}</label>
                   </div>
@@ -62,12 +62,12 @@ class Flight extends Component {
             )
           })}
         </div>
-        <div className="m-price-block">
-          <div className="m-price-block__content u-grid u-grid--2-cols">
-            <h3 className="m-price-block__title">Price</h3>
-            <h2 className="m-price-block__price">{'€'+price}</h2>
+        <div className='m-price-block'>
+          <div className='m-price-block__content u-grid u-grid--2-cols'>
+            <h3 className='m-price-block__title'>Price</h3>
+            <h2 className='m-price-block__price'>{'€' + price}</h2>
           </div>
-          <button className="a-button a-button--secondary a-button--square m-price-block__btn u-flex u-flex--center-h">Square</button>
+          <button className='a-button a-button--secondary a-button--square m-price-block__btn u-flex u-flex--center-h'>Square</button>
         </div>
       </div>
     )

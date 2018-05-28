@@ -7,12 +7,6 @@ import moment from 'moment'
 
 import PropTypes from 'prop-types'
 
-import {
-  filterUnique,
-  filterStringMatch,
-  removeDuplicateObjectsByKey
-} from './../utils'
-
 class SelectDate extends Component {
   constructor (props) {
     super(props)
@@ -40,7 +34,7 @@ class SelectDate extends Component {
   render () {
     return (
       <div className={`m-search__item m-search__item--${this.props.type}`} ref={this.element}>
-        <input id={`input_${this.props.type}`} type='hidden' value={this.state.submitValue}></input>
+        <input id={`input_${this.props.type}`} type='hidden' value={this.state.submitValue} />
         <DatePicker
           className='a-input a-input--with-icon'
           selected={this.state.value || moment().add(6, 'days')}

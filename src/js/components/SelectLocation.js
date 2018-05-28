@@ -5,9 +5,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  filterUnique,
-  filterStringMatch,
-  removeDuplicateObjectsByKey
+  filterStringMatch
 } from './../utils'
 
 class SelectLocation extends Component {
@@ -60,8 +58,6 @@ class SelectLocation extends Component {
     let location = clicked.getAttribute('data-value')
     let submitValue = clicked.getAttribute('data-submit-value')
 
-    console.log('HELLO!!!!', location, submitValue)
-
     this.setState({
       value: location,
       submitValue: submitValue,
@@ -80,8 +76,6 @@ class SelectLocation extends Component {
     let triggerElement = e.target
     let currentElement = this.element.current
 
-    console.log(currentElement, 'contains', triggerElement)
-
     if (!currentElement.contains(triggerElement)) {
       document.removeEventListener('click', this.onBlur)
 
@@ -98,7 +92,7 @@ class SelectLocation extends Component {
   render () {
     return (
       <div className={`m-search__item m-search__item--${this.props.type}`} ref={this.element}>
-        <input id={`input_${this.props.type}`} type='hidden' value={this.state.submitValue}></input>
+        <input id={`input_${this.props.type}`} type='hidden' value={this.state.submitValue} />
         <input
           className='a-input a-input--with-icon'
           onInput={this.onInput}
@@ -106,8 +100,8 @@ class SelectLocation extends Component {
           value={this.state.value || ''}
           placeholder={this.props.type}
         />
-        {this.state.focus ?
-          <div className='m-search__suggestions'>
+        {this.state.focus
+          ? <div className='m-search__suggestions'>
             <div className='m-search__suggestions-wrapper'>
               {this.state.suggestedLocations.map((location, i) => {
                 return (
@@ -119,7 +113,7 @@ class SelectLocation extends Component {
               })}
             </div>
           </div>
-        : ''}
+          : ''}
       </div>
     )
   }
