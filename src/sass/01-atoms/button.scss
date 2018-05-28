@@ -9,14 +9,18 @@
   
   outline: none;
   cursor: pointer;  
+  transition: all 300ms ease;
 
   &--primary {
     background: $color-btn-primary;
     color: $color-btn-secondary;
+    &:hover{
+      background-color: $util-dark-yellow;
+    }
   }
 
   &--secondary {
-    background: $color-btn-secondary;
+    background-color: $color-btn-secondary;
 
     &-text {
       color: $color-btn-secondary-text;
@@ -24,7 +28,7 @@
   }
   
   &--transparent {
-    background: $color-btn-transparent;
+    background-color: $color-btn-transparent;
   }
 
   &--disabled {
@@ -56,10 +60,13 @@
   }
 
   &--square {
-    background: $color-btn-square;
+    background-color: $color-btn-square;
     color: $color-btn-secondary;
     border-radius: $size-btn--square;
     padding: 0.35em $size-padding--sm;
+    &:hover{
+      background-color: $util-dark-blue;
+    }
   }
 
 }
