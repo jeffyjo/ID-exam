@@ -5,6 +5,11 @@
 .m-site-header__header {
   margin: 1.5em 0;
 
+  &--margin-sm {
+  margin: .5em 0;
+    
+  }
+
   &--lg {
     font-size: 5em;
   }

@@ -7,9 +7,8 @@ class FlightBooked extends Component {
     super(props)
 
     this.state = {
-      full: false
+      full: true
     }
-
   }
 
   render () {
@@ -31,7 +30,7 @@ class FlightBooked extends Component {
         </div>
         <div className="o-cta-block o-cta-block--middle-align u-grid">
           <div className="m-site-header o-cta-block__item">
-            <h2 className="m-site-header__header m-site-header__header--lg">Thank you!</h2>
+            <h2 className="m-site-header__header m-site-header__header--margin-sm m-site-header__header--lg">Thank you!</h2>
             <p className="m-site-header__lead">Your flights has been booked. We have sent the ticket additionally to your e-mail.</p>
           </div>
           <button className="a-button a-button--primary a-button--pill o-cta-block__item u-grid__item u-grid__item--center-h">Download ticket</button>
