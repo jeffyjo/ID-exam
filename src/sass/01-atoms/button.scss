@@ -4,11 +4,8 @@
 
 .a-button {
   border: none;
-  box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.2);
+  
   max-width: 20em;
-  color: $color-btn-text;
-
-  margin: auto;
   
   outline: none;
   cursor: pointer;  
@@ -49,6 +46,7 @@
     border-radius: $size-btn--circle;
     width: $size-button--lg;
     height: $size-button--lg;
+    box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.2);
   }
 
   &--pill {
@@ -60,7 +58,7 @@
     background: $color-btn-square;
     color: $color-btn-secondary;
     border-radius: $size-btn--square;
-    padding: $size-padding--xs $size-padding--sm;
+    padding: 0.35em $size-padding--sm;
   }
 
 }

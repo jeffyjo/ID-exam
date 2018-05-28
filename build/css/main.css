@@ -40,7 +40,6 @@ body {
 
 **************************************************/
 a {
-  font-size: 1.6em;
   border: none;
   text-decoration: none; }
 
@@ -109,8 +108,6 @@ input:-moz-placeholder {
 /* Needs to have a modifier to work properly */
 .a-button {
   border: none;
-  -webkit-box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.2);
-          box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.2);
   max-width: 20em;
   color: #ffffff;
   margin: auto;
@@ -121,7 +118,7 @@ input:-moz-placeholder {
   .a-button--secondary {
     background: #ffffff; }
     .a-button--secondary-text {
-      color: rgba(0, 121, 186, 0.62); }
+      color: #5cb3e2; }
   .a-button--transparent {
     background: rgba(0, 0, 0, 0.25); }
   .a-button--disabled {
@@ -137,15 +134,17 @@ input:-moz-placeholder {
   .a-button--circle-lg {
     border-radius: 1000px;
     width: 79px;
-    height: 79px; }
+    height: 79px;
+    -webkit-box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.2); }
   .a-button--pill {
     border-radius: 35px;
     padding: 1em 2em; }
   .a-button--square {
-    background: rgba(0, 121, 186, 0.62);
+    background: #5cb3e2;
     color: #ffffff;
     border-radius: 6px;
-    padding: 0.5em 1em; }
+    padding: 0.35em 1em; }
 
 .a-input {
   margin: 0;
@@ -161,7 +160,9 @@ input:-moz-placeholder {
 
 .a-link {
   color: #ffffff;
-  padding: 0.5em; }
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  cursor: pointer; }
   .a-link--nav {
     font-family: Avenir-Heavy;
     border-bottom-color: #ffffff;
@@ -221,11 +222,11 @@ input:-moz-placeholder {
   transition: .2s; }
 
 .a-switch__checkbox:checked + .a-switch__slider {
-  background-color: rgba(0, 121, 186, 0.62); }
+  background-color: #5cb3e2; }
 
 .a-switch__checkbox:focus + .a-switch__slider {
-  -webkit-box-shadow: 0 0 1px rgba(0, 121, 186, 0.62);
-          box-shadow: 0 0 1px rgba(0, 121, 186, 0.62); }
+  -webkit-box-shadow: 0 0 1px #5cb3e2;
+          box-shadow: 0 0 1px #5cb3e2; }
 
 .a-switch__checkbox:checked + .a-switch__slider:before {
   background-color: #eeeeee;
@@ -310,14 +311,18 @@ input:-moz-placeholder {
 *   }
 */
 .m-nav--space {
-  margin: 4em 0; }
+  margin: 4em 0 4em; }
 
 .m-nav__item {
-  display: inline; }
+  display: inline;
+  font-size: 2em; }
+  .m-nav__item:not(:last-of-type) {
+    margin-right: 1.5em; }
 
 .m-search {
   position: relative;
   padding: 0 1em;
+  margin-bottom: 4em;
   background-color: #ffffff; }
 
 .m-search__row {
@@ -327,9 +332,9 @@ input:-moz-placeholder {
     content: '';
     display: block;
     position: absolute;
-    border-top: 1px solid lightgrey;
-    width: calc(100% + 2em);
-    left: -1em; }
+    border-top: 1px solid #eeeeee;
+    width: 100%;
+    left: 0; }
 
 .m-search__item--origin:before, .m-search__item--destination:before, .m-search__item--departure_date:before, .m-search__item--arrival_date:before {
   content: '';
@@ -359,7 +364,7 @@ input:-moz-placeholder {
     background-image: url("/public/images/icon_date_grey.svg"); }
 
 .m-search__item:not(:first-child) {
-  border-left: 1px solid lightgrey; }
+  border-left: 1px solid #eeeeee; }
 
 .m-search__button {
   position: absolute;
@@ -466,7 +471,7 @@ input:-moz-placeholder {
   text-align: center; }
 
 .m-radio__input:checked ~ .m-radio__label {
-  background: rgba(0, 121, 186, 0.62);
+  background: #5cb3e2;
   color: #ffffff; }
 
 .m-sort-block {
@@ -487,17 +492,30 @@ input:-moz-placeholder {
   font-size: 1.8em; }
 
 .m-price-block {
-  background: #eeeeee;
-  padding: 2.5em; }
+  background: #f7f7f7;
+  padding: 1.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
 
 .m-price-block__title {
-  font-size: 1.4em; }
+  font-family: Avenir;
+  font-size: 1.4em;
+  color: #a2a2a2;
+  text-transform: uppercase;
+  font-family: Avenir-medium; }
 
 .m-price-block__price {
   font-size: 2.4em; }
 
 .m-price-block__btn {
-  margin-top: 1em;
   width: 100%; }
 
 .m-table {
@@ -1354,7 +1372,7 @@ input:-moz-placeholder {
   font-size: 2em; }
 
 .util-background {
-  background: rgba(0, 121, 186, 0.62);
+  background: #5cb3e2;
   padding: 1em;
   margin-bottom: 100px; }
 

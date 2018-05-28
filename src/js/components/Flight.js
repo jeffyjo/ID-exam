@@ -63,8 +63,8 @@ class Flight extends Component {
           })}
         </div>
         <div className='m-price-block'>
-          <div className='m-price-block__content u-grid u-grid--2-cols'>
-            <h3 className='m-price-block__title'>Price</h3>
+          <div className='m-price-block__content'>
+            <label className='m-price-block__title'>Price</label>
             <h2 className='m-price-block__price'>{'€' + price}</h2>
           </div>
           <button className='a-button a-button--secondary a-button--square m-price-block__btn u-flex u-flex--center-h'>Square</button>

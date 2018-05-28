@@ -3,6 +3,7 @@
   position: relative;
 
   padding: 0 1em;
+  margin-bottom: $size-margin--lg;
 
   background-color: $color-form-bg;
 }
@@ -16,11 +17,11 @@
     display: block;
     position: absolute;
 
-    border-top: 1px solid lightgrey;
+    border-top: 1px solid $util-md-light;
 
-    width: calc(100% + 2em);
+    width: 100%;
 
-    left: -1em;
+    left: 0;
   }
 }
 
@@ -79,7 +80,7 @@
 }
 
 .m-search__item:not(:first-child) {
-  border-left: 1px solid lightgrey;
+  border-left: 1px solid $util-md-light;
 }
 
 .m-search__button {
