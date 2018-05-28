@@ -99,7 +99,7 @@ gulp.task( 'watch', ['sass', 'scripts', 'lint', 'serve'], () => {
     gulp.watch(folder.watch + path.sass.watch, ['sass'])
     gulp.watch(folder.watch + path.js.watch, ['lint', 'scripts'])
 
-    gulp.watch(folder.watch + '**/*').on( 'change', bs.reload )
+    // gulp.watch(folder.watch + '**/*').on( 'change', bs.reload )
 
     // Atomic design development is made in atomic.html
     gulp.watch( 'patterns/atomic.html' ).on( 'change', bs.reload )

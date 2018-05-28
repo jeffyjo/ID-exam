@@ -1,0 +1,19 @@
+.o-results {
+
+}
+
+.o-results__header {
+  margin: $size-margin--md 0;
+  h2 {
+    color: $primary-text;
+  }
+}
+
+.o-results__filter {
+  width: calc(30% - #{$size-margin--md});
+  margin-right: $size-margin--md;
+}
+
+.o-results__list {
+  width: 70%;
+}

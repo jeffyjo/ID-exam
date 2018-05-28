@@ -7,12 +7,6 @@ import moment from 'moment'
 
 import PropTypes from 'prop-types'
 
-import {
-  filterUnique,
-  filterStringMatch,
-  removeDuplicateObjectsByKey
-} from './../utils'
-
 class SelectDate extends Component {
   constructor (props) {
     super(props)
@@ -26,7 +20,6 @@ class SelectDate extends Component {
   }
 
   onChange (date) {
-    console.log(date)
     this.setState({
       value: date,
       submitValue: date.format('DD/MM/YY')
@@ -39,10 +32,10 @@ class SelectDate extends Component {
 
   render () {
     return (
-      <div ref={this.element}>
-        <input id={`input_${this.props.type}`} type='hidden' value={this.state.submitValue}></input>
+      <div className={`m-search__item m-search__item--${this.props.type}`} ref={this.element}>
+        <input id={`input_${this.props.type}_${this.props.flightCount}`} type='hidden' value={this.state.submitValue} />
         <DatePicker
-          className='a-input a-input--date'
+          className='a-input a-input--with-icon'
           selected={this.state.value || moment().add(6, 'days')}
           onChange={this.onChange}
           locale='en-gb'
@@ -54,12 +47,16 @@ class SelectDate extends Component {
 }
 
 SelectDate.propTypes = {
+  type: PropTypes.string,
+  flightCount: PropTypes.number,
   dates: PropTypes.arrayOf(
     PropTypes.string
   )
 }
 
 SelectDate.defaultProps = {
+  type: '',
+  flightCount: 0,
   dates: []
 }
 

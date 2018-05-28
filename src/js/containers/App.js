@@ -3,7 +3,6 @@
 import React, { Component } from 'react'
 
 import Home from './Home'
-import Search from './Search'
 import FindFlight from './FindFlight'
 
 import flights from './../flights.js'
