@@ -1,5 +1,14 @@
 
 
 .o-main-nav {
-  width: 100%;
+  padding: 1em;
+  border-bottom: $size-border-width-lg solid $color-main-nav-border;
+
+  z-index: 1;
+}
+
+.o-main-nav__login {
+  top: 7em;
+  right: 1em;
+  z-index: 1;
 }

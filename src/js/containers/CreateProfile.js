@@ -88,22 +88,22 @@ class CreateProfile extends Component {
 						<div className="o-form__row u-flex u-flex--space-between">
 							<div className="m-form-group">
 								<label htmlFor="firstName" className="a-label m-form-group__label">First name</label>
-								<input className="a-input" name="firstName" id="input_firstName" autoComplete="off" placeholder="Max" type="text" />
+								<input className="a-input" name="firstName" id="input_firstName" autoComplete="off" placeholder="First name" type="text" />
 							</div>
 							<div className="m-form-group m-form-group--border-left">
 								<label htmlFor="middleName" className="a-label m-form-group__label">Middle name</label>
-								<input className="a-input" name="middleName" id="input_middleName" type="text" autoComplete="off" placeholder="George" />
+								<input className="a-input" name="middleName" id="input_middleName" type="text" autoComplete="off" placeholder="Middle name" />
 							</div>
 							<div className="m-form-group m-form-group--border-left">
 								<label htmlFor="lastName" className="a-label m-form-group__label">Last name</label>
-								<input className="a-input" type="text" name="lastName" id="input_lastName" autoComplete="off" placeholder="Vertsappen"/>
+								<input className="a-input" type="text" name="lastName" id="input_lastName" autoComplete="off" placeholder="Last name"/>
 							</div>
 						</div>
 
 						<div className="o-form__row u-grid u-grid--2-cols">
 							<div className="m-form-group">
 								<label htmlFor="birthDate" className="a-label m-form-group__label">Date of birth</label>
-								<input className="a-input" type="text" name="birthdate" id="input_birthDate" autoComplete="off" placeholder="eg. 28/11-1990" />
+								<input className="a-input" type="text" name="birthdate" id="input_birthDate" autoComplete="off" placeholder="Date of birth (21/1-1990)" />
 							</div>
 							<div className="m-form-group m-form-group--border-left u-grid u-grid--2-cols u-grid--center">
 								<div className="m-radio">
@@ -120,22 +120,22 @@ class CreateProfile extends Component {
 						<div className="o-form__row u-grid u-grid--2-cols">
 							<div className="m-form-group">
 								<label htmlFor="mail" className="a-label m-form-group__label">E-mail</label>
-								<input className="a-input" name="mail" id="input_mail" type="text" autoComplete="off" placeholder="Max@verstappen.com"  />
+								<input className="a-input" name="mail" id="input_mail" type="text" autoComplete="off" placeholder="E-mail"  />
 							</div>
 							<div className="m-form-group m-form-group--border-left">
 								<label htmlFor="phoneNumber" className="a-label m-form-group__label">Phone number (optional)</label>
-								<input className="a-input" type="text" name="phoneNumber" id="input_phoneNumber" autoComplete="off" placeholder="12345678" />
+								<input className="a-input" type="text" name="phoneNumber" id="input_phoneNumber" autoComplete="off" placeholder="Phone number" />
 							</div>
 						</div>
 
 						<div className="o-form__row u-grid u-grid--2-cols">
 							<div className="m-form-group">
 								<label htmlFor="companyName" className="a-label m-form-group__label">Company name</label>
-								<input className="a-input" type="text" name="companyName" id="input_companyName" autoComplete="off" placeholder="Vestas" />
+								<input className="a-input" type="text" name="companyName" id="input_companyName" autoComplete="off" placeholder="Company name" />
 							</div>
 							<div className="m-form-group m-form-group--border-left">
 								<label htmlFor="taxNumber" className="a-label m-form-group__label">Tax number</label>
-								<input className="a-input" type="text" name="taxNumber" id="input_taxNumber" autoComplete="off" placeholder="12345678" />
+								<input className="a-input" type="text" name="taxNumber" id="input_taxNumber" autoComplete="off" placeholder="Tex number (eg. 12345678)" />
 							</div>
 						</div>
 
@@ -148,7 +148,7 @@ class CreateProfile extends Component {
 							</div>
 						</div>
 					</div>
-					<button type="submit" className="a-button a-button--primary a-button--pill u-flex__item--right">Register</button>
+					<button type="submit" className="a-button a-button--primary a-button--pill o-form__btn--space u-flex__item--right">Register</button>
         </form>
 
       </div>

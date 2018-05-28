@@ -27,6 +27,11 @@
     background: $color-btn-transparent;
   }
 
+  &--active {
+    position: relative;
+    z-index: 1;
+  }
+
   &--disabled {
     opacity: .3;
   }
@@ -52,7 +57,7 @@
 
   &--pill {
     border-radius: $size-btn--pill;
-    padding: $size-padding--sm $size-base;
+    padding: $size-padding--xs $size-base;
   }
 
   &--square {

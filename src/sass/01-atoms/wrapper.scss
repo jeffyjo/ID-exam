@@ -3,4 +3,15 @@
   &--page {
     max-width: 920px;
   }
+
+  &--overlay {
+    &::after {
+      content: "";
+      position: absolute;
+      background: black;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
 }

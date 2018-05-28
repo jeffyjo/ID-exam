@@ -4,11 +4,12 @@
   padding-top: $size-padding--xs;
   padding-bottom: $size-padding--xs;
   cursor: pointer;
+  font-size: 2em;
 
   &--nav {
     font-family: $font-link-nav;
     border-bottom-color: $color-link-border-nav;
-    padding: $size-padding--sm;
+    padding: .9em;
   }
 
   &--content {

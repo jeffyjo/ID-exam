@@ -69,11 +69,17 @@ class Navbar extends Component {
   toggleLoggingIn() {
     const showLoggedIn = this.state.isLoggingIn
     this.setState({isLoggingIn: !showLoggedIn})
+
+    let overlay = document.getElementById('overlay')
+    overlay.classList.toggle('u-overlay--active')
+
   }
 
   render () {
     return (
-      <nav className="o-main-nav u-grid u-grid--2-cols">
+      <div>
+      <div id="overlay" className="u-overlay"></div>
+      <nav className="u-grid u-grid--2-cols">
         <div className="m-logo u-grid__item--left u-grid__item--center-v">
           <h1 className="m-logo__header m-logo__header--transparent">Business</h1>
           <h1 className="m-logo__header m-logo__header--bold">Flights Forever</h1>
@@ -90,12 +96,12 @@ class Navbar extends Component {
               <a href="#" className="a-link a-link--nav a-link">Create account</a>
             </li> }
           <li className="m-nav__item">
-            { this.state.isLoggedIn === true ?
-              <button onClick={this.onLogout} className="a-button a-button--secondary a-button--circle-md"></button>
-            : <button onClick={this.toggleLoggingIn} className="a-button a-button--primary a-button--pill">Login</button>
+            { this.state.isLoggedIn === true 
+              ? <button onClick={this.onLogout} className="a-button a-button--secondary a-button--circle-md"></button>
+              : <button onClick={this.toggleLoggingIn} className={this.state.isLoggingIn === true ? "a-button a-button--secondary a-button--secondary-text a-button--pill a-button--active" : "a-button a-button--primary a-button--pill"}>{this.state.isLoggingIn === true ? 'Back' : 'Login' }</button>
             }
           </li>
-          { this.state.isLoggingIn ? <form className="o-form o-form--relative o-form--top-arrow o-form--sm u-grid" method="POST" ref={this.form} onSubmit={this.onFormSubmit}>
+          { this.state.isLoggingIn ? <form className="o-form o-form--absolute o-form--top-arrow o-form--sm o-main-nav__login u-grid" method="POST" ref={this.form} onSubmit={this.onFormSubmit}>
             <div className="o-form__content u-pill--top u-pill--bottom">
               <div className="m-form-group o-form__row u-pill--top">
                 <label htmlFor="input_username" className="a-label m-form-group__label">E-mail</label>
@@ -109,6 +115,7 @@ class Navbar extends Component {
 			    </form> : null }
         </ul>
 		  </nav>
+      </div>
     )
   }
 }

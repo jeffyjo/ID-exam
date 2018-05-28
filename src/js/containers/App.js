@@ -1,6 +1,7 @@
 'use strict'
 
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 
 import Home from './Home'
 import FindFlight from './FindFlight'
@@ -24,6 +25,7 @@ class App extends Component {
         break
       case 'create':
         Container = CreateProfile
+        break
       case 'flight-booked':
         Container = FlightBooked
         break
@@ -31,9 +33,16 @@ class App extends Component {
         Container = Home
     }
 
+    let navPortal = document.getElementById('nav_portal')
+
     return (
       <div>
-        <Navbar user={user} isLoggedIn={isLoggedIn} />
+        {
+          navPortal
+            ? ReactDOM.createPortal(<Navbar user={user} isLoggedIn={isLoggedIn} />, navPortal)
+            : ''
+        }
+
         <Container flights={flights} />
       </div>
     )

@@ -4,8 +4,15 @@
 
 .m-site-header__header {
   margin: 1.5em 0;
+
+  &--lg {
+    font-size: 5em;
+  }
+
 }
 
 .m-site-header__lead {
-  
+  max-width: 22em;
+  font-weight: normal;
+  font-size: $font-size--md;
 }
