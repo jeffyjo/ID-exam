@@ -17,10 +17,7 @@
 
 .o-cta-block__item {
   margin: $size-margin--sm 0;
-  color: inherit;
-
   &--actions { 
-
     *:not(:first-child) {
       margin-left: $size-margin--sm;
     }

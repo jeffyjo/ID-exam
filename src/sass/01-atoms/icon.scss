@@ -21,7 +21,7 @@
   }
 
   &--invoice {
-    @include icon('/public/images/icon_invoice.svg', -2em, -50%);
+    @include icon('/public/images/icon_invoice.svg', 0, 0);
     &::before {
       transform: translateY(-2em);
     }

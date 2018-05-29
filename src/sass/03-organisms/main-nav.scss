@@ -1,12 +1,14 @@
-
-
-.o-main-nav {
-  padding: 1em;
+.o-main-nav nav{
   border-bottom: $size-border-width-lg solid $color-main-nav-border;
-
   z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  padding-left: $size-padding--md;
+  padding-right: $size-padding--md;
 }
-
+  
 .o-main-nav__login {
   top: 7em;
   right: 1em;

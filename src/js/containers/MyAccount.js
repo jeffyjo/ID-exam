@@ -136,7 +136,7 @@ class MyAccount extends Component {
           <p className="m-site-header__lead">{this.state.userLoggedIn.firstName} {this.state.userLoggedIn.middleName} {this.state.userLoggedIn.lastName} (Manager) - {this.state.userLoggedIn.companyName}</p>
         </div>
 
-        <div className="u-grid u-grid--2-cols u-margin--lg-v">
+        <div className="o-account">
           <div className="m-menu">
             <a href="#" onClick={this.onModeToggle} data-link="accountInformation" className={`a-link a-link--menu m-menu__item ${this.state.currentMode === 'accountInformation' ? 'a-link--menu-active' : 'a-link--menu-inactive'}`}>Account Information</a>
             <a href="#" onClick={this.onModeToggle} data-link="paymentMethods" className={`a-link a-link--menu m-menu__item ${this.state.currentMode === 'paymentMethods' ? 'a-link--menu-active' : 'a-link--menu-inactive'}`}>Payment Methods</a>
@@ -145,7 +145,7 @@ class MyAccount extends Component {
           </div>
 
 					{ this.state.currentMode === 'accountInformation' ?
-					<div>
+					<div className="o-account__content">
 						<form className="o-form">
 							<div className="o-form__content u-pill--top u-pill--bottom">
 								<div className="m-section-header o-form__header u-pill--top">
@@ -164,7 +164,7 @@ class MyAccount extends Component {
 							</div>
 						</form>
 
-						<form className="o-form u-margin--lg-v">
+						<form className="o-form">
 							<div className="o-form__content u-pill--top u-pill--bottom">
 								<div className="m-section-header o-form__header u-pill--top">
 									<h3 className="m-section-header__header">Account users</h3>
@@ -217,29 +217,33 @@ class MyAccount extends Component {
 
 					}
 					{ this.state.currentMode === 'bookedFlights' ?
-					<div>
+					<div className="o-account__content">
 						<form className="o-form">
 							<div className="m-section-header o-form__header u-pill--top">
 								<h3 className="m-section__header">Booked Flights</h3>
 							</div>
 
 							<div className="o-form__content u-pill--bottom">
-								<div className="o-form__row o-form__row--space">
-									<p>RIX - CPH - RIX</p>
-								</div>
-								<div className="o-form__row u-grid u-grid--3-cols-inv">
-									<div className="m-form-group">
-										<label className="a-label m-form-group__label">Date</label>
-										<label className="m-form-group__label m-form-group__label--title">31.06.18</label>
+								<div className="o-booked-flight">
+									<div className="o-booked-flight__details">
+										<p>RIX - CPH - RIX</p>
+										<div>
+											<div className="m-form-group">
+												<label className="a-label m-form-group__label">Date</label>
+												<label className="m-form-group__label m-form-group__label--title">31.06.18</label>
+											</div>
+											<div className="m-form-group">
+												<label className="a-label m-form-group__label">Booked by</label>
+												<label className="m-form-group__label m-form-group__label--title">{this.state.userLoggedIn.firstName} {this.state.userLoggedIn.middleName} {this.state.userLoggedIn.lastName}</label>
+											</div>
+										</div>
 									</div>
-									<div className="m-form-group">
-										<label className="a-label m-form-group__label">Booked by</label>
-										<label className="m-form-group__label m-form-group__label--title">{this.state.userLoggedIn.firstName} {this.state.userLoggedIn.middleName} {this.state.userLoggedIn.lastName}</label>
-									</div>
-									<div className="m-form-group m-form-group--text-right">
-										<i>
-											<span className="a-icon a-icon--invoice"></span>
-										</i>
+									<div className="o-booked-flight__actions">
+										<a href="https://drive.google.com/file/d/1yLEozmaBflLI7VJOUfMGChj73BnBapyA/view?usp=sharing" target="blank">
+											<i>
+												<span className="a-icon a-icon--invoice"></span>
+											</i>
+										</a>
 									</div>
 								</div>
 							</div>

@@ -1,37 +1,60 @@
 
 .a-link {
   color: $color-link-primary-text;
-  padding-top: $size-padding--xs;
-  padding-bottom: $size-padding--xs;
   cursor: pointer;
-  font-size: 2em;
-
+  font-size: 1.8em;
+  position: relative;
+  &:after{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background-color: transparent;
+    border-radius: 2px;
+  }
   &--nav {
-    font-family: $font-link-nav;
+    font-family: $font-link-menu;
     border-bottom-color: $color-link-border-nav;
-    padding: .9em 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: -2px;
+    &:after{
+      bottom: -1px;
+    }
+    &--active{
+      &:after{
+        background-color: #ffffff;
+      }
+    }
   }
 
   &--content {
-    font-family: $font-link-content;
+    font-family: $font-link-menu-primary;
     border-bottom-color: $color-link-border-content;
     opacity: .6;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    &--active{
+      opacity: 1;
+      &:after{
+        background-color: $util-yellow;
+      }
+    }
   }
 
-  &--active {
-    border-bottom-width: 3px;
-    border-bottom-style: solid;
-    opacity: 1;
-  }
+
 
   &--menu {
     padding: 1em;
     font-family: $font-link-menu;
-
     &-inactive {
       color: $color-link-menu-text;
     }
-
     &-active {
       font-family: $font-link-menu-primary;
       color: $color-link-primary-text;

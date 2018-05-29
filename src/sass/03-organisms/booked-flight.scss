@@ -1,0 +1,23 @@
+.o-booked-flight{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 20px;
+    &__details{
+        flex: 1 1 auto;
+        >p{
+            margin-bottom: 12px;
+        }
+        >div{
+            display: inline-flex;
+            width: 100%;
+        }
+        .m-form-group{
+            padding: 0;
+        }
+    }
+    &__actions{
+        margin-right: 20px;
+        margin-top: 44px;
+    }
+}

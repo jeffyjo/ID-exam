@@ -400,10 +400,10 @@ class FindFlight extends Component {
         }
         {
           this.state.isLoggedIn === true
-            ? <div className="u-grid u-grid--2-cols">
+            ? <div className="o-search-suggestions u-grid u-grid--2-cols">
                 <div className="o-cta-block o-cta-block--light-text">
                   <div className="m-section-header m-section-header--inverse">
-                    <h3 className="m-section__header u-text u-text--capital">Your last booked flights</h3>
+                    <h3 className="a-label--large">Your last booked flights</h3>
                   </div>
                   <div className="m-content-block">
                     <button className="a-button a-button--transparent a-button--pill m-content-block__item">CPH - RIX</button>
@@ -412,7 +412,7 @@ class FindFlight extends Component {
                 </div>
                 <div className="o-cta-block o-cta-block--light-text">
                   <div className="m-section-header m-section-header--inverse">
-                    <h3 className="m-section__header u-text u-text--capital">Your saved flights</h3>
+                    <h3 className="a-label--large">Your saved flights</h3>
                   </div>
                   <div className="m-content-block">
                     <button className="a-button a-button--transparent a-button--pill m-content-block__item">CPH - RIX</button>

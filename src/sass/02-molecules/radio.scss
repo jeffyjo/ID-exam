@@ -16,6 +16,10 @@
   width: 100%;
   text-align: center;
 
+  &:hover{
+    background-color: $util-grey;
+  }
+
 }
 
 .m-radio__input:checked ~ .m-radio__label {

@@ -91,22 +91,22 @@ class CreateProfile extends Component {
 						<div className="o-form__row u-flex u-flex--space-between">
 							<div className="m-form-group">
 								<label htmlFor="firstName" className="a-label m-form-group__label">First name</label>
-								<input className="a-input" name="firstName" id="input_firstName" autoComplete="off" placeholder="First name" type="text" />
+								<input className="a-input" name="firstName" id="input_firstName" autoComplete="off" placeholder="e.g. John" type="text" />
 							</div>
 							<div className="m-form-group m-form-group--border-left">
 								<label htmlFor="middleName" className="a-label m-form-group__label">Middle name</label>
-								<input className="a-input" name="middleName" id="input_middleName" type="text" autoComplete="off" placeholder="Middle name" />
+								<input className="a-input" name="middleName" id="input_middleName" type="text" autoComplete="off" placeholder="e.g. Williams" />
 							</div>
 							<div className="m-form-group m-form-group--border-left">
 								<label htmlFor="lastName" className="a-label m-form-group__label">Last name</label>
-								<input className="a-input" type="text" name="lastName" id="input_lastName" autoComplete="off" placeholder="Last name"/>
+								<input className="a-input" type="text" name="lastName" id="input_lastName" autoComplete="off" placeholder="e.g. Doe"/>
 							</div>
 						</div>
 
 						<div className="o-form__row u-grid u-grid--2-cols">
 							<div className="m-form-group">
 								<label htmlFor="birthDate" className="a-label m-form-group__label">Date of birth</label>
-								<input className="a-input" type="text" name="birthdate" id="input_birthDate" autoComplete="off" placeholder="Date of birth (21/1-1990)" />
+								<input className="a-input" type="text" name="birthdate" id="input_birthDate" autoComplete="off" placeholder="dd.mm.yyyy" />
 							</div>
 							<div className="m-form-group m-form-group--border-left u-grid u-grid--2-cols u-grid--center">
 								<div className="m-radio">
@@ -123,31 +123,33 @@ class CreateProfile extends Component {
 						<div className="o-form__row u-grid u-grid--2-cols">
 							<div className="m-form-group">
 								<label htmlFor="mail" className="a-label m-form-group__label">E-mail</label>
-								<input className="a-input" name="mail" id="input_mail" type="text" autoComplete="off" placeholder="E-mail"  />
+								<input className="a-input" name="mail" id="input_mail" type="text" autoComplete="off" placeholder="e.g. john@company.com"  />
 							</div>
 							<div className="m-form-group m-form-group--border-left">
 								<label htmlFor="phoneNumber" className="a-label m-form-group__label">Phone number (optional)</label>
-								<input className="a-input" type="text" name="phoneNumber" id="input_phoneNumber" autoComplete="off" placeholder="Phone number" />
+								<input className="a-input" type="text" name="phoneNumber" id="input_phoneNumber" autoComplete="off" placeholder="e.g. +4512345678" />
 							</div>
 						</div>
 
 						<div className="o-form__row u-grid u-grid--2-cols">
 							<div className="m-form-group">
 								<label htmlFor="companyName" className="a-label m-form-group__label">Company name</label>
-								<input className="a-input" type="text" name="companyName" id="input_companyName" autoComplete="off" placeholder="Company name" />
+								<input className="a-input" type="text" name="companyName" id="input_companyName" autoComplete="off" placeholder="e.g. Google" />
 							</div>
 							<div className="m-form-group m-form-group--border-left">
 								<label htmlFor="taxNumber" className="a-label m-form-group__label">Tax number</label>
-								<input className="a-input" type="text" name="taxNumber" id="input_taxNumber" autoComplete="off" placeholder="Tex number (eg. 12345678)" />
+								<input className="a-input" type="text" name="taxNumber" id="input_taxNumber" autoComplete="off" placeholder="e.g. 1234TA567" />
 							</div>
 						</div>
 
 						<div className="o-form__row u-grid u-grid--2-cols">
 							<div className="m-form-group">
-								<input className="a-input" type="password" name="input_password" id="input_password" autoComplete="off" placeholder="Password" />
+								<label htmlFor="password" className="a-label m-form-group__label">Password</label>
+								<input className="a-input" type="password" name="input_password" id="input_password" autoComplete="off" placeholder="******" />
 							</div>
 							<div className="m-form-group m-form-group--border-left">
-								<input className="a-input" type="password" name="input_repeatPassword" id="input_repeatPassword" autoComplete="off" placeholder="Repeat password" />
+								<label htmlFor="repeatPassword" className="a-label m-form-group__label">Repeat Password</label>
+								<input className="a-input" type="password" name="input_repeatPassword" id="input_repeatPassword" autoComplete="off" placeholder="******" />
 							</div>
 						</div>
 					</div>

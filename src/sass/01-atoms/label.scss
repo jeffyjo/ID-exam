@@ -1,6 +1,10 @@
-
 .a-label {
-  
-  
-
+  font-size: 1.2em;
+  color: #9E9E9E;
+  padding-top: .3em;
+}
+.a-label--large{
+  font-size: 1.6em;
+  font-family: $font-button;
+  text-transform: uppercase;
 }
