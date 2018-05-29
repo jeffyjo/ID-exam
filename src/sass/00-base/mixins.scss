@@ -28,14 +28,14 @@
   
 }
 
-@mixin icon($background-path: "", $height: $size-base, $width: $size-base){
+@mixin icon($background-path: "", $left: 1em, $top: 50%,$height: $size-base, $width: $size-base){
   &:before {
     content: '';
     position: absolute;
     display: block;
 
-    left: 1em;
-    top: 50%;
+    left: $left;
+    top: $top;
 
     height: $height;
     width: $width;

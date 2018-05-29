@@ -2,10 +2,21 @@
 .a-icon {
   position: relative;
 
+  &--lg {
+    font-size: 8em;
+  }
+
   &--edit {
     @include icon('/public/images/icon_edit_grey.svg');
     &::before {
       transform: translateY(-50%);  
+    }
+  }
+
+  &--logo {
+    @include icon('/public/images/logo.svg', 0, 0);
+    &::before {
+      transform: translateY(-15%);
     }
   }
 }
