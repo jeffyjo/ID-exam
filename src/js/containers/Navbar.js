@@ -24,6 +24,7 @@ class Navbar extends Component {
     this.onLogin = this.onLogin.bind(this)
     this.onLogout = this.onLogout.bind(this)
     this.toggleNav = this.toggleNav.bind(this)
+    this.siteRouting = this.siteRouting.bind(this)
     this.form = React.createRef()
   }
 
@@ -58,6 +59,10 @@ class Navbar extends Component {
         loginParams: loginParams
       })
 
+      if( this.state.currentSite === "create.html" ){
+        this.siteRouting('my-account.html')
+      }
+
       this.toggleLoggingIn()
     }
   }
@@ -69,8 +74,12 @@ class Navbar extends Component {
       isLoggedIn: false
     })
 
-    window.location = '/index.html'
+    this.siteRouting('index.html')
+  }
 
+  siteRouting(site){
+    window.localStorage.setItem('site', site)
+    window.location = `${site}`
   }
 
   toggleLoggingIn() {
