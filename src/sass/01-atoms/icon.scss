@@ -5,8 +5,7 @@
   &--edit {
     @include icon('/public/images/icon_edit_grey.svg');
     &::before {
-      transform: translateY(-50%);
-      cursor: pointer;  
+      transform: translateY(-50%);  
     }
   }
 }

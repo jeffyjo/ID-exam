@@ -67,7 +67,7 @@ class MyAccount extends Component {
 								<div className="o-form__content u-pill--bottom">
 									<div className="m-form-group o-form__row u-grid u-grid--3-cols-icons u-grid--center">
 										<label className="m-form-group__label m-form-group__label--title">{this.state.user.firstName} {this.state.user.middleName} {this.state.user.lastName}</label>
-										<a href="google.com">
+										<a href="#">
 											<span className="a-icon a-icon--edit"></span>
 										</a>
 										<label className="a-switch">
