@@ -146,7 +146,7 @@ class Book extends Component {
             </div>
             {
               this.state.step === 0
-              ? <a href='search.html' className='a-button a-button--secondary a-button--square m-price-block__btn u-flex u-flex--center-h'>Change</a>
+              ? <a href='index.html' className='a-button a-button--secondary a-button--square m-price-block__btn u-flex u-flex--center-h'>Change</a>
               : ''
             }
           </div>
