@@ -2,8 +2,8 @@
 .m-search {
   position: relative;
 
-  padding: 0 1em;
-  margin-bottom: $size-margin--lg;
+  padding: 0;
+  margin-bottom: 3em;
 
   background-color: $color-form-bg;
 }
@@ -11,16 +11,12 @@
 .m-search__row {
   display: grid;
   grid-template-columns: repeat(5, 20%);
-
   &:not(:first-child):before {
     content: '';
     display: block;
     position: absolute;
-
     border-top: 1px solid $util-md-light;
-
     width: 100%;
-
     left: 0;
   }
 }
@@ -30,29 +26,21 @@
     content: '';
     position: absolute;
     display: block;
-
-    left: 1em;
+    left: 14px;
     top: 50%;
-
     width: $size-base;
     height: $size-base;
-
     transform: translateY(-50%);
-
     background-size: contain;
     background-repeat: no-repeat;
-
     z-index: 1;
-
     pointer-events: none;
   }
 }
 
 .m-search__item {
   position: relative;
-
-  padding: .5em 1em;
-
+  padding: .8em 1.6em;
   &--origin {
     @extend %icon;
     &:before {
@@ -71,7 +59,7 @@
       background-image: url('/public/images/icon_date_grey.svg');
     }
   }
-  &--arrival_date {
+  &--return_date {
     @extend %icon;
     &:before {
       background-image: url('/public/images/icon_date_grey.svg');
@@ -91,8 +79,8 @@
 
 .m-search__button {
   position: absolute;
-  bottom: -15px;
-  right: -15px;
+  bottom: -12px;
+  right: -12px;
 
   background-image: url('/public/images/icon_search_white.svg');
   background-repeat: no-repeat;

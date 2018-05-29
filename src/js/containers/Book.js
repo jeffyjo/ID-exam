@@ -161,19 +161,23 @@ class Book extends Component {
 
             				<div className="o-form__row u-flex u-flex--space-between">
             					<div className="m-form-group">
-            						<input name='firstName' type="text" placeholder="First name" className="a-input" />
+                        <label htmlFor="firstName" className="a-label m-form-group__label">First name</label>
+            						<input name='firstName' type="text" placeholder="e.g. John" className="a-input" />
             					</div>
             					<div className="m-form-group m-form-group--border-left">
-            						<input name='middleName' type="text" placeholder="Middle name" className="a-input" />
+                        <label htmlFor="middleName" className="a-label m-form-group__label">Middle name</label>
+            						<input name='middleName' type="text" placeholder="e.g. Williams" className="a-input" />
             					</div>
             					<div className="m-form-group m-form-group--border-left">
-            						<input name='lastName' type="text" placeholder="Last name" className="a-input" />
+                        <label htmlFor="lastName" className="a-label m-form-group__label">Last name</label>
+            						<input name='lastName' type="text" placeholder="e.g. Doe" className="a-input" />
             					</div>
             				</div>
 
             				<div className="o-form__row u-grid u-grid--2-cols">
             					<div className="m-form-group">
-            						<input name='dateOfBirth' type="text" placeholder="Date of birth" className="a-input" />
+                        <label htmlFor="dateOfBirth" className="a-label m-form-group__label">Date of birth</label>
+            						<input name='dateOfBirth' type="text" placeholder="dd.mm.yyyy" className="a-input" />
             					</div>
             					<div className="m-form-group m-form-group--border-left u-grid u-grid--2-cols u-grid--center">
             						<div className="m-radio">
@@ -189,21 +193,23 @@ class Book extends Component {
 
             				<div className="o-form__row u-grid u-grid--2-cols">
             					<div className="m-form-group">
-            						<input name='email' type="text" placeholder="E-mail" className="a-input" />
+                        <label htmlFor="email" className="a-label m-form-group__label">E-mail</label>
+            						<input name='email' type="text" placeholder="e.g. john@company.com" className="a-input" />
             					</div>
             					<div className="m-form-group m-form-group--border-left">
-            						<input name='phone' type="text" placeholder="Phone number" className="a-input" />
+                        <label htmlFor="phone" className="a-label m-form-group__label">Phone number</label>
+            						<input name='phone' type="text" placeholder="e.g. +4512345678" className="a-input" />
             					</div>
             				</div>
 
                     <div className="o-form__row u-grid u-grid--2-cols">
             					<div className="m-form-group">
-            						<label htmlFor="" className="a-label m-form-group__label">Company</label>
-            						<input name='company' type="text" placeholder="Company" className="a-input" />
+            						<label htmlFor="company" className="a-label m-form-group__label">Company name</label>
+            						<input name='company' type="text" placeholder="e.g. Google" className="a-input" />
             					</div>
             					<div className="m-form-group m-form-group--border-left">
-            						<label htmlFor="" className="a-label m-form-group__label">TAX number</label>
-            						<input name='tax' type="text" placeholder="123456DFD2" className="a-input" />
+            						<label htmlFor="text" className="a-label m-form-group__label">TAX number</label>
+            						<input name='tax' type="text" placeholder="e.g. 1234TA567" className="a-input" />
             					</div>
             				</div>
 

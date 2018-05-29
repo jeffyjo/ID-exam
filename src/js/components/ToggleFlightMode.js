@@ -5,8 +5,8 @@ import React, { Component } from 'react'
 class ToggleFlightMode extends Component {
   render () {
     return (
-      <nav className='m-nav m-nav--space'>
-        <ul className='m-nav__inner'>
+      <nav className='o-search-nav'>
+        <ul className='m-nav'>
           {this.props.options.map((option, i) => {
             return (
               <li
@@ -14,7 +14,7 @@ class ToggleFlightMode extends Component {
                 className={`m-nav__item ${this.props.currentOption === option ? 'm-nav__item' : ''}`}
                 onClick={() => this.props.onToggle(option)}
               >
-                <a className={`a-link a-link--content ${this.props.currentOption === option ? 'a-link--active' : ''}`}>{option}</a>
+                <a className={`a-link a-link--content ${this.props.currentOption === option ? 'a-link--content--active' : ''}`}>{option}</a>
               </li>
             )
           })}

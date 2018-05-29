@@ -1,7 +1,7 @@
 
 .m-form-group {
-  padding: $size-padding--sm $size-base;
-
+  padding: $size-padding--sm $size-base $size-padding--xs;
+  width: 100%;
   &--border-left {
     border-left: $size-border-width solid $color-form-border;
   }

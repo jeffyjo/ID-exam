@@ -6,9 +6,7 @@
   border: transparent;
 
   width: 100%;
-  padding: .5em 0;
-
-  text-transform: capitalize;
+  padding: .4em 0 .3em;;
 
   &--hidden {
     display: none;
@@ -19,6 +17,11 @@
   }
 
   &--with-icon {
-    padding-left: 28px;
+    padding-left: 30px;
+    padding-top: .5em;
+    padding-bottom: .4em;
+  }
+  &::placeholder{
+    opacity: 0.3;
   }
 }

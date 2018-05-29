@@ -2,11 +2,9 @@
   background: $color-menu-bg;
   padding: 1em;
   border-radius: $size-menu--border;
-  width: 25em;
-  height: 25em;
-
+  max-width: 25em;
   position: relative;
-
+  align-self: flex-start;
   &::after {
     content: '';
     height: 1.5em;
