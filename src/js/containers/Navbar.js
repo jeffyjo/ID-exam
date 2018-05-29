@@ -81,24 +81,26 @@ class Navbar extends Component {
       <div id="overlay" className="u-overlay"></div>
       <nav className="u-grid u-grid--2-cols">
         <div className="m-logo u-grid__item--left u-grid__item--center-v">
-          <a href="#">
+          <a href="index.html">
             <span className="a-icon a-icon--lg a-icon--logo"></span>
           </a>
         </div>
         <ul className="m-nav u-grid__item--right">
           <li className="m-nav__item">
-            <a href="#" className="a-link a-link--nav a-link--active">Search Flight</a>
+            <a href="index.html" className="a-link a-link--nav a-link--active">Search Flight</a>
           </li>
           { this.state.isLoggedIn === true ? 
             <li className="m-nav__item">
-              <a href="#" className="a-link a-link--nav a-link">My account</a>
+              <a href="my-account.html" className="a-link a-link--nav a-link">My account</a>
             </li>
           : <li className="m-nav__item">
-              <a href="#" className="a-link a-link--nav a-link">Create account</a>
+              <a href="create.html" className="a-link a-link--nav a-link">Create account</a>
             </li> }
           <li className="m-nav__item">
             { this.state.isLoggedIn === true 
-              ? <button onClick={this.onLogout} className="a-button a-button--secondary a-button--circle-md"></button>
+              ? <button onClick={this.onLogout} className="a-button a-button--secondary a-button--circle-md">
+                  <span className="a-icon a-icon--logout"></span>
+                </button>
               : <button onClick={this.toggleLoggingIn} className={this.state.isLoggingIn === true ? "o-main-nav__login-btn a-button a-button--secondary a-button--secondary-text a-button--pill a-button--active" : "o-main-nav__login-btn a-button a-button--primary a-button--pill"}>{this.state.isLoggingIn === true ? 'Back' : 'Login' }</button>
             }
           </li>

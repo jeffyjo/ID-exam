@@ -42,7 +42,7 @@ class MyAccount extends Component {
 				"accountInformation",
 				"bookedFlights"
 			],
-			currentMode: "bookedFlights"
+			currentMode: "accountInformation"
 		}
 
 		this.onAddClicked = this.onAddClicked.bind(this)

@@ -27,4 +27,9 @@
     }
   }
 
+  &--logout {
+    @include icon('/public/images/icon_logout_grey.svg', .6em, -1em);
+    font-size: .7em;
+  }
+
 }
