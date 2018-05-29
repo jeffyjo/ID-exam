@@ -99,6 +99,8 @@ class FindFlight extends Component {
     this.sortFastest = this.sortFastest.bind(this)
     this.sortCheapest = this.sortCheapest.bind(this)
     this.setPassengerCount = this.setPassengerCount.bind(this)
+    this.addFlight = this.addFlight.bind(this)
+    this.removeFlight = this.removeFlight.bind(this)
 
     this.form = React.createRef()
 
@@ -201,6 +203,18 @@ class FindFlight extends Component {
   sortCheapest (flights) {
     return flights.sort((a, b) => {
       return priceSum(a) - priceSum(b)
+    })
+  }
+
+  addFlight () {
+    this.setState({
+      numberRows: this.state.numberRows += 1
+    })
+  }
+
+  removeFlight () {
+    this.setState({
+      numberRows: Math.max(1, this.state.numberRows -= 1)
     })
   }
 
@@ -327,6 +341,14 @@ class FindFlight extends Component {
               <button className='a-button a-button--primary a-button--circle-lg m-search__button' type='submit' />
             </form>
           : ''
+        }
+        {
+          this.state.currentMode === 'Multi'
+            ? <div className='o-add-flight'>
+                <button className='a-button a-button--transparent a-button--pill' onClick={this.addFlight}>+ Add flight</button>
+                <button className='a-button a-button--transparent a-button--pill' onClick={this.removeFlight}>- Remove flight</button>
+              </div>
+            : ''
         }
         {
           !this.state.initial
