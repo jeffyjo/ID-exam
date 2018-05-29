@@ -37,9 +37,12 @@ class MyAccount extends Component {
 				phoneNumber: null,
 				mail: null
 			},
-			users: [
-
-			]
+			users: [],
+			modes : [
+				"accountInformation",
+				"bookedFlights"
+			],
+			currentMode: "accountInformation"
 		}
 
 		this.onAddClicked = this.onAddClicked.bind(this)
@@ -47,6 +50,7 @@ class MyAccount extends Component {
 		this.toggleEdit = this.toggleEdit.bind(this)
 		this.onFormSubmit = this.onFormSubmit.bind(this)
 		this.addPerson = this.addPerson.bind(this)
+		this.onModeToggle = this.onModeToggle.bind(this)
 
 		this.form = React.createRef()
 	}
@@ -56,9 +60,14 @@ class MyAccount extends Component {
 		this.setAccountInfo(true)
 	}
 
-	onEditClicked(){
+	onEditClicked(index){
+
+	}
+
+	onEditClicked(index){
+		index <= 0 ? this.setAccountInfo(false, this.state.users[index], index) : this.setAccountInfo(false)
+
 		this.toggleEdit()
-		this.setAccountInfo(false)
 	}
 
 	toggleEdit(){
@@ -69,12 +78,13 @@ class MyAccount extends Component {
 		})
 	}
 
-	setAccountInfo(isDefault){
-		let userToEdit = isDefault ? this.state.defaultUser : this.state.userLoggedIn
+	setAccountInfo(isDefault, user = this.state.userLoggedIn, index = -1){
+		let userToEdit = isDefault ? this.state.defaultUser : user
 
 		this.setState({
 			userToEdit: userToEdit,
-			newUser: isDefault
+			newUser: isDefault,
+			userToEditId: index
 		})
 	}
 
@@ -85,35 +95,39 @@ class MyAccount extends Component {
 	}
 
 	addPerson(){
-		if(this.state.newUser){
-			let form = this.form.current
-
-			let newUserParams = Object.keys(this.state.userToEdit).reduce((newUserParams, param) => {
-				let input = form.querySelector(`#input_${param}`)
-				
-				if (input) {
-					let value = input.value
-					newUserParams[param] = value
-				}
-	
-				return newUserParams
-			}, {});
+		let form = this.form.current
+		let newUserParams = Object.keys(this.state.userToEdit).reduce((newUserParams, param) => {
+			let input = form.querySelector(`#input_${param}`)
 			
-			let users = this.state.users
+			if (input) {
+				let value = input.value
+				newUserParams[param] = value
+			}
+			
+			return newUserParams
+		}, {});
+		
+		let users = this.state.users
 
-			users = users.push(newUserParams)
+		this.state.newUser === true ? users.push(newUserParams) : users[this.state.userToEditId] = newUserParams
 
-			this.setState({
-				users: users
-			})
-		}
-
+		this.setState({
+			users: users
+		})
+		
 		this.toggleEdit()
+	}
+
+	onModeToggle(e){
+		this.setState({
+			currentMode: e.target.getAttribute('data-link')
+		})
 	}
 
   render () {
 
 		let numberOfUsers = this.state.users.length
+		let users = this.state.users
 
     return (
       <div>
@@ -124,14 +138,14 @@ class MyAccount extends Component {
 
         <div className="u-grid u-grid--2-cols u-margin--lg-v">
           <div className="m-menu">
-            <a href="#" className="a-link a-link--menu a-link--menu-active m-menu__item">Account Information</a>
-            <a href="#" className="a-link a-link--menu a-link--menu-inactive m-menu__item">Payment Methods</a>
-            <a href="#" className="a-link a-link--menu a-link--menu-inactive m-menu__item">Change Password</a>
-            <a href="#" className="a-link a-link--menu a-link--menu-inactive m-menu__item">Booked Flights</a>
+            <a href="#" onClick={this.onModeToggle} data-link="accountInformation" className={`a-link a-link--menu m-menu__item ${this.state.currentMode === 'accountInformation' ? 'a-link--menu-active' : 'a-link--menu-inactive'}`}>Account Information</a>
+            <a href="#" onClick={this.onModeToggle} data-link="paymentMethods" className={`a-link a-link--menu m-menu__item ${this.state.currentMode === 'paymentMethods' ? 'a-link--menu-active' : 'a-link--menu-inactive'}`}>Payment Methods</a>
+            <a href="#" onClick={this.onModeToggle} data-link="changePassword" className={`a-link a-link--menu m-menu__item ${this.state.currentMode === 'changePassword' ? 'a-link--menu-active' : 'a-link--menu-inactive'}`}>Change Password</a>
+            <a href="#" onClick={this.onModeToggle} data-link="bookedFlights" className={`a-link a-link--menu m-menu__item ${this.state.currentMode === 'bookedFlights' ? 'a-link--menu-active' : 'a-link--menu-inactive'}`}>Booked Flights</a>
           </div>
 
+					{ this.state.currentMode === 'accountInformation' ?
 					<div>
-
 						<form className="o-form">
 							<div className="o-form__content u-pill--top u-pill--bottom">
 								<div className="m-section-header o-form__header u-pill--top">
@@ -163,7 +177,7 @@ class MyAccount extends Component {
 								<div className="o-form__content u-pill--bottom">
 									<div className="m-form-group o-form__row u-grid u-grid--3-cols-icons u-grid--center">
 										<label className="m-form-group__label m-form-group__label--title">{this.state.userLoggedIn.firstName} {this.state.userLoggedIn.middleName} {this.state.userLoggedIn.lastName}</label>
-										<a onClick={this.onEditClicked}>
+										<a onClick={() => {this.onEditClicked(-1)}}>
 											<span className="a-icon a-icon--edit"></span>
 										</a>
 										<label className="a-switch">
@@ -173,26 +187,62 @@ class MyAccount extends Component {
 									</div>
 								</div>
 
-								{	
-									<div className="o-form__content u-pill--bottom">
-										<div className="m-form-group o-form__row u-grid u-grid--3-cols-icons u-grid--center">
-											<label className="m-form-group__label m-form-group__label--title">{this.state.userLoggedIn.firstName} {this.state.userLoggedIn.middleName} {this.state.userLoggedIn.lastName}</label>
-											<a onClick={this.onEditClicked}>
-												<span className="a-icon a-icon--edit"></span>
-											</a>
-											<label className="a-switch">
-												<input type="checkbox" className="a-switch__checkbox" />
-													<span className="a-switch__slider"></span>
-											</label>
-										</div>
-									</div>
+								{	numberOfUsers > 0 ?
+									users.map((user, i) => {
+										return (
+											<div key={i} className="o-form__content u-pill--bottom">
+												<div className="m-form-group o-form__row u-grid u-grid--3-cols-icons u-grid--center">
+													<label className="m-form-group__label m-form-group__label--title">{user.firstName} {user.middleName} {user.lastName}</label>
+													<a onClick={() => { this.onEditClicked(i) }}>
+														<span className="a-icon a-icon--edit"></span>
+													</a>
+													<label className="a-switch">
+														<input type="checkbox" className="a-switch__checkbox" />
+															<span className="a-switch__slider"></span>
+													</label>
+												</div>
+											</div>
+										)
+									})
+									: ''
 								}
 
 							</div>
 						</form>
 						<button onClick={this.onAddClicked} className="a-button a-button--transparent a-button--pill u-text u-text--capital">+ Add User</button>
 					</div>
+					: ''
+					}
+					{ this.state.currentMode === 'bookedFlights' ?
+					<div>
+						<form className="o-form">
+							<div className="m-section-header o-form__header u-pill--top">
+								<h3 className="m-section__header">Booked Flights</h3>
+							</div>
 
+							<div className="o-form__content u-pill--bottom">
+								<div className="o-form__row o-form__row--space">
+									<p>RIX - CPH - RIX</p>
+								</div>
+								<div className="o-form__row u-grid u-grid--3-cols-inv">
+									<div className="m-form-group">
+										<label className="a-label m-form-group__label">Date</label>
+										<label className="m-form-group__label m-form-group__label--title">31.06.18</label>
+									</div>
+									<div className="m-form-group m-form-group--border-left">
+										<label className="a-label m-form-group__label">Booked by</label>
+										<label className="m-form-group__label m-form-group__label--title">{this.state.userLoggedIn.firstName} {this.state.userLoggedIn.middleName} {this.state.userLoggedIn.lastName}</label>
+									</div>
+									<div className="m-form-group m-form-group--border-left m-form-group--text-right">
+										<i>i</i>
+									</div>
+								</div>
+							</div>
+
+						</form>
+					</div>
+					: ''
+					}
         </div>
 
 				{ this.state.isEditting === true ?
@@ -201,7 +251,6 @@ class MyAccount extends Component {
 							<form className="o-form u-flex u-flex--column" method='GET' ref={this.form} onSubmit={this.onFormSubmit}>
 								<button onClick={this.toggleEdit} className="a-button a-button--secondary a-button--circle-sm u-flex__item--right u-margin--md-v">&times;</button>
 								<div className="o-form__content u-pill--top u-pill--bottom">
-									
 									<div className="o-form__row u-flex u-flex--space-between">
 										<div className="m-form-group">
 											<label htmlFor="input_firstName" className="a-label m-form-group__label">First name</label>
