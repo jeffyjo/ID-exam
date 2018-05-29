@@ -1,0 +1,20 @@
+.t-book {
+  &__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 4em 0;
+
+    h2 {
+      color: $primary-text;
+    }
+
+    .m-progress {
+      width: 300px;
+      &__dot {
+        transform: translateX(-50%);
+      }
+    }
+  }
+}
