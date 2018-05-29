@@ -68,6 +68,9 @@ class Navbar extends Component {
     this.setState({
       isLoggedIn: false
     })
+
+    window.location = '/index.html'
+
   }
 
   toggleLoggingIn() {

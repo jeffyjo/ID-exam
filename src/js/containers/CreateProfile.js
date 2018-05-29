@@ -72,7 +72,7 @@ class CreateProfile extends Component {
 			profileParams: profileParams
 		})
 
-		window.location = 'my-account.html'
+		window.location = '/my-account.html'
 
 	}
 
