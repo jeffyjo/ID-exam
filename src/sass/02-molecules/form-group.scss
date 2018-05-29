@@ -15,7 +15,9 @@
 .m-form-group__label {
   display: block;
 
-  font-size: $font-size--base;
+  &--title {
+    font-size: $font-size--base;
+  }
 
 }
 

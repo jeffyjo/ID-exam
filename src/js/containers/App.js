@@ -51,7 +51,7 @@ class App extends Component {
             : ''
         }
 
-        <Container flights={flights} isLoggedIn={isLoggedIn} />
+        <Container flights={flights} isLoggedIn={isLoggedIn} user={user} />
       </div>
     )
   }

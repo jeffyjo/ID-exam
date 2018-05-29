@@ -3,12 +3,27 @@
 import React, { Component } from 'react'
 
 class MyAccount extends Component {
+	constructor(props){
+		super(props)
+		console.log('props', props.user)
+
+		this.state = {
+			user: {
+				firstName: this.props.user.firstName,
+				middleName: this.props.user.middleName,
+				lastName: this.props.user.lastName,
+				companyName: this.props.user.companyName,
+				taxNumber: this.props.user.taxNumber
+			}
+		}
+	}
+
   render () {
     return (
       <div>
         <div className="m-site-header">
           <h2 className="m-site-header__header">My account</h2>
-          <p className="m-site-header__lead">John Smith (Manager) - Company name</p>
+          <p className="m-site-header__lead">{this.state.user.firstName} {this.state.user.middleName} {this.state.user.lastName} (Manager) - {this.state.user.companyName}</p>
         </div>
 
         <div className="u-grid u-grid--2-cols u-margin--lg-v">
@@ -29,11 +44,11 @@ class MyAccount extends Component {
 								<div className="o-form__content u-grid u-grid--2-cols u-pill--bottom">
 									<div className="m-form-group">
 										<label htmlFor="" className="a-label m-form-group__label">Company name</label>
-										<input type="text" placeholder="Company name" className="a-input" />
+										<label className="m-form-group__label m-form-group__label--title">{this.state.user.companyName}</label>
 									</div>
 									<div className="m-form-group">
 										<label htmlFor="" className="a-label m-form-group__label">Tax number</label>
-										<input type="text" placeholder="Tax number" className="a-input" />
+										<label className="m-form-group__label m-form-group__label--title">{this.state.user.taxNumber}</label>
 									</div>
 								</div>
 							</div>
@@ -51,8 +66,10 @@ class MyAccount extends Component {
 								</div>
 								<div className="o-form__content u-pill--bottom">
 									<div className="m-form-group o-form__row u-grid u-grid--3-cols-icons u-grid--center">
-										<label className="m-form-group__label">test</label>
-										<i>i</i>
+										<label className="m-form-group__label m-form-group__label--title">{this.state.user.firstName} {this.state.user.middleName} {this.state.user.lastName}</label>
+										<a href="google.com">
+											<span className="a-icon a-icon--edit"></span>
+										</a>
 										<label className="a-switch">
 											<input type="checkbox" className="a-switch__checkbox" />
 												<span className="a-switch__slider"></span>

@@ -27,3 +27,28 @@
 @mixin heading-level-4 {
   
 }
+
+@mixin icon($background-path: "", $height: $size-base, $width: $size-base){
+  &:before {
+    content: '';
+    position: absolute;
+    display: block;
+
+    left: 1em;
+    top: 50%;
+
+    height: $height;
+    width: $width;
+
+    background-image: url($background-path);
+
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    z-index: 1;
+
+    pointer-events: none;
+  }
+
+  @content
+}
