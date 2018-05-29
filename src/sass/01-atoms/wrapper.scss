@@ -1,7 +1,8 @@
 .a-wrapper {
   margin: 0 auto;
   &--page {
-    max-width: 920px;
+    width: 920px;
+    max-width: calc(100vw - 4em);
   }
 
   &--overlay {

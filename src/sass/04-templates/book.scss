@@ -17,4 +17,19 @@
       }
     }
   }
+  > .m-table-item, > .o-form {
+    margin-bottom: 2em;
+  }
+  &__footer {
+    margin-bottom: 6em;
+    > div {
+      display: flex;
+      justify-content: flex-end;
+    }
+    button {
+      &:not(:last-child) {
+        margin-right: 2em;
+      }
+    }
+  }
 }
