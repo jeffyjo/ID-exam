@@ -1164,10 +1164,10 @@ const flights = [{
   'airline': 'Air Greenland',
   'airline_code': 'GL',
   'plane_id': 'GL5903',
-  'departure_date': '01/05/19',
+  'departure_date': '10/05/19',
   'departure_time': '18:00',
   'duration': '10:00',
-  'arrival_date': '02/05/19',
+  'arrival_date': '10/05/19',
   'arrival_time': '04:00',
   'price': '€2522,04',
   'origin': {
