@@ -72,3 +72,8 @@ export const durationTotal = (flights, divider = ':') => {
     return duration
   }, 0)
 }
+
+export const siteRouting = (site) => {
+  window.localStorage.setItem('site', site)
+  window.location = `${site}`
+}

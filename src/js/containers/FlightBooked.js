@@ -1,6 +1,7 @@
 'use strict'
 
 import React, { Component } from 'react'
+import { siteRouting } from '../utils'
 
 class FlightBooked extends Component {
   constructor(props){
@@ -9,6 +10,12 @@ class FlightBooked extends Component {
     this.state = {
       full: true
     }
+
+    this.onLogin = this.onLogin.bind(this)
+  }
+
+  onLogin(){
+    document.querySelector('#btnLogin').click()
   }
 
   render () {
@@ -33,7 +40,7 @@ class FlightBooked extends Component {
             <h2 className="m-site-header__header m-site-header__header--margin-sm m-site-header__header--lg">Thank you!</h2>
             <p className="m-site-header__lead">Your flights has been booked. We have sent the ticket additionally to your e-mail.</p>
           </div>
-          <button className="a-button a-button--primary a-button--pill o-cta-block__item u-grid__item u-grid__item--center-h">Download ticket</button>
+          <a href="https://drive.google.com/file/d/1yLEozmaBflLI7VJOUfMGChj73BnBapyA/view?usp=sharing" className="a-button a-button--primary a-button--pill a-button--lg o-cta-block__item u-grid__item u-grid__item--center-h">Download ticket</a>
         </div>
         { this.state.full === true 
           ? <div className="o-cta-block  o-cta-block--space-top o-cta-block--middle-align u-grid">
@@ -41,8 +48,8 @@ class FlightBooked extends Component {
               <p className="m-site-header__lead">To save the information for easier future bookings please use your account or create one.</p>
             </div>
             <div className="o-cta-block__item o-cta-block__item--actions">
-              <button className="a-button a-button--secondary a-button--secondary-text a-button--pill u-grid__item u-grid__item--center-h">Register</button>
-              <button className="a-button a-button--secondary a-button--secondary-text a-button--pill u-grid__item u-grid__item--center-h">Login</button>
+              <button onClick={ () => {siteRouting('create.html')} } className="a-button a-button--secondary a-button--secondary-text a-button--pill u-grid__item u-grid__item--center-h">Register</button>
+              <button onClick={this.onLogin} className="a-button a-button--secondary a-button--secondary-text a-button--pill u-grid__item u-grid__item--center-h">Login</button>
             </div>
           </div>
           : ''
