@@ -81,8 +81,9 @@ class Navbar extends Component {
       <div id="overlay" className="u-overlay"></div>
       <nav className="u-grid u-grid--2-cols">
         <div className="m-logo u-grid__item--left u-grid__item--center-v">
-          <h1 className="m-logo__header m-logo__header--transparent">Business</h1>
-          <h1 className="m-logo__header m-logo__header--bold">Flights Forever</h1>
+          <a href="#">
+            <span className="a-icon a-icon--lg a-icon--logo"></span>
+          </a>
         </div>
         <ul className="m-nav u-grid__item--right">
           <li className="m-nav__item">
