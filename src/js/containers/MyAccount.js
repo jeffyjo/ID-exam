@@ -213,6 +213,9 @@ class MyAccount extends Component {
 					</div>
 					: ''
 					}
+					{	this.state.currentMode === "paymentMethods" ? '' : ''
+
+					}
 					{ this.state.currentMode === 'bookedFlights' ?
 					<div>
 						<form className="o-form">

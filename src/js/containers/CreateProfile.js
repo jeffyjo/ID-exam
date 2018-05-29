@@ -71,6 +71,9 @@ class CreateProfile extends Component {
 		this.setState({
 			profileParams: profileParams
 		})
+
+		window.location = 'my-account.html'
+
 	}
 
   render () {
