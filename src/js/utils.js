@@ -60,6 +60,7 @@ export const priceSum = (flights, currency = '€', decimal = ',') => {
     let withDot = withoutSymbol.replace(decimal, '.')
     let asFloat = parseFloat(withDot)
     price += asFloat
+    console.log(price)
     return price
   }, 0)
 }
