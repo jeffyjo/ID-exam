@@ -42,7 +42,7 @@ class MyAccount extends Component {
 				"accountInformation",
 				"bookedFlights"
 			],
-			currentMode: "accountInformation"
+			currentMode: "bookedFlights"
 		}
 
 		this.onAddClicked = this.onAddClicked.bind(this)
@@ -229,12 +229,14 @@ class MyAccount extends Component {
 										<label className="a-label m-form-group__label">Date</label>
 										<label className="m-form-group__label m-form-group__label--title">31.06.18</label>
 									</div>
-									<div className="m-form-group m-form-group--border-left">
+									<div className="m-form-group">
 										<label className="a-label m-form-group__label">Booked by</label>
 										<label className="m-form-group__label m-form-group__label--title">{this.state.userLoggedIn.firstName} {this.state.userLoggedIn.middleName} {this.state.userLoggedIn.lastName}</label>
 									</div>
-									<div className="m-form-group m-form-group--border-left m-form-group--text-right">
-										<i>i</i>
+									<div className="m-form-group m-form-group--text-right">
+										<i>
+											<span className="a-icon a-icon--invoice"></span>
+										</i>
 									</div>
 								</div>
 							</div>
