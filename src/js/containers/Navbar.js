@@ -6,6 +6,8 @@ class Navbar extends Component {
   constructor(props){
     super(props)
 
+    let site = localStorage.getItem('site') ? localStorage.getItem('site') : 'index.html'
+
     this.state = {
       isLoggedIn: this.props.isLoggedIn,
       isLoggingIn: false,
@@ -13,13 +15,15 @@ class Navbar extends Component {
       loginParams : {
         username: null,
         password: null
-      }
+      },
+      currentSite: site
     }
 
     this.toggleLoggingIn = this.toggleLoggingIn.bind(this)
     this.onFormSubmit = this.onFormSubmit.bind(this)
     this.onLogin = this.onLogin.bind(this)
     this.onLogout = this.onLogout.bind(this)
+    this.toggleNav = this.toggleNav.bind(this)
     this.form = React.createRef()
   }
 
@@ -75,26 +79,30 @@ class Navbar extends Component {
 
   }
 
+  toggleNav(site){
+    localStorage.setItem('site', site)
+  }
+
   render () {
     return (
       <div>
       <div id="overlay" className="u-overlay"></div>
       <nav className="u-grid u-grid--2-cols">
         <div className="m-logo u-grid__item--left u-grid__item--center-v">
-          <a href="index.html">
+          <a onClick={() => {this.toggleNav('index.html')}} href="index.html">
             <span className="a-icon a-icon--lg a-icon--logo"></span>
           </a>
         </div>
         <ul className="m-nav u-grid__item--right">
           <li className="m-nav__item">
-            <a href="index.html" className="a-link a-link--nav a-link--active">Search Flight</a>
+            <a href="index.html" onClick={() => {this.toggleNav('index.html')}} className={`a-link a-link--nav ${this.state.currentSite === 'index.html' ? 'a-link--active' : '' }`}>Search Flight</a>
           </li>
           { this.state.isLoggedIn === true ? 
             <li className="m-nav__item">
-              <a href="my-account.html" className="a-link a-link--nav a-link">My account</a>
+              <a href="my-account.html" onClick={() => {this.toggleNav('my-account.html')}} className={`a-link a-link--nav ${this.state.currentSite === 'my-account.html' ? 'a-link--active' : '' }`}>My account</a>
             </li>
           : <li className="m-nav__item">
-              <a href="create.html" className="a-link a-link--nav a-link">Create account</a>
+              <a href="create.html" onClick={() => {this.toggleNav('create.html')}} className={`a-link a-link--nav ${this.state.currentSite === 'create.html' ? 'a-link--active' : '' }`}>Create account</a>
             </li> }
           <li className="m-nav__item">
             { this.state.isLoggedIn === true 
