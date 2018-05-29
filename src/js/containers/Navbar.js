@@ -98,10 +98,8 @@ class Navbar extends Component {
             </li> }
           <li className="m-nav__item">
             { this.state.isLoggedIn === true 
-              ? <button onClick={this.onLogout} className="a-button a-button--secondary a-button--circle-md">
-                  
-                </button>
-              : <button onClick={this.toggleLoggingIn} className={this.state.isLoggingIn === true ? "a-button a-button--secondary a-button--secondary-text a-button--pill a-button--active" : "a-button a-button--primary a-button--pill"}>{this.state.isLoggingIn === true ? 'Back' : 'Login' }</button>
+              ? <button onClick={this.onLogout} className="a-button a-button--secondary a-button--circle-md"></button>
+              : <button onClick={this.toggleLoggingIn} className={this.state.isLoggingIn === true ? "o-main-nav__login-btn a-button a-button--secondary a-button--secondary-text a-button--pill a-button--active" : "o-main-nav__login-btn a-button a-button--primary a-button--pill"}>{this.state.isLoggingIn === true ? 'Back' : 'Login' }</button>
             }
           </li>
           { this.state.isLoggingIn ? <form className="o-form o-form--absolute o-form--top-arrow o-form--sm o-main-nav__login u-grid" method="POST" ref={this.form} onSubmit={this.onFormSubmit}>

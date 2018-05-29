@@ -1,0 +1,35 @@
+.t-book {
+  &__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 4em 0;
+
+    h2 {
+      color: $primary-text;
+    }
+
+    .m-progress {
+      width: 300px;
+      &__dot {
+        transform: translateX(-50%);
+      }
+    }
+  }
+  > .m-table-item, > .o-form {
+    margin-bottom: 2em;
+  }
+  &__footer {
+    margin-bottom: 6em;
+    > div {
+      display: flex;
+      justify-content: flex-end;
+    }
+    button {
+      &:not(:last-child) {
+        margin-right: 2em;
+      }
+    }
+  }
+}

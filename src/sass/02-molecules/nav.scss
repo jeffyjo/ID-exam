@@ -12,6 +12,6 @@
 .m-nav__item {
   display: inline;
   &:not(:last-of-type){
-    margin-right: $size-margin--md;
+    margin-right: $size-margin--lg;
   }
 }

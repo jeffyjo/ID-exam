@@ -46,8 +46,7 @@ SortFlights.defaultProps = {
   type: '',
   heading: '',
   options: [],
-  selected: 1,
-  onSelect: (e) => { console.log(e) }
+  selected: 1
 }
 
 export default SortFlights
