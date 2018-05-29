@@ -173,7 +173,7 @@ class MyAccount extends Component {
 									</div>
 								</div>
 
-								{	numberOfUsers > 0
+								{	
 									<div className="o-form__content u-pill--bottom">
 										<div className="m-form-group o-form__row u-grid u-grid--3-cols-icons u-grid--center">
 											<label className="m-form-group__label m-form-group__label--title">{this.state.userLoggedIn.firstName} {this.state.userLoggedIn.middleName} {this.state.userLoggedIn.lastName}</label>
