@@ -4,11 +4,16 @@
   padding: 1em;
   border-bottom: $size-border-width-lg solid $color-main-nav-border;
 
-  z-index: 1;
+  z-index: 3;
 }
 
 .o-main-nav__login {
   top: 7em;
   right: 1em;
-  z-index: 1;
+  z-index: 3;
+}
+
+.o-main-nav__login-btn{
+  min-width: 130px;
+  z-index: 3;
 }
